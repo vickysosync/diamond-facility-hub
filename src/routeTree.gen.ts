@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PricingEstimatorRouteImport } from './routes/pricing-estimator'
+import { Route as AdminCompanyRouteImport } from './routes/admin.company'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as AdminIndustriesRouteImport } from './routes/admin.industries'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
@@ -55,6 +56,11 @@ const PortfolioRoute = PortfolioRouteImport.update({
 const PricingEstimatorRoute = PricingEstimatorRouteImport.update({
   id: '/pricing-estimator',
   path: '/pricing-estimator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCompanyRoute = AdminCompanyRouteImport.update({
+  id: '/admin/company',
+  path: '/admin/company',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
@@ -120,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/industries': typeof IndustriesRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing-estimator': typeof PricingEstimatorRoute
+  '/admin/company': typeof AdminCompanyRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/industries': typeof AdminIndustriesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/industries': typeof IndustriesRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing-estimator': typeof PricingEstimatorRoute
+  '/admin/company': typeof AdminCompanyRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/industries': typeof AdminIndustriesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -159,6 +167,7 @@ export interface FileRoutesById {
   '/industries': typeof IndustriesRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing-estimator': typeof PricingEstimatorRoute
+  '/admin/company': typeof AdminCompanyRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/industries': typeof AdminIndustriesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -180,6 +189,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/portfolio'
     | '/pricing-estimator'
+    | '/admin/company'
     | '/admin/dashboard'
     | '/admin/industries'
     | '/admin/login'
@@ -199,6 +209,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/portfolio'
     | '/pricing-estimator'
+    | '/admin/company'
     | '/admin/dashboard'
     | '/admin/industries'
     | '/admin/login'
@@ -218,6 +229,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/portfolio'
     | '/pricing-estimator'
+    | '/admin/company'
     | '/admin/dashboard'
     | '/admin/industries'
     | '/admin/login'
@@ -238,6 +250,7 @@ export interface RootRouteChildren {
   IndustriesRoute: typeof IndustriesRoute
   PortfolioRoute: typeof PortfolioRoute
   PricingEstimatorRoute: typeof PricingEstimatorRoute
+  AdminCompanyRoute: typeof AdminCompanyRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminIndustriesRoute: typeof AdminIndustriesRoute
   AdminLoginRoute: typeof AdminLoginRoute
@@ -293,6 +306,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing-estimator'
       fullPath: '/pricing-estimator'
       preLoaderRoute: typeof PricingEstimatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/company': {
+      id: '/admin/company'
+      path: '/admin/company'
+      fullPath: '/admin/company'
+      preLoaderRoute: typeof AdminCompanyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/dashboard': {
@@ -382,6 +402,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndustriesRoute: IndustriesRoute,
   PortfolioRoute: PortfolioRoute,
   PricingEstimatorRoute: PricingEstimatorRoute,
+  AdminCompanyRoute: AdminCompanyRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminIndustriesRoute: AdminIndustriesRoute,
   AdminLoginRoute: AdminLoginRoute,
