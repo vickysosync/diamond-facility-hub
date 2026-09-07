@@ -183,7 +183,7 @@ function CompanyAdmin() {
           </section>
 
           <div className="flex flex-wrap gap-2">
-            <button type="submit" className="btn-base btn-primary">
+            <button type="submit" className="btn-base btn-accent">
               <Icon name="check" className="h-4 w-4" /> Save Company Information
             </button>
             <button type="button" className="btn-base btn-ghost-navy" onClick={() => setForm(company)}>
