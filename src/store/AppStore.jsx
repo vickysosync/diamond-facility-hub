@@ -107,7 +107,7 @@ export function AppProvider({ children }) {
         })),
       updateMessage: (id, changes) =>
         patch((p) => ({ messages: p.messages.map((m) => (m.id === id ? { ...m, ...changes } : m)) })),
-      resetDemoData: () => setState(seed()),
+      resetDemoData: () => setState((prev) => ({ ...seed(), isAdmin: prev.isAdmin })),
     };
   }, [state, hydrated, patch]);
 
