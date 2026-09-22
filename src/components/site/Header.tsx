@@ -12,8 +12,8 @@ const nav = [
   { href: "/services", label: "Services" },
   { href: "/industries", label: "Industries" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/pricing-estimator", label: "Pricing Estimator" },
-  { href: "/contact", label: "Contact" },
+  { href: "/pricing-estimator", label: "Pricing" },
+  { href: "/gallery", label: "Gallery" },
 ];
 
 export interface HeaderProps {

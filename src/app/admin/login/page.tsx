@@ -3,11 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Icon from "@/components/ui/Icon";
-import { useApp } from "@/store/AppStore";
 
 export default function AdminLoginPage() {
-  const { login, isAdmin, hydrated } = useApp();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,23 +12,49 @@ export default function AdminLoginPage() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    if (hydrated && isAdmin) router.push("/admin/dashboard");
-  }, [hydrated, isAdmin, router]);
+    // Check if already authenticated
+    async function checkCurrentSession() {
+      try {
+        const res = await fetch("/api/auth/session");
+        const data = await res.json();
+        if (data.authenticated) {
+          router.push("/admin/dashboard");
+        }
+      } catch (e) {
+        // Not logged in
+      }
+    }
+    checkCurrentSession();
+  }, [router]);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     if (!email.trim() || !password) {
-      setError("Enter both email and password.");
+      setError("Please enter both email and password.");
       return;
     }
     setBusy(true);
-    setTimeout(() => {
-      const ok = login(email, password);
+
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Login failed");
+      }
+
+      router.push("/admin/dashboard");
+    } catch (err: any) {
+      setError(err?.message || "Invalid credentials.");
+    } finally {
       setBusy(false);
-      if (ok) router.push("/admin/dashboard");
-      else setError("Invalid credentials. Use the demo credentials shown below.");
-    }, 500);
+    }
   };
 
   return (
@@ -48,27 +71,33 @@ export default function AdminLoginPage() {
         <form
           onSubmit={submit}
           noValidate
-          className="rounded-2xl bg-card p-6 shadow-lift sm:p-8"
+          className="rounded-2xl bg-card p-6 shadow-lift sm:p-8 border border-border"
         >
-          <h1 className="font-display text-xl font-extrabold text-navy">Admin Login</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Sign in to manage services, portfolio, pricing and enquiries.
+          <div className="flex items-center justify-between">
+            <h1 className="font-display text-xl font-extrabold text-navy">Admin Portal</h1>
+            <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-gold/15 text-gold border border-gold/30">
+              Secure Access
+            </span>
+          </div>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Sign in to manage services, industries, pricing, portfolio, quotes and enquiries.
           </p>
 
           <label className="mt-6 block text-sm">
-            <span className="mb-1.5 block font-semibold text-navy-700">Email</span>
+            <span className="mb-1.5 block font-semibold text-navy">Admin Email</span>
             <input
               type="email"
               className="field"
               value={email}
               autoComplete="username"
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@diamondfacility.com"
+              placeholder="admin@diamondifs.com"
+              required
             />
           </label>
 
           <label className="mt-4 block text-sm">
-            <span className="mb-1.5 block font-semibold text-navy-700">Password</span>
+            <span className="mb-1.5 block font-semibold text-navy">Password</span>
             <input
               type="password"
               className="field"
@@ -76,27 +105,37 @@ export default function AdminLoginPage() {
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
+              required
             />
           </label>
 
           {error && (
-            <p className="mt-4 rounded-lg bg-destructive/10 px-3 py-2 text-xs font-semibold text-destructive">
+            <p className="mt-4 rounded-lg bg-destructive/10 border border-destructive/20 px-3 py-2 text-xs font-semibold text-destructive">
               {error}
             </p>
           )}
 
-          <button type="submit" className="btn-base btn-accent mt-6 w-full" disabled={busy}>
-            {busy ? "Signing in…" : "Sign In"}
+          <button type="submit" className="btn-base btn-accent mt-6 w-full py-2.5 text-sm" disabled={busy}>
+            {busy ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                Signing In…
+              </span>
+            ) : (
+              "Sign In to Dashboard"
+            )}
           </button>
 
-          <div className="mt-6 rounded-xl bg-mist p-4 text-xs text-muted-foreground">
-            <p className="font-bold text-navy">Demo credentials</p>
-            <p className="mt-1">Email: admin@diamondfacility.com</p>
-            <p>Password: admin123</p>
+          <div className="mt-6 rounded-xl bg-mist p-3.5 text-xs text-muted-foreground border border-border">
+            <p className="font-bold text-navy">Default Credentials</p>
+            <div className="mt-1 font-mono text-[11px] space-y-0.5">
+              <p>Email: <span className="text-navy font-semibold">admin@diamondifs.com</span></p>
+              <p>Password: <span className="text-navy font-semibold">admin123</span></p>
+            </div>
           </div>
 
-          <Link href="/" className="mt-5 block text-center text-xs font-semibold text-royal hover:underline">
-            Back to website
+          <Link href="/" className="mt-5 block text-center text-xs font-semibold text-gold hover:underline">
+            ← Back to live website
           </Link>
         </form>
       </div>

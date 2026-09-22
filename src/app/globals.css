@@ -98,7 +98,7 @@
   --brand-dark: #0a1019;
   --brand-surface: #ffffff;
   --brand-border: #e2e6eb;
-  --brand-muted: #64748b;
+  --brand-muted: #374151;
 
   /* Theme semantic mappings */
   --navy: var(--brand-primary);
@@ -122,7 +122,7 @@
   --secondary: var(--brand-light);
   --secondary-foreground: var(--brand-primary);
   --muted: var(--brand-light);
-  --muted-foreground: var(--brand-muted);
+  --muted-foreground: #374151;
   --accent: var(--brand-accent);
   --accent-foreground: #ffffff;
   --destructive: #dc2626;
@@ -181,6 +181,10 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+  }
+
+  p {
+    color: #374151;
   }
 
   h1,

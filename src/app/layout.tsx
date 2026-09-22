@@ -21,14 +21,20 @@ export const metadata: Metadata = {
     template: "%s | Diamond Integrated Facility Services LLP",
   },
   description:
-    "Security guard deployment, pest control, water tank cleaning, and painting services in Pune for commercial, residential, industrial, and institutional facilities.",
+    "Integrated facility management partner in Pune headed by Director Umesh Patil. Screened Security Guards, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning & Gardening, CCTV, and Civil Maintenance.",
   keywords: [
     "facility management pune",
-    "security services pune",
+    "security guard services pune",
+    "housekeeping services pune",
+    "property management pune",
     "pest control pune",
-    "water tank cleaning pune",
-    "commercial painting pune",
-    "integrated facility services",
+    "bouncer services pune",
+    "man power supply pune",
+    "tank cleaning pune",
+    "cctv installation pune",
+    "painting and waterproofing pune",
+    "diamond integrated facility services llp",
+    "umesh patil diamond facility",
   ],
   authors: [{ name: "Diamond Integrated Facility Services LLP" }],
   icons: {
@@ -39,10 +45,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Diamond Integrated Facility Services LLP | Pune",
     description:
-      "One trusted partner for security, pest control, tank cleaning and painting across Pune and Pimpri-Chinchwad.",
+      "One trusted partner for 11 core facility management services across Pune, PCMC and Maharashtra.",
     type: "website",
     locale: "en_IN",
-    siteName: "Diamond Integrated Facility Services",
+    siteName: "Diamond Integrated Facility Services LLP",
   },
 };
 

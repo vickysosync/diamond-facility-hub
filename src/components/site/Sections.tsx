@@ -153,9 +153,21 @@ export function HowItWorks() {
 }
 
 export function Testimonials() {
-  const { testimonials } = useApp();
-  const list = testimonials.filter((t) => t.status === "Published");
+  const [list, setList] = useState<any[]>([]);
   const [i, setI] = useState(0);
+
+  useEffect(() => {
+    async function loadTestimonials() {
+      try {
+        const res = await fetch("/api/testimonials");
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setList(data.filter((t: any) => t.status === "Approved" || t.status === "Published"));
+        }
+      } catch (e) {}
+    }
+    loadTestimonials();
+  }, []);
 
   useEffect(() => {
     if (list.length < 2) return;
@@ -167,67 +179,63 @@ export function Testimonials() {
   const t = list[i % list.length];
 
   return (
-    <section className="section-y gradient-navy">
+    <section className="section-y bg-navy text-white">
       <div className="container-x">
-        <SectionTitle eyebrow="Testimonials" title="What Our Clients Say" light center />
-        <figure className="mx-auto mt-10 max-w-3xl rounded-2xl bg-white/8 p-6 text-center backdrop-blur sm:p-10">
-          <Icon name="quote" className="mx-auto h-8 w-8 text-safety" />
-          <blockquote className="mt-4 text-base leading-relaxed text-white/85 sm:text-lg">
-            “{t.review}”
+        <SectionTitle eyebrow="Verified Client Reviews" title="What Our Facility Clients Say" light center />
+        <figure className="mx-auto mt-10 max-w-3xl rounded-2xl bg-white/8 p-6 text-center backdrop-blur sm:p-10 border border-white/10">
+          <Icon name="quote" className="mx-auto h-8 w-8 text-gold" />
+          <blockquote className="mt-4 text-sm leading-relaxed text-white/90 sm:text-base italic">
+            “{t.content || t.review}”
           </blockquote>
           <figcaption className="mt-6">
-            <p className="font-display text-base font-bold text-white">{t.name}</p>
-            <p className="text-sm text-white/60">
-              {t.company} · {t.industry}
+            <p className="font-display text-base font-bold text-gold">{t.name}</p>
+            <p className="text-xs text-white/60">
+              {t.role ? `${t.role} · ` : ""}{t.company} {t.industry ? `(${t.industry})` : ""}
             </p>
-            <p className="mt-2 flex justify-center gap-1">
-              {Array.from({ length: t.rating }).map((_, k) => (
-                <Icon key={k} name="star" className="h-4 w-4 text-safety" />
+            <div className="mt-2 flex justify-center gap-1">
+              {Array.from({ length: t.rating || 5 }).map((_, k) => (
+                <Icon key={k} name="star" className="h-4 w-4 text-gold" />
               ))}
-            </p>
+            </div>
           </figcaption>
         </figure>
         <div className="mt-6 flex justify-center gap-2">
           {list.map((item, k) => (
             <button
-              key={item.id}
+              key={item._id || item.id || k}
               onClick={() => setI(k)}
               aria-label={`Show testimonial ${k + 1}`}
               className={`h-2 rounded-full transition-all ${
-                k === i % list.length ? "w-7 bg-safety" : "w-2 bg-white/30"
+                k === i % list.length ? "w-7 bg-gold" : "w-2 bg-white/30"
               }`}
             />
           ))}
         </div>
-        <p className="mt-6 text-center text-xs text-white/40">
-          Testimonials shown are demonstration content.
-        </p>
       </div>
     </section>
   );
 }
 
 export function CTABanner() {
-  const { company } = useApp();
   const { openQuote } = useQuote();
   return (
     <section className="section-y bg-mist">
       <div className="container-x">
-        <div className="gradient-navy relative overflow-hidden rounded-3xl px-6 py-12 text-center shadow-lift sm:px-12">
-          <div className="absolute inset-0 opacity-25 [background:radial-gradient(circle_at_80%_20%,white,transparent_45%)]" />
+        <div className="bg-navy relative overflow-hidden rounded-3xl px-6 py-12 text-center shadow-lift sm:px-12 border border-gold/30">
+          <div className="absolute inset-0 opacity-20 [background:radial-gradient(circle_at_80%_20%,#a3722e,transparent_55%)]" />
           <div className="relative">
             <h2 className="text-2xl font-extrabold text-white sm:text-3xl">
-              Looking for a Reliable Facility Services Partner?
+              Looking for a Reliable Integrated Facility Partner in Pune?
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm text-white/75 sm:text-base">
-              Tell us about your facility requirements and get a customized service estimate.
+            <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-white/80 leading-relaxed">
+              Tell us your property requirements and receive a transparent commercial quotation backed by single-point operations management.
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <button className="btn-base btn-accent" onClick={() => openQuote()}>
-                Get Free Quote
+              <button className="btn-base btn-accent font-bold" onClick={() => openQuote()}>
+                Get Instant Quote
               </button>
-              <a href={`tel:${company.phone}`} className="btn-base btn-outline-light">
-                <Icon name="phone" className="h-4 w-4" /> Call Now
+              <a href="tel:+919689515295" className="btn-base btn-outline-light font-mono font-bold">
+                <Icon name="phone" className="h-4 w-4 text-gold" /> +91 9689515295
               </a>
             </div>
           </div>
@@ -242,17 +250,56 @@ export interface IndustriesGridProps {
 }
 
 export function IndustriesGrid({ limit }: IndustriesGridProps = {}) {
-  const { industries } = useApp();
+  const [industries, setIndustries] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadInd() {
+      try {
+        const res = await fetch("/api/industries");
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setIndustries(data.filter((i: any) => i.status !== "Inactive"));
+        }
+      } catch (e) {
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadInd();
+  }, []);
+
   const list = limit ? industries.slice(0, limit) : industries;
+
+  if (loading) {
+    return (
+      <div className="py-12 text-center text-xs text-muted-foreground">
+        <span className="h-5 w-5 animate-spin rounded-full border-2 border-gold border-t-transparent inline-block" />
+        <p className="mt-2">Loading target sectors…</p>
+      </div>
+    );
+  }
+
   return (
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
       {list.map((ind) => (
-        <div key={ind.id} className="card-lift rounded-2xl border border-border bg-card p-5 shadow-card">
-          <span className="grid h-10 w-10 place-items-center rounded-lg bg-royal/10 text-royal">
-            <Icon name={ind.icon} />
-          </span>
-          <h3 className="mt-3 text-sm font-bold text-navy">{ind.name}</h3>
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{ind.description}</p>
+        <div key={ind._id || ind.id} className="card-lift rounded-2xl border border-border bg-card p-5 shadow-card flex flex-col justify-between">
+          <div>
+            <span className="grid h-10 w-10 place-items-center rounded-lg bg-gold/10 text-gold">
+              <Icon name={ind.icon || "building"} />
+            </span>
+            <h3 className="mt-3 text-sm font-bold text-navy">{ind.name}</h3>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{ind.description}</p>
+          </div>
+          {ind.servicesOffered?.length ? (
+            <div className="mt-3 pt-2 border-t border-border/50 flex flex-wrap gap-1">
+              {ind.servicesOffered.slice(0, 2).map((s: string) => (
+                <span key={s} className="text-[9px] px-1.5 py-0.5 rounded bg-mist font-medium text-navy">
+                  {s}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
       ))}
     </div>
@@ -260,41 +307,58 @@ export function IndustriesGrid({ limit }: IndustriesGridProps = {}) {
 }
 
 export function ContactDetails() {
-  const { company } = useApp();
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 text-xs">
       <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
-        <h3 className="font-display text-base font-bold text-navy">{company.name}</h3>
-        <ul className="mt-4 space-y-4 text-sm">
+        <div className="flex items-center justify-between pb-3 border-b border-border">
+          <h3 className="font-display text-base font-bold text-navy">Diamond Integrated Facility Services LLP</h3>
+        </div>
+        <div className="mt-3 text-[11px] font-mono text-gold font-bold">
+          Managing Director: Umesh Patil
+        </div>
+        <ul className="mt-4 space-y-3.5 text-xs">
           <li className="flex gap-3">
-            <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-safety" />
-            <span className="text-muted-foreground">{company.address}</span>
+            <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+            <span className="text-muted-foreground leading-relaxed">
+              Office No-A2, Sai Pritam Nagari, Chhatrapati Chowk, Rahatani-Kalewadi Link Road, Rahatani, Pune, Maharashtra, India - 411017
+            </span>
           </li>
           <li className="flex gap-3">
-            <Icon name="phone" className="mt-0.5 h-4 w-4 shrink-0 text-safety" />
-            <a href={`tel:${company.phone}`} className="font-semibold text-navy hover:text-royal">
-              {company.phone}
-            </a>
+            <Icon name="phone" className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+            <div className="space-y-1">
+              <a href="tel:02045355544" className="font-bold text-navy hover:text-gold block font-mono">
+                020 45355544 <span className="font-normal text-muted-foreground">(Office Landline)</span>
+              </a>
+              <a href="tel:+919689515295" className="font-semibold text-navy hover:text-gold block font-mono">
+                +91 9689515295 <span className="font-normal text-muted-foreground">(Primary Mobile)</span>
+              </a>
+              <a href="tel:+919970046704" className="font-semibold text-navy hover:text-gold block font-mono">
+                +91 9970046704 <span className="font-normal text-muted-foreground">(Operations Desk)</span>
+              </a>
+            </div>
           </li>
           <li className="flex gap-3">
-            <Icon name="mail" className="mt-0.5 h-4 w-4 shrink-0 text-safety" />
-            <a href={`mailto:${company.email}`} className="break-all font-semibold text-navy hover:text-royal">
-              {company.email}
+            <Icon name="mail" className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+            <a href="mailto:info@diamondifs.com" className="break-all font-semibold text-navy hover:text-gold font-mono">
+              info@diamondifs.com
             </a>
           </li>
         </ul>
       </div>
+
       <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
         <h3 className="flex items-center gap-2 font-display text-base font-bold text-navy">
-          <Icon name="clock" className="h-4 w-4 text-safety" /> Business Hours
+          <Icon name="clock" className="h-4 w-4 text-gold" /> Operating Schedules
         </h3>
-        <ul className="mt-4 space-y-2 text-sm">
-          {company.businessHours.map((b) => (
-            <li key={b.day} className="flex justify-between gap-4 border-b border-border pb-2 last:border-0">
-              <span className="text-muted-foreground">{b.day}</span>
-              <span className="font-semibold text-navy">{b.hours}</span>
-            </li>
-          ))}
+        <ul className="mt-4 space-y-2 text-xs">
+          <li className="flex justify-between gap-4 border-b border-border pb-2">
+            <span className="text-muted-foreground">Office Operations (Mon – Sat)</span>
+            <span className="font-semibold text-navy">9:00 AM – 7:00 PM</span>
+          </li>
+          <li className="flex justify-between gap-4">
+            <span className="text-muted-foreground">Security & Emergency Hotline</span>
+            <span className="font-bold text-gold font-mono">24/7 Control Room</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -302,7 +366,7 @@ export function ContactDetails() {
 }
 
 export function ContactForm() {
-  const { addMessage, services } = useApp();
+  const [categories, setCategories] = useState<any[]>([]);
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -313,47 +377,85 @@ export function ContactForm() {
   });
   const [errors, setErrors] = useState<Record<string, string | undefined>>({});
   const [sending, setSending] = useState(false);
-  const [done, setDone] = useState(false);
+  const [submittedId, setSubmittedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadCats() {
+      try {
+        const res = await fetch("/api/service-categories");
+        const data = await res.json();
+        if (Array.isArray(data)) setCategories(data);
+      } catch (e) {}
+    }
+    loadCats();
+  }, []);
 
   const set = (k: string, v: string) => {
     setForm((f) => ({ ...f, [k]: v }));
     setErrors((e) => ({ ...e, [k]: undefined }));
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const err: Record<string, string> = {};
     if (!form.name.trim()) err.name = "Name is required";
     if (!/^[0-9+\-\s]{8,15}$/.test(form.phone.trim())) err.phone = "Enter a valid phone number";
     if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) err.email = "Enter a valid email address";
     if (!form.service) err.service = "Select a service";
-    if (form.message.trim().length < 10) err.message = "Please add a few more details";
+    if (form.message.trim().length < 10) err.message = "Please add a few more details (minimum 10 characters)";
     setErrors(err);
     if (Object.keys(err).length) return;
+
     setSending(true);
-    setTimeout(() => {
-      addMessage(form);
+    try {
+      const payload = {
+        name: form.name.trim(),
+        company: form.company.trim(),
+        phone: form.phone.trim(),
+        email: form.email.trim(),
+        service: form.service,
+        serviceInterest: form.service,
+        message: form.message.trim(),
+      };
+
+      const res = await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to submit enquiry");
+
+      setSubmittedId(data.enquiryId || data.enquiry?.enquiryId || "ENQ-2026");
+    } catch (apiErr: any) {
+      setErrors({ form: apiErr?.message || "Failed to send message. Please try again." });
+    } finally {
       setSending(false);
-      setDone(true);
-    }, 600);
+    }
   };
 
-  if (done) {
+  if (submittedId) {
     return (
-      <div className="rounded-2xl border border-success/30 bg-success/8 p-8 text-center shadow-card">
-        <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success text-white">
+      <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/8 p-8 text-center shadow-card">
+        <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-emerald-500 text-white">
           <Icon name="check" className="h-7 w-7" strokeWidth={3} />
         </span>
-        <h3 className="mt-4 text-lg font-bold text-navy">Message Received</h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Thank you! Your message has been recorded for demonstration purposes. Our team will contact you
-          using the details provided.
+        <h3 className="mt-4 text-lg font-bold text-navy">Message Successfully Received!</h3>
+        
+        <div className="my-3.5 p-3.5 rounded-xl bg-gold/10 border border-gold/30 inline-block">
+          <span className="text-[11px] text-muted-foreground uppercase font-bold block">Tracking Reference</span>
+          <span className="font-mono text-lg font-extrabold text-gold tracking-wider">{submittedId}</span>
+        </div>
+
+        <p className="mt-2 text-xs text-muted-foreground max-w-md mx-auto leading-relaxed">
+          Thank you for reaching out! Your inquiry has been registered in our central service desk and an acknowledgement email has been sent. Our coordinator will contact you promptly.
         </p>
         <button
-          className="btn-base btn-ghost-navy mt-6"
+          className="btn-base btn-ghost-navy mt-5 text-xs"
           onClick={() => {
             setForm({ name: "", company: "", phone: "", email: "", service: "", message: "" });
-            setDone(false);
+            setSubmittedId(null);
           }}
         >
           Send another message
@@ -364,53 +466,80 @@ export function ContactForm() {
 
   return (
     <form onSubmit={submit} noValidate className="rounded-2xl border border-border bg-card p-6 shadow-card">
-      <h3 className="font-display text-base font-bold text-navy">Send Us a Message</h3>
+      <h3 className="font-display text-base font-bold text-navy">Send Us a Direct Message</h3>
+      <p className="text-xs text-muted-foreground mt-1">Get in touch for customized facility management solutions in Pune & PCMC</p>
+      
+      {errors.form && (
+        <p className="mt-3 p-2.5 rounded-lg bg-destructive/10 text-destructive font-semibold text-xs border border-destructive/20">
+          {errors.form}
+        </p>
+      )}
+
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         <label className="text-sm">
-          <span className="mb-1.5 block font-semibold text-navy-700">Name *</span>
-          <input className="field" value={form.name} onChange={(e) => set("name", e.target.value)} />
+          <span className="mb-1.5 block font-semibold text-navy-700">Full Name *</span>
+          <input className="field text-xs" value={form.name} onChange={(e) => set("name", e.target.value)} placeholder="e.g., Rajesh Sharma" />
           {errors.name && <span className="mt-1 block text-xs text-destructive">{errors.name}</span>}
         </label>
         <label className="text-sm">
-          <span className="mb-1.5 block font-semibold text-navy-700">Company</span>
-          <input className="field" value={form.company} onChange={(e) => set("company", e.target.value)} />
+          <span className="mb-1.5 block font-semibold text-navy-700">Company / Society Name</span>
+          <input className="field text-xs" value={form.company} onChange={(e) => set("company", e.target.value)} placeholder="e.g., IT Park / Society" />
         </label>
         <label className="text-sm">
-          <span className="mb-1.5 block font-semibold text-navy-700">Phone *</span>
-          <input className="field" value={form.phone} onChange={(e) => set("phone", e.target.value)} />
+          <span className="mb-1.5 block font-semibold text-navy-700">Phone Number *</span>
+          <input className="field text-xs font-mono" value={form.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+91 9689515295" />
           {errors.phone && <span className="mt-1 block text-xs text-destructive">{errors.phone}</span>}
         </label>
         <label className="text-sm">
-          <span className="mb-1.5 block font-semibold text-navy-700">Email *</span>
-          <input className="field" value={form.email} onChange={(e) => set("email", e.target.value)} />
+          <span className="mb-1.5 block font-semibold text-navy-700">Email Address *</span>
+          <input className="field text-xs" value={form.email} onChange={(e) => set("email", e.target.value)} placeholder="client@company.com" />
           {errors.email && <span className="mt-1 block text-xs text-destructive">{errors.email}</span>}
         </label>
         <label className="text-sm sm:col-span-2">
           <span className="mb-1.5 block font-semibold text-navy-700">Service Required *</span>
-          <select className="field" value={form.service} onChange={(e) => set("service", e.target.value)}>
-            <option value="">Select a service</option>
-            {services.map((s) => (
-              <option key={s.id} value={s.name}>
+          <select className="field text-xs" value={form.service} onChange={(e) => set("service", e.target.value)}>
+            <option value="">Select a service category</option>
+            {(categories.length > 0 ? categories : [
+              { name: "Security Guard Services" },
+              { name: "Housekeeping Services" },
+              { name: "Property Management" },
+              { name: "Pest Control Services" },
+              { name: "Bouncer Services" },
+              { name: "Man Power Supply" },
+              { name: "Tank Cleaning, Gardening and Landscaping etc." },
+              { name: "Facility Management Solutions" },
+              { name: "CCTV Installation and Maintenance" },
+              { name: "Plumbing, Electrical, Painting, Waterproofing" },
+              { name: "Repair and Maintenance Services" }
+            ]).map((s: any) => (
+              <option key={s._id || s.name} value={s.name}>
                 {s.name}
               </option>
             ))}
-            <option value="Integrated Facility Services">Integrated Facility Services</option>
           </select>
           {errors.service && <span className="mt-1 block text-xs text-destructive">{errors.service}</span>}
         </label>
         <label className="text-sm sm:col-span-2">
-          <span className="mb-1.5 block font-semibold text-navy-700">Message *</span>
+          <span className="mb-1.5 block font-semibold text-navy-700">Detailed Message *</span>
           <textarea
             rows={4}
-            className="field"
+            className="field text-xs"
             value={form.message}
             onChange={(e) => set("message", e.target.value)}
+            placeholder="Describe your site location, scope of services, shift timings and any specific facility requirements..."
           />
           {errors.message && <span className="mt-1 block text-xs text-destructive">{errors.message}</span>}
         </label>
       </div>
-      <button type="submit" className="btn-base btn-accent mt-5 w-full sm:w-auto" disabled={sending}>
-        {sending ? "Sending…" : "Send Message"}
+      <button type="submit" className="btn-base btn-accent mt-5 w-full sm:w-auto py-2.5 px-6 text-xs font-bold flex items-center justify-center gap-2" disabled={sending}>
+        {sending ? (
+          <>
+            <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+            Sending Message…
+          </>
+        ) : (
+          "Send Message to Diamond Team"
+        )}
       </button>
     </form>
   );

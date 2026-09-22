@@ -1,137 +1,208 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import AdminLayout, { AdminGuard, StatusPill } from "@/components/admin/AdminLayout";
+import AdminLayout, { StatusPill } from "@/components/admin/AdminLayout";
 import Icon from "@/components/ui/Icon";
-import { useApp } from "@/store/AppStore";
 import { formatINR } from "@/data/mock";
 
-function DashboardContent() {
-  const { services, portfolio, quotes, messages, testimonials } = useApp();
-  const activeServices = services.filter((s: { status: string }) => s.status === "Active").length;
-  const leads = quotes.filter((q: { status: string }) => q.status !== "Closed").length;
-  const pipeline = quotes.reduce((sum: number, q: { estimatedCost?: number }) => sum + (q.estimatedCost || 0), 0);
+export default function AdminDashboardPage() {
+  const [stats, setStats] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchStats = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch("/api/stats");
+      const data = await res.json();
+      setStats(data);
+    } catch (err) {
+      console.error("Failed to load dashboard stats:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  const counts = stats?.counts || {
+    serviceCategories: 11,
+    services: 0,
+    industries: 0,
+    portfolioProjects: 0,
+    testimonials: 0,
+    quoteRequests: 0,
+    enquiries: 0,
+    banners: 0,
+  };
 
   const cards = [
-    { label: "Total Services", value: services.length, icon: "layers" },
-    { label: "Portfolio Projects", value: portfolio.length, icon: "file" },
-    { label: "Quote Requests", value: quotes.length, icon: "inbox" },
-    { label: "Contact Messages", value: messages.length, icon: "mail" },
-    { label: "Active Services", value: activeServices, icon: "check" },
-    { label: "Estimated Leads", value: leads, icon: "chart" },
+    { label: "11 Service Categories", value: counts.serviceCategories, icon: "layers", href: "/admin/service-categories" },
+    { label: "Individual Services", value: counts.services, icon: "briefcase", href: "/admin/services" },
+    { label: "Quote Requests", value: counts.quoteRequests, icon: "inbox", href: "/admin/quotes" },
+    { label: "Contact Enquiries", value: counts.enquiries, icon: "mail", href: "/admin/enquiries" },
+    { label: "Portfolio Projects", value: counts.portfolioProjects, icon: "file", href: "/admin/portfolio" },
+    { label: "Target Industries", value: counts.industries, icon: "building", href: "/admin/industries" },
   ];
 
-  const statuses = ["New", "Contacted", "Quoted", "Converted", "Closed"];
-  const counts = statuses.map((s) => ({ s, n: quotes.filter((q: { status: string }) => q.status === s).length }));
-  const maxCount = Math.max(1, ...counts.map((c) => c.n));
-
-  const byCategory = ["Security", "Pest Control", "Tank Cleaning", "Painting", "Facility Management"].map(
-    (c) => ({ c, n: portfolio.filter((p: { category: string }) => p.category === c).length }),
-  );
-  const totalProjects = Math.max(1, portfolio.length);
-
   return (
-    <AdminLayout title="Dashboard" description="Demonstration overview of website activity">
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {cards.map((c) => (
-          <div key={c.label} className="rounded-2xl border border-border bg-card p-5 shadow-card">
-            <div className="flex items-center justify-between gap-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                {c.label}
-              </span>
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-royal/10 text-royal">
-                <Icon name={c.icon} className="h-4 w-4" />
-              </span>
-            </div>
-            <p className="mt-3 font-display text-3xl font-extrabold text-navy">{c.value}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-6 grid gap-5 lg:grid-cols-2">
-        <section className="rounded-2xl border border-border bg-card p-5 shadow-card">
-          <h2 className="font-display text-base font-bold text-navy">Quote Requests by Status</h2>
-          <ul className="mt-5 space-y-4">
-            {counts.map(({ s, n }) => (
-              <li key={s}>
-                <div className="flex items-center justify-between text-xs font-semibold text-navy-700">
-                  <span>{s}</span>
-                  <span>{n}</span>
-                </div>
-                <div className="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-muted">
-                  <div
-                    className="h-full rounded-full bg-royal transition-all duration-700"
-                    style={{ width: `${(n / maxCount) * 100}%` }}
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-5 rounded-xl bg-mist p-3 text-xs text-muted-foreground">
-            Indicative pipeline value:{" "}
-            <span className="font-bold text-navy">{formatINR(pipeline)}</span>
-          </p>
-        </section>
-
-        <section className="rounded-2xl border border-border bg-card p-5 shadow-card">
-          <h2 className="font-display text-base font-bold text-navy">Portfolio Mix</h2>
-          <ul className="mt-5 space-y-4">
-            {byCategory.map(({ c, n }) => (
-              <li key={c}>
-                <div className="flex items-center justify-between text-xs font-semibold text-navy-700">
-                  <span>{c}</span>
-                  <span>{Math.round((n / totalProjects) * 100)}%</span>
-                </div>
-                <div className="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-muted">
-                  <div
-                    className="h-full rounded-full bg-safety transition-all duration-700"
-                    style={{ width: `${(n / totalProjects) * 100}%` }}
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-5 rounded-xl bg-mist p-3 text-xs text-muted-foreground">
-            Published testimonials:{" "}
-            <span className="font-bold text-navy">
-              {testimonials.filter((t: { status: string }) => t.status === "Published").length}
-            </span>
-          </p>
-        </section>
-      </div>
-
-      <section className="mt-6 rounded-2xl border border-border bg-card p-5 shadow-card">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="font-display text-base font-bold text-navy">Latest Quote Requests</h2>
-          <Link href="/admin/quotes" className="text-xs font-bold text-royal hover:underline">
-            View all
-          </Link>
+    <AdminLayout
+      title="Live Operations Dashboard"
+      description="Real-time MongoDB metrics for Diamond Integrated Facility Services LLP"
+      actions={
+        <button
+          onClick={fetchStats}
+          className="btn-base btn-secondary text-xs flex items-center gap-1.5 py-1.5 px-3"
+        >
+          <Icon name="sliders" className="w-3.5 h-3.5" /> Refresh Live Data
+        </button>
+      }
+    >
+      {loading && !stats ? (
+        <div className="py-20 flex flex-col items-center justify-center gap-3">
+          <span className="h-7 w-7 animate-spin rounded-full border-2 border-gold border-t-transparent" />
+          <p className="text-xs font-semibold text-muted-foreground">Loading MongoDB metrics…</p>
         </div>
-        <ul className="mt-4 divide-y divide-border">
-          {quotes.slice(0, 5).map((q: any) => (
-            <li key={q.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
-              <div className="min-w-0">
-                <p className="truncate text-sm font-bold text-navy">{q.company}</p>
-                <p className="truncate text-xs text-muted-foreground">
-                  {q.contact} · {(q.services || []).join(", ")} · {q.date}
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-bold text-navy">{formatINR(q.estimatedCost || 0)}</span>
-                <StatusPill value={q.status} />
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </AdminLayout>
-  );
-}
+      ) : (
+        <>
+          {/* Summary Metric Cards */}
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {cards.map((c) => (
+              <Link
+                key={c.label}
+                href={c.href}
+                className="group rounded-2xl border border-border bg-card p-5 shadow-card hover:border-gold/60 transition-all hover:shadow-lift"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground group-hover:text-navy">
+                    {c.label}
+                  </span>
+                  <span className="grid h-9 w-9 place-items-center rounded-lg bg-gold/10 text-gold group-hover:bg-gold group-hover:text-white transition-colors">
+                    <Icon name={c.icon} className="h-4 w-4" />
+                  </span>
+                </div>
+                <p className="mt-3 font-display text-3xl font-extrabold text-navy">{c.value}</p>
+              </Link>
+            ))}
+          </div>
 
-export default function AdminDashboardPage() {
-  return (
-    <AdminGuard>
-      <DashboardContent />
-    </AdminGuard>
+          <div className="mt-6 grid gap-5 lg:grid-cols-2">
+            {/* Recent Quote Requests */}
+            <section className="rounded-2xl border border-border bg-card p-5 shadow-card">
+              <div className="flex items-center justify-between gap-3 pb-3 border-b border-border">
+                <div>
+                  <h2 className="font-display text-base font-bold text-navy">Recent Quote Requests</h2>
+                  <p className="text-xs text-muted-foreground">Incoming customer requirement submissions</p>
+                </div>
+                <Link href="/admin/quotes" className="text-xs font-bold text-gold hover:underline">
+                  View All ({counts.quoteRequests}) →
+                </Link>
+              </div>
+
+              {!stats?.recentQuotes?.length ? (
+                <div className="py-8 text-center text-xs text-muted-foreground">
+                  No quote requests received yet.
+                </div>
+              ) : (
+                <ul className="mt-3 divide-y divide-border">
+                  {stats.recentQuotes.slice(0, 5).map((q: any) => (
+                    <li key={q._id} className="py-3 flex flex-wrap items-center justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-xs font-bold text-gold">{q.quoteId}</span>
+                          <span className="font-bold text-sm text-navy">{q.companyName || q.name}</span>
+                        </div>
+                        <p className="truncate text-xs text-muted-foreground mt-0.5">
+                          {q.phone} · {q.serviceCategory || "Facility Management"} · {new Date(q.createdAt).toLocaleDateString("en-IN")}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {q.estimatedPrice ? (
+                          <span className="text-xs font-bold text-navy">{formatINR(q.estimatedPrice)}</span>
+                        ) : null}
+                        <StatusPill value={q.status || "New"} />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+
+            {/* Recent Enquiries */}
+            <section className="rounded-2xl border border-border bg-card p-5 shadow-card">
+              <div className="flex items-center justify-between gap-3 pb-3 border-b border-border">
+                <div>
+                  <h2 className="font-display text-base font-bold text-navy">Recent Contact Enquiries</h2>
+                  <p className="text-xs text-muted-foreground">Website enquiries and service questions</p>
+                </div>
+                <Link href="/admin/enquiries" className="text-xs font-bold text-gold hover:underline">
+                  View All ({counts.enquiries}) →
+                </Link>
+              </div>
+
+              {!stats?.recentEnquiries?.length ? (
+                <div className="py-8 text-center text-xs text-muted-foreground">
+                  No enquiries received yet.
+                </div>
+              ) : (
+                <ul className="mt-3 divide-y divide-border">
+                  {stats.recentEnquiries.slice(0, 5).map((enq: any) => (
+                    <li key={enq._id} className="py-3 flex flex-wrap items-center justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-xs font-bold text-navy">{enq.enquiryId}</span>
+                          <span className="font-bold text-sm text-navy">{enq.name}</span>
+                        </div>
+                        <p className="truncate text-xs text-muted-foreground mt-0.5">
+                          {enq.email} · {enq.serviceInterest || "General"} · {new Date(enq.createdAt).toLocaleDateString("en-IN")}
+                        </p>
+                      </div>
+                      <StatusPill value={enq.status || "New"} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          </div>
+
+          {/* Quick Management Shortcuts */}
+          <div className="mt-6 rounded-2xl border border-border bg-white p-5 shadow-card">
+            <h3 className="font-display text-base font-bold text-navy mb-3">Quick Actions</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <Link
+                href="/admin/service-categories"
+                className="p-3 rounded-xl bg-mist hover:bg-gold/10 border border-border hover:border-gold text-xs font-bold text-navy flex items-center gap-2 transition-all"
+              >
+                <Icon name="layers" className="w-4 h-4 text-gold" />
+                Manage 11 Categories
+              </Link>
+              <Link
+                href="/admin/portfolio"
+                className="p-3 rounded-xl bg-mist hover:bg-gold/10 border border-border hover:border-gold text-xs font-bold text-navy flex items-center gap-2 transition-all"
+              >
+                <Icon name="file" className="w-4 h-4 text-gold" />
+                Add Portfolio Project
+              </Link>
+              <Link
+                href="/admin/pricing"
+                className="p-3 rounded-xl bg-mist hover:bg-gold/10 border border-border hover:border-gold text-xs font-bold text-navy flex items-center gap-2 transition-all"
+              >
+                <Icon name="sliders" className="w-4 h-4 text-gold" />
+                Adjust Pricing Rules
+              </Link>
+              <Link
+                href="/admin/company"
+                className="p-3 rounded-xl bg-mist hover:bg-gold/10 border border-border hover:border-gold text-xs font-bold text-navy flex items-center gap-2 transition-all"
+              >
+                <Icon name="phone" className="w-4 h-4 text-gold" />
+                Edit Company Info
+              </Link>
+            </div>
+          </div>
+        </>
+      )}
+    </AdminLayout>
   );
 }

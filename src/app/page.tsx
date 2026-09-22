@@ -1,9 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import SiteLayout, { useQuote } from "@/components/site/SiteLayout";
 import Icon from "@/components/ui/Icon";
-import { useApp } from "@/store/AppStore";
 import {
   CTABanner,
   ContactDetails,
@@ -17,10 +17,10 @@ import {
 } from "@/components/site/Sections";
 
 const stats = [
-  { value: "4+", label: "Core Services" },
-  { value: "B2B", label: "Facility Solutions" },
-  { value: "24/7", label: "Residential & Commercial" },
-  { value: "Pro", label: "Professional Service Team" },
+  { value: "11", label: "Core Service Divisions" },
+  { value: "500+", label: "Verified Workforce" },
+  { value: "24/7", label: "Control Room Response" },
+  { value: "100%", label: "Statutory ESIC & PF Compliance" },
 ];
 
 function Hero() {
@@ -34,22 +34,21 @@ function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/60" />
       <div className="container-x relative py-20 lg:py-28">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white/85">
-          Professional • Reliable • Responsive
+        <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-gold">
+          Professional • Reliable • 100% Compliant
         </span>
         <h1 className="mt-6 max-w-3xl text-3xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
-          Complete Facility Services. <span className="text-safety">One Trusted Partner.</span>
+          Complete Facility Services. <span className="text-gold">One Trusted Partner.</span>
         </h1>
-        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-lg">
-          Reliable security, pest control, tank cleaning and painting solutions for commercial,
-          residential, industrial and institutional facilities.
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-lg">
+          Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <button className="btn-base btn-accent" onClick={() => openQuote()}>
-            Get Free Quote <Icon name="arrow" className="h-4 w-4" />
+          <button className="btn-base btn-accent font-bold" onClick={() => openQuote()}>
+            Get Free Instant Quote <Icon name="arrow" className="h-4 w-4" />
           </button>
           <Link href="/services" className="btn-base btn-outline-light">
-            Explore Services
+            Explore 11 Divisions
           </Link>
         </div>
         <dl className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -59,7 +58,7 @@ function Hero() {
               style={{ animationDelay: `${i * 90}ms` }}
               className="animate-in fade-in slide-in-from-bottom-4 rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur duration-700"
             >
-              <dt className="font-display text-2xl font-extrabold text-safety">{s.value}</dt>
+              <dt className="font-display text-2xl font-extrabold text-gold">{s.value}</dt>
               <dd className="mt-1 text-xs font-semibold uppercase tracking-wider text-white/70">
                 {s.label}
               </dd>
@@ -72,53 +71,52 @@ function Hero() {
 }
 
 function AboutBlock() {
-  const { company } = useApp();
   return (
     <section className="section-y">
       <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
           <SectionTitle
-            eyebrow="About Diamond"
-            title="Integrated Facility Services Built Around Your Needs"
-            subtitle={company.about}
+            eyebrow="About Diamond Integrated Facility Services"
+            title="Comprehensive Facility Management Built Around Your Operations"
+            subtitle="Headed by Director Umesh Patil, Diamond Integrated Facility Services LLP provides full-spectrum facility management including 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning, CCTV and Technical Civil Maintenance."
           />
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {[
-              "Professional service approach",
-              "Reliable workforce",
-              "Safety-focused operations",
-              "Flexible service packages",
-              "B2B-focused solutions",
-              "Responsive customer support",
+              "11 Specialized Service Divisions",
+              "Police-Verified Trained Workforce",
+              "100% Statutory ESIC & PF Compliance",
+              "Flexible Service Contract Packages",
+              "Dedicated Operations Site Supervisors",
+              "24/7 Control Room & Rapid Response",
             ].map((item) => (
               <li key={item} className="flex gap-2 text-sm font-medium text-navy-700">
-                <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-success" strokeWidth={3} />
+                <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" strokeWidth={3} />
                 {item}
               </li>
             ))}
           </ul>
-          <Link href="/about" className="btn-base btn-navy mt-8">
-            More About Us <Icon name="arrow" className="h-4 w-4" />
+          <Link href="/about" className="btn-base btn-navy mt-8 text-xs font-bold">
+            Learn More About Our Team <Icon name="arrow" className="h-4 w-4" />
           </Link>
         </div>
         <div className="relative">
           <img
             src="/images/facility.jpg"
-            alt="Integrated facility management team supporting a corporate property"
+            alt="Integrated facility management team supporting a corporate property in Pune"
             loading="lazy"
             className="h-80 w-full rounded-3xl object-cover shadow-lift sm:h-[26rem]"
           />
-          <div className="gradient-navy absolute -bottom-6 left-4 right-4 rounded-2xl p-5 text-white shadow-lift sm:left-8 sm:right-8">
-            <p className="text-xs uppercase tracking-widest text-safety">Company Highlights</p>
+          <div className="bg-navy absolute -bottom-6 left-4 right-4 rounded-2xl p-5 text-white shadow-lift sm:left-8 sm:right-8 border border-gold/30">
+            <p className="text-xs uppercase tracking-widest text-gold font-bold">Corporate Highlights</p>
             <div className="mt-3 grid grid-cols-3 gap-3 text-center">
               {[
-                ["4", "Service Lines"],
-                ["10", "Industries"],
-                ["Pune", "Service Region"],
+                ["11", "Service Lines"],
+                ["Pune & PCMC", "Headquartered"],
+                ["Umesh Patil", "Managing Director"],
               ].map(([v, l]) => (
                 <div key={l}>
-                  <p className="font-display text-lg font-extrabold">{v}</p>
-                  <p className="text-[11px] text-white/60">{l}</p>
+                  <p className="font-display text-sm sm:text-base font-extrabold text-gold">{v}</p>
+                  <p className="text-[10px] text-white/60">{l}</p>
                 </div>
               ))}
             </div>
@@ -130,8 +128,26 @@ function AboutBlock() {
 }
 
 export default function HomePage() {
-  const { services } = useApp();
-  const active = services.filter((s) => s.status === "Active");
+  const [categories, setCategories] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadCats() {
+      try {
+        setLoading(true);
+        const res = await fetch("/api/service-categories");
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setCategories(data.filter((c) => c.status !== "Inactive"));
+        }
+      } catch (e) {
+        console.error("Failed to load categories on homepage:", e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadCats();
+  }, []);
 
   return (
     <SiteLayout>
@@ -141,15 +157,43 @@ export default function HomePage() {
       <section className="section-y bg-mist">
         <div className="container-x">
           <SectionTitle
-            eyebrow="Our Services"
-            title="Facility Services Delivered End to End"
-            subtitle="Four core service lines managed by one accountable partner."
+            eyebrow="Our 11 Core Service Lines"
+            title="Integrated Facility Services Delivered End to End"
+            subtitle="From security guarding and housekeeping to tank sanitation, electrical upkeep and waterproofing — single partner accountability."
             center
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {active.map((s) => (
-              <ServiceCard key={s.id} service={s} />
-            ))}
+          
+          {loading ? (
+            <div className="py-16 text-center">
+              <span className="h-6 w-6 animate-spin rounded-full border-2 border-gold border-t-transparent inline-block" />
+              <p className="mt-2 text-xs font-semibold text-navy">Loading services…</p>
+            </div>
+          ) : (
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {categories.slice(0, 8).map((cat) => (
+                <ServiceCard
+                  key={cat._id || cat.slug}
+                  service={{
+                    id: cat._id,
+                    slug: cat.slug,
+                    name: cat.name,
+                    short: cat.shortDescription,
+                    icon: cat.icon || "layers",
+                    image: cat.image || "/images/hero.jpg",
+                    features: cat.features || [],
+                    startingPrice: cat.startingPrice || 0,
+                    priceNote: cat.priceNote || "per contract",
+                    cta: "Get Free Quote",
+                  }}
+                />
+              ))}
+            </div>
+          )}
+
+          <div className="mt-10 text-center">
+            <Link href="/services" className="btn-base btn-navy text-xs font-bold px-6 py-3">
+              Explore All 11 Service Divisions <Icon name="arrow" className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -157,16 +201,16 @@ export default function HomePage() {
       <section className="section-y">
         <div className="container-x">
           <SectionTitle
-            eyebrow="Industries"
-            title="Industries We Serve"
-            subtitle="Service programmes tailored to how each type of facility actually operates."
+            eyebrow="Target Sectors"
+            title="Industries We Support Across Maharashtra"
+            subtitle="Facility management programs customized to the distinct operational realities of each campus."
             center
           />
           <div className="mt-12">
             <IndustriesGrid limit={5} />
           </div>
           <div className="mt-8 text-center">
-            <Link href="/industries" className="btn-base btn-ghost-navy">
+            <Link href="/industries" className="btn-base btn-ghost-navy text-xs font-bold">
               View All Industries <Icon name="arrow" className="h-4 w-4" />
             </Link>
           </div>
@@ -181,7 +225,7 @@ export default function HomePage() {
       <section className="section-y">
         <div className="container-x grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
           <div>
-            <SectionTitle eyebrow="Contact" title="Talk to Our Facility Team" />
+            <SectionTitle eyebrow="Head Office" title="Connect With Our Pune Management Team" />
             <div className="mt-8">
               <ContactDetails />
             </div>

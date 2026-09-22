@@ -127,7 +127,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       ...state,
       hydrated,
       login: (email: string, password: string) => {
-        const ok = email.trim().toLowerCase() === "admin@diamondfacility.com" && password === "admin123";
+        const ok = email.trim().toLowerCase() === "admin@diamondifs.com" && password === "admin123";
         if (ok) patch(() => ({ isAdmin: true }));
         return ok;
       },

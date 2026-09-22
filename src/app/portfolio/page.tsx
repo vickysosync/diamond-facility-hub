@@ -1,109 +1,155 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SiteLayout, { PageHeader, useQuote } from "@/components/site/SiteLayout";
 import Icon from "@/components/ui/Icon";
 import Modal from "@/components/ui/Modal";
-import { useApp } from "@/store/AppStore";
-import { portfolioCategories } from "@/data/mock";
 import { CTABanner, SectionTitle } from "@/components/site/Sections";
 
-const statusTone = {
-  Completed: "bg-success/12 text-success",
-  Ongoing: "bg-royal/12 text-royal",
-  "In Progress": "bg-safety/15 text-safety-dark",
+const statusTone: Record<string, string> = {
+  Completed: "bg-emerald-500/15 text-emerald-700 border border-emerald-500/30",
+  Ongoing: "bg-blue-500/15 text-blue-700 border border-blue-500/30",
+  "In Progress": "bg-amber-500/15 text-amber-700 border border-amber-500/30",
 };
 
 export default function PortfolioPage() {
-  const { portfolio } = useApp();
   const { openQuote } = useQuote();
+  const [projects, setProjects] = useState<any[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("All");
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState<any>(null);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        const [projRes, catRes] = await Promise.all([
+          fetch("/api/portfolio"),
+          fetch("/api/service-categories"),
+        ]);
+        const projData = await projRes.json();
+        const catData = await catRes.json();
+
+        if (Array.isArray(projData)) setProjects(projData);
+        if (Array.isArray(catData)) setCategories(catData);
+      } catch (err) {
+        console.error("Failed to load portfolio:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
+  }, []);
 
   const list = useMemo(
-    () => (category === "All" ? portfolio : portfolio.filter((p) => p.category === category)),
-    [portfolio, category],
+    () => (category === "All" ? projects : projects.filter((p) => p.category === category)),
+    [projects, category],
   );
 
   return (
     <SiteLayout>
       <PageHeader
-        eyebrow="Portfolio"
-        title="Facility Work Delivered Across Pune"
-        subtitle="A snapshot of recent deployments and service contracts. Demonstration content shown with representative imagery."
+        eyebrow="Proven Deployments"
+        title="Facility Operations Delivered Across Pune & Maharashtra"
+        subtitle="Explore our verified facility management contracts, security deployments, pest eradication projects, and civil upkeep case studies."
       />
 
-      <section className="section-y">
+      <section className="section-y bg-background">
         <div className="container-x">
           <SectionTitle
-            eyebrow="Our work"
-            title="Projects & Deployments"
-            subtitle="Filter by service category to see relevant examples."
+            eyebrow="Case Studies"
+            title="Projects & Client Deployments"
+            subtitle="Filter by service division to review executed scope of work and verified deliverables."
           />
 
-          <div className="mt-7 flex flex-wrap gap-2">
-            {portfolioCategories.map((c) => (
-              <button
-                key={c}
-                onClick={() => setCategory(c)}
-                aria-pressed={category === c}
-                className={`rounded-full border px-4 py-2 text-xs font-bold transition-colors sm:text-sm ${
-                  category === c
-                    ? "border-navy bg-navy text-white"
-                    : "border-border bg-card text-navy-700 hover:border-royal hover:text-royal"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
+          {/* Category Filter Buttons */}
+          <div className="mt-7 flex flex-wrap gap-2 overflow-x-auto pb-1">
+            <button
+              onClick={() => setCategory("All")}
+              className={`rounded-full border px-4 py-1.5 text-xs font-bold transition-colors ${
+                category === "All"
+                  ? "border-gold bg-gold text-white shadow-xs"
+                  : "border-border bg-card text-navy hover:border-gold/60"
+              }`}
+            >
+              All Projects ({projects.length})
+            </button>
+            {categories.map((c) => {
+              const count = projects.filter((p) => p.category === c.name).length;
+              if (count === 0 && category !== c.name) return null;
+              return (
+                <button
+                  key={c._id || c.name}
+                  onClick={() => setCategory(c.name)}
+                  className={`rounded-full border px-4 py-1.5 text-xs font-bold transition-colors ${
+                    category === c.name
+                      ? "border-gold bg-gold text-white shadow-xs"
+                      : "border-border bg-card text-navy hover:border-gold/60"
+                  }`}
+                >
+                  {c.name} ({count})
+                </button>
+              );
+            })}
           </div>
 
-          {list.length === 0 ? (
+          {loading ? (
+            <div className="py-20 text-center">
+              <span className="h-7 w-7 animate-spin rounded-full border-2 border-gold border-t-transparent inline-block" />
+              <p className="mt-2 text-xs font-semibold text-navy">Loading portfolio showcase from MongoDB…</p>
+            </div>
+          ) : list.length === 0 ? (
             <div className="mt-10 rounded-2xl border border-dashed border-border bg-card p-12 text-center">
               <Icon name="inbox" className="mx-auto h-8 w-8 text-muted-foreground" />
-              <p className="mt-3 text-sm font-semibold text-navy">No projects in this category yet</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Try another category or get in touch to discuss your requirement.
+              <p className="mt-3 text-sm font-semibold text-navy">No projects listed under this category yet</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Contact our facility team for specific case studies and client references.
               </p>
             </div>
           ) : (
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {list.map((p) => (
                 <article
-                  key={p.id}
-                  className="card-lift group overflow-hidden rounded-2xl border border-border bg-card shadow-card"
+                  key={p._id || p.id}
+                  className="card-lift group overflow-hidden rounded-2xl border border-border bg-card shadow-card flex flex-col justify-between"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                    <img
-                      src={p.image}
-                      alt={`${p.title} — ${p.serviceType} in ${p.location}`}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <span className="absolute left-3 top-3 rounded-full bg-navy/85 px-3 py-1 text-[11px] font-bold text-white backdrop-blur">
-                      {p.category}
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <div className="flex flex-wrap items-center gap-2 text-[11px] font-bold">
-                      <span className={`rounded-full px-2.5 py-1 ${statusTone[p.status] ?? "bg-muted text-navy"}`}>
-                        {p.status}
+                  <div>
+                    <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                      <img
+                        src={p.image || "/images/hero.jpg"}
+                        alt={`${p.title} in ${p.location}`}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <span className="absolute left-3 top-3 rounded-full bg-navy/90 px-3 py-1 text-[11px] font-bold text-gold backdrop-blur">
+                        {p.category}
                       </span>
-                      <span className="text-muted-foreground">{p.year}</span>
                     </div>
-                    <h3 className="mt-3 text-base font-bold leading-snug text-navy">{p.title}</h3>
-                    <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Icon name="pin" className="h-3.5 w-3.5 shrink-0 text-safety" />
-                      {p.location}
-                    </p>
-                    <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                      {p.description}
-                    </p>
+                    <div className="p-5">
+                      <div className="flex flex-wrap items-center gap-2 text-[11px] font-bold">
+                        <span className={`rounded-full px-2.5 py-0.5 ${statusTone[p.status] ?? "bg-muted text-navy"}`}>
+                          {p.status}
+                        </span>
+                        <span className="text-muted-foreground font-mono">{p.year}</span>
+                      </div>
+                      <h3 className="mt-3 text-base font-bold leading-snug text-navy">{p.title}</h3>
+                      <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <Icon name="pin" className="h-3.5 w-3.5 shrink-0 text-gold" />
+                        {p.location}
+                      </p>
+                      <p className="mt-3 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+                        {p.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-5 pt-0">
                     <button
-                      className="btn-base btn-ghost-navy mt-5 w-full"
+                      className="btn-base btn-ghost-navy w-full text-xs font-bold"
                       onClick={() => setActive(p)}
                     >
-                      View Project Details
+                      View Case Study Details
                     </button>
                   </div>
                 </article>
@@ -113,44 +159,76 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* Project Details Modal */}
       <Modal open={!!active} onClose={() => setActive(null)} title={active?.title ?? ""}>
         {active && (
-          <div className="space-y-5">
+          <div className="space-y-4 text-xs">
             <img
-              src={active.image}
+              src={active.image || "/images/hero.jpg"}
               alt={`${active.title} project photograph`}
-              className="aspect-[16/9] w-full rounded-xl object-cover"
+              className="aspect-[16/9] w-full rounded-xl object-cover border border-border"
             />
-            <dl className="grid gap-4 sm:grid-cols-2">
-              {[
-                ["Category", active.category],
-                ["Service Type", active.serviceType],
-                ["Client / Industry", active.client],
-                ["Location", active.location],
-                ["Year", active.year],
-                ["Status", active.status],
-              ].map(([label, value]) => (
-                <div key={label}>
-                  <dt className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
-                    {label}
-                  </dt>
-                  <dd className="mt-1 text-sm font-semibold text-navy">{value}</dd>
-                </div>
-              ))}
+            <dl className="grid gap-3 sm:grid-cols-2 bg-mist/50 p-4 rounded-xl border border-border">
+              <div>
+                <dt className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                  Service Category
+                </dt>
+                <dd className="mt-0.5 text-xs font-bold text-navy">{active.category}</dd>
+              </div>
+              <div>
+                <dt className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                  Client / Sector
+                </dt>
+                <dd className="mt-0.5 text-xs font-bold text-navy">{active.client || "Confidential Facility"}</dd>
+              </div>
+              <div>
+                <dt className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                  Location & Year
+                </dt>
+                <dd className="mt-0.5 text-xs font-semibold text-navy">{active.location} ({active.year})</dd>
+              </div>
+              <div>
+                <dt className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                  Contract Status
+                </dt>
+                <dd className="mt-0.5">
+                  <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${statusTone[active.status] || "bg-muted"}`}>
+                    {active.status}
+                  </span>
+                </dd>
+              </div>
             </dl>
-            <p className="text-sm leading-relaxed text-muted-foreground">{active.description}</p>
-            <div className="flex flex-wrap gap-2">
+
+            <p className="text-xs leading-relaxed text-muted-foreground whitespace-pre-wrap">
+              {active.description}
+            </p>
+
+            {active.scopeOfWork?.length ? (
+              <div>
+                <h4 className="font-bold text-navy mb-2">Scope of Operations Executed:</h4>
+                <ul className="space-y-1">
+                  {active.scopeOfWork.map((s: string) => (
+                    <li key={s} className="flex items-center gap-2 text-navy-700">
+                      <Icon name="check" className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            <div className="flex flex-wrap gap-2 pt-3 border-t border-border">
               <button
-                className="btn-base btn-accent"
+                className="btn-base btn-accent text-xs font-bold"
                 onClick={() => {
                   const services = [active.category];
                   setActive(null);
                   openQuote({ services });
                 }}
               >
-                Request Similar Service
+                Request Similar Facility Scope
               </button>
-              <button className="btn-base btn-ghost-navy" onClick={() => setActive(null)}>
+              <button className="btn-base btn-secondary text-xs" onClick={() => setActive(null)}>
                 Close
               </button>
             </div>
