@@ -1,0 +1,314 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-display: var(--font-sora), "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Centralized Brand Tokens */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-hover: var(--brand-primary-hover);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-hover: var(--brand-accent-hover);
+  --color-brand-light: var(--brand-light);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-border: var(--brand-border);
+
+  /* Legacy & Semantic Aliases Mapped to Logo Brand Palette */
+  --color-navy: var(--brand-primary);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-royal: var(--brand-accent);
+  --color-royal-light: var(--brand-accent-light);
+  --color-safety: var(--brand-accent);
+  --color-safety-dark: var(--brand-secondary);
+  --color-success: var(--success);
+  --color-mist: var(--brand-light);
+
+  --color-chart-1: var(--brand-accent);
+  --color-chart-2: var(--brand-primary);
+  --color-chart-3: var(--success);
+  --color-chart-4: var(--brand-accent-light);
+  --color-chart-5: var(--brand-secondary);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-card: 0 1px 3px rgba(15, 24, 36, 0.05), 0 12px 28px -14px rgba(15, 24, 36, 0.12);
+  --shadow-lift: 0 20px 48px -18px rgba(15, 24, 36, 0.38);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* =========================================================================
+     OFFICIAL LOGO BRAND PALETTE
+     - Primary: Deep Diamond Charcoal/Navy (#0f1824)
+     - Secondary: Deep Umber Bronze (#3c2f12)
+     - Accent: Rich Gold / Bronze Ochre (#a3722e / #835a23)
+     - Light / Neutral: Clean Crisp Slate/Mist (#f6f8fb)
+     - Dark: Midnight Onyx (#0a1019)
+     ========================================================================= */
+  --brand-primary: #0f1824;
+  --brand-primary-hover: #1c293c;
+  --brand-secondary: #3c2f12;
+  --brand-secondary-light: #52401a;
+  --brand-accent: #a3722e;
+  --brand-accent-hover: #b88235;
+  --brand-accent-light: #d69f4c;
+  --brand-light: #f6f8fb;
+  --brand-dark: #0a1019;
+  --brand-surface: #ffffff;
+  --brand-border: #e2e6eb;
+  --brand-muted: #64748b;
+
+  /* Theme semantic mappings */
+  --navy: var(--brand-primary);
+  --navy-800: #172230;
+  --navy-700: #233246;
+  --royal: var(--brand-accent);
+  --royal-light: var(--brand-accent-light);
+  --safety: var(--brand-accent);
+  --safety-dark: var(--brand-secondary);
+  --success: #16a34a;
+  --mist: var(--brand-light);
+
+  --background: #ffffff;
+  --foreground: #0f1824;
+  --card: #ffffff;
+  --card-foreground: #0f1824;
+  --popover: #ffffff;
+  --popover-foreground: #0f1824;
+  --primary: var(--brand-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--brand-light);
+  --secondary-foreground: var(--brand-primary);
+  --muted: var(--brand-light);
+  --muted-foreground: var(--brand-muted);
+  --accent: var(--brand-accent);
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: var(--brand-border);
+  --input: var(--brand-border);
+  --ring: var(--brand-accent);
+
+  --chart-1: var(--brand-accent);
+  --chart-2: var(--brand-primary);
+  --chart-3: var(--success);
+  --chart-4: var(--brand-accent-light);
+  --chart-5: var(--brand-secondary);
+
+  --sidebar: var(--brand-primary);
+  --sidebar-foreground: #f6f8fb;
+  --sidebar-primary: var(--brand-accent);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--navy-800);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: var(--brand-accent);
+
+  --gradient-navy: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-primary) 55%, #1d2c40 100%);
+  --gradient-accent: linear-gradient(135deg, var(--brand-accent-hover) 0%, var(--brand-accent) 55%, #85591e 100%);
+}
+
+.dark {
+  --background: var(--brand-primary);
+  --foreground: #f6f8fb;
+  --card: var(--navy-800);
+  --card-foreground: #f6f8fb;
+  --popover: var(--navy-800);
+  --popover-foreground: #f6f8fb;
+  --primary: #f6f8fb;
+  --primary-foreground: var(--brand-primary);
+  --secondary: var(--navy-800);
+  --secondary-foreground: #f6f8fb;
+  --muted: var(--navy-800);
+  --muted-foreground: #94a3b8;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.16);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility gradient-navy {
+  background-image: var(--gradient-navy);
+}
+
+@utility gradient-accent {
+  background-image: var(--gradient-accent);
+}
+
+@utility container-x {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+}
+
+@utility section-y {
+  padding-block: 4.5rem;
+  @media (min-width: 1024px) {
+    padding-block: 6rem;
+  }
+}
+
+@utility card-lift {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.35rem;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@utility btn-accent {
+  background-image: var(--gradient-accent);
+  color: #ffffff;
+  box-shadow: 0 8px 24px -8px rgba(163, 114, 46, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  &:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px -8px rgba(163, 114, 46, 0.7);
+  }
+}
+
+@utility btn-navy {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  &:hover {
+    background-color: var(--brand-primary-hover);
+    transform: translateY(-1px);
+  }
+}
+
+@utility btn-outline-light {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@utility btn-ghost-navy {
+  border: 1px solid var(--border);
+  color: var(--brand-primary);
+  background-color: var(--background);
+  &:hover {
+    border-color: var(--brand-accent);
+    color: var(--brand-accent);
+    background-color: rgba(163, 114, 46, 0.05);
+  }
+}
+
+@utility field {
+  width: 100%;
+  border-radius: 0.55rem;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  color: var(--foreground);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  &:focus {
+    outline: none;
+    border-color: var(--brand-accent);
+    box-shadow: 0 0 0 3px rgba(163, 114, 46, 0.18);
+  }
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+}
