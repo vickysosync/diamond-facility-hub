@@ -219,9 +219,19 @@ export default function AdminIndustriesPage() {
                 {ind.image ? (
                   <div className="relative h-36 w-full overflow-hidden bg-navy/5 border-b border-border">
                     <img
-                      src={ind.image}
+                      src={
+                        typeof ind.image === "object"
+                          ? (ind.image as any)?.secure_url
+                          : ind.image && ind.image !== "/images/facility.jpg"
+                          ? ind.image
+                          : `/images/industries/${ind.slug}.jpg`
+                      }
                       alt={ind.name}
+                      loading="lazy"
                       className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = "/images/facility.jpg";
+                      }}
                     />
                     <div className="absolute top-3 right-3">
                       <StatusPill value={ind.status} />
@@ -330,7 +340,14 @@ export default function AdminIndustriesPage() {
 
             {viewing.image && (
               <div className="mb-4 rounded-xl overflow-hidden border border-border max-h-56 bg-navy/5">
-                <img src={viewing.image} alt={viewing.name} className="w-full h-full object-cover" />
+                <img
+                  src={typeof viewing.image === "object" ? (viewing.image as any)?.secure_url : (viewing.image || `/images/industries/${viewing.slug}.jpg`)}
+                  alt={viewing.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/images/facility.jpg";
+                  }}
+                />
               </div>
             )}
 

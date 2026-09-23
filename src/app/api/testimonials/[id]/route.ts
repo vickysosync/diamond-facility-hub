@@ -34,8 +34,14 @@ export async function PUT(
     const { id } = await params;
     const data = await req.json();
 
+    const updatePayload: any = { ...data };
+    if (data.content && !data.review) updatePayload.review = data.content;
+    if (data.review && !data.content) updatePayload.content = data.review;
+    if (data.avatar && !data.image) updatePayload.image = data.avatar;
+    if (data.image && !data.avatar) updatePayload.avatar = data.image;
+
     await connectToDatabase();
-    const testimonial = await Testimonial.findByIdAndUpdate(id, data, {
+    const testimonial = await Testimonial.findByIdAndUpdate(id, updatePayload, {
       new: true,
       runValidators: true,
     });

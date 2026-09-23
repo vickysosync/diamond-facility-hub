@@ -7,13 +7,13 @@ import Icon from "@/components/ui/Icon";
 
 const nav = [
   { href: "/admin/dashboard", label: "Dashboard", icon: "chart" },
-  { href: "/admin/service-categories", label: "11 Service Categories", icon: "layers" },
+  { href: "/admin/service-categories", label: "Service Categories", icon: "layers" },
   { href: "/admin/services", label: "Individual Services", icon: "briefcase" },
   { href: "/admin/portfolio", label: "Portfolio Projects", icon: "file" },
   { href: "/admin/gallery", label: "Photo Gallery", icon: "photo" },
   { href: "/admin/industries", label: "Target Industries", icon: "building" },
   { href: "/admin/testimonials", label: "Client Testimonials", icon: "quote" },
-  { href: "/admin/pricing", label: "Pricing Estimator Rules", icon: "sliders" },
+  // { href: "/admin/pricing", label: "Pricing Estimator Rules", icon: "sliders" }, // Disabled (Preserved, can be re-enabled anytime)
   { href: "/admin/quotes", label: "Quote Requests", icon: "inbox" },
   { href: "/admin/enquiries", label: "Contact Enquiries", icon: "mail" },
   { href: "/admin/banners", label: "Hero & Banners", icon: "layers" },
@@ -117,7 +117,7 @@ export default function AdminLayout({
               className={`flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-semibold transition-colors ${
                 isActive
                   ? "bg-gold text-white shadow-sm"
-                  : "text-white/75 hover:bg-white/10 hover:text-white"
+                  : "text-white hover:bg-white/10 hover:text-white"
               }`}
             >
               <Icon name={item.icon} className="h-4 w-4 shrink-0" />
@@ -130,7 +130,7 @@ export default function AdminLayout({
         <Link
           href="/"
           target="_blank"
-          className="flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-semibold text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+          className="flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/10 hover:text-white"
         >
           <Icon name="link" className="h-4 w-4" /> Live Website ↗
         </Link>

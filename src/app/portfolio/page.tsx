@@ -63,35 +63,42 @@ export default function PortfolioPage() {
             subtitle="Filter by service division to review executed scope of work and verified deliverables."
           />
 
-          {/* Category Filter Buttons */}
-          <div className="mt-7 flex flex-wrap gap-2 overflow-x-auto pb-1">
-            <button
-              onClick={() => setCategory("All")}
-              className={`rounded-full border px-4 py-1.5 text-xs font-bold transition-colors ${
-                category === "All"
-                  ? "border-gold bg-gold text-white shadow-xs"
-                  : "border-border bg-card text-navy hover:border-gold/60"
-              }`}
-            >
-              All Projects ({projects.length})
-            </button>
-            {categories.map((c) => {
-              const count = projects.filter((p) => p.category === c.name).length;
-              if (count === 0 && category !== c.name) return null;
-              return (
-                <button
-                  key={c._id || c.name}
-                  onClick={() => setCategory(c.name)}
-                  className={`rounded-full border px-4 py-1.5 text-xs font-bold transition-colors ${
-                    category === c.name
-                      ? "border-gold bg-gold text-white shadow-xs"
-                      : "border-border bg-card text-navy hover:border-gold/60"
-                  }`}
+          {/* Category Dropdown Filter */}
+          <div className="mt-8 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-border/70 pb-5">
+            <div>
+              <h2 className="font-display text-xl font-bold text-navy">Deployments & Case Studies</h2>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Showing {list.length} of {projects.length} verified operations
+              </p>
+            </div>
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <label htmlFor="portfolio-category-filter" className="text-xs sm:text-sm font-bold text-navy whitespace-nowrap">
+                Filter by Category
+              </label>
+              <div className="relative flex-1 sm:w-64">
+                <select
+                  id="portfolio-category-filter"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full appearance-none rounded-xl border border-border bg-white px-4 py-2.5 pr-10 text-xs sm:text-sm font-semibold text-navy shadow-xs focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold cursor-pointer transition-all hover:border-gold/60"
                 >
-                  {c.name} ({count})
-                </button>
-              );
-            })}
+                  <option value="All">All Categories ({projects.length})</option>
+                  {categories.map((c) => {
+                    const count = projects.filter((p) => p.category === c.name).length;
+                    return (
+                      <option key={c._id || c.name} value={c.name}>
+                        {c.name} ({count})
+                      </option>
+                    );
+                  })}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-navy">
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
 
           {loading ? (

@@ -367,6 +367,7 @@ export async function seedDatabase() {
       name: "Corporate Offices",
       slug: "corporate-offices",
       icon: "building",
+      image: "/images/industries/corporate-offices.jpg",
       description:
         "Front-desk security, daily housekeeping, CCTV monitoring, and scheduled electrical & painting upkeep for IT parks and corporate campuses.",
       serviceNames: [
@@ -384,6 +385,7 @@ export async function seedDatabase() {
       name: "Residential Societies",
       slug: "residential-societies",
       icon: "home",
+      image: "/images/industries/residential-societies.jpg",
       description:
         "Gate security, common-area housekeeping, periodic water tank cleaning, garden landscaping, pest control, and terrace waterproofing.",
       serviceNames: [
@@ -401,6 +403,7 @@ export async function seedDatabase() {
       name: "Commercial Buildings",
       slug: "commercial-buildings",
       icon: "store",
+      image: "/images/industries/commercial-buildings.jpg",
       description:
         "Multi-tenant facility coordination, visitor entry registers, washroom hygiene, CCTV maintenance, and common-area painting.",
       serviceNames: [
@@ -417,6 +420,7 @@ export async function seedDatabase() {
       name: "Industrial Facilities & Manufacturing",
       slug: "industrial-facilities",
       icon: "factory",
+      image: "/images/industries/industrial-facilities.jpg",
       description:
         "Three-shift gate guarding, skilled manpower supply, industrial pest management, and plant maintenance painting programmes.",
       serviceNames: [
@@ -433,6 +437,7 @@ export async function seedDatabase() {
       name: "Warehouses & Logistics Hubs",
       slug: "warehouses",
       icon: "box",
+      image: "/images/industries/warehouses.jpg",
       description:
         "Perimeter security, material in/out documentation, comprehensive rodent control, and large-area maintenance support.",
       serviceNames: [
@@ -448,6 +453,7 @@ export async function seedDatabase() {
       name: "Schools, Colleges & Institutions",
       slug: "schools-institutions",
       icon: "school",
+      image: "/images/industries/schools-institutions.jpg",
       description:
         "Safe-campus security, student-safe washroom sanitization, drinking water tank cleaning schedules, and vacation repainting.",
       serviceNames: [
@@ -464,6 +470,7 @@ export async function seedDatabase() {
       name: "Hospitals & Healthcare Facilities",
       slug: "hospitals-healthcare",
       icon: "cross",
+      image: "/images/industries/hospitals-healthcare.jpg",
       description:
         "Hygiene-critical deep cleaning, sterile pest management, 24/7 entry crowd management, and emergency technical support.",
       serviceNames: [
@@ -480,6 +487,7 @@ export async function seedDatabase() {
       name: "Retail Spaces & Showrooms",
       slug: "retail-spaces",
       icon: "cart",
+      image: "/images/industries/retail-spaces.jpg",
       description:
         "Customer-facing guards, after-hours floor polishing, CCTV surveillance coverage, and prompt electrical/lighting repairs.",
       serviceNames: [
@@ -495,6 +503,7 @@ export async function seedDatabase() {
       name: "Hospitality & Hotels",
       slug: "hospitality",
       icon: "bed",
+      image: "/images/industries/hospitality.jpg",
       description:
         "Guest-area presentation, preventive pest cover, water hygiene tank cleaning, and event bouncers for private functions.",
       serviceNames: [
@@ -510,6 +519,7 @@ export async function seedDatabase() {
       name: "Construction & Handover Property Sites",
       slug: "construction-sites",
       icon: "cone",
+      image: "/images/industries/construction-sites.jpg",
       description:
         "Material yard security, site bouncers, post-construction deep cleaning, and pre-handover painting and waterproofing.",
       serviceNames: [

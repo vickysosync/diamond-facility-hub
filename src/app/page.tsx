@@ -34,13 +34,13 @@ function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/60" />
       <div className="container-x relative py-20 lg:py-28">
-        <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-gold">
+        <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-gold shadow-sm">
           Professional • Reliable • 100% Compliant
         </span>
         <h1 className="mt-6 max-w-3xl text-3xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
           Complete Facility Services. <span className="text-gold">One Trusted Partner.</span>
         </h1>
-        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-lg">
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white sm:text-lg">
           Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
@@ -48,7 +48,7 @@ function Hero() {
             Get Free Instant Quote <Icon name="arrow" className="h-4 w-4" />
           </button>
           <Link href="/services" className="btn-base btn-outline-light">
-            Explore 11 Divisions
+            Explore All Services
           </Link>
         </div>
         <dl className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -58,8 +58,8 @@ function Hero() {
               style={{ animationDelay: `${i * 90}ms` }}
               className="animate-in fade-in slide-in-from-bottom-4 rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur duration-700"
             >
-              <dt className="font-display text-2xl font-extrabold text-gold">{s.value}</dt>
-              <dd className="mt-1 text-xs font-semibold uppercase tracking-wider text-white/70">
+              <dt className="font-display text-2xl sm:text-3xl font-extrabold text-gold">{s.value}</dt>
+              <dd className="mt-1 text-xs font-semibold uppercase tracking-wider text-white">
                 {s.label}
               </dd>
             </div>
@@ -82,7 +82,7 @@ function AboutBlock() {
           />
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {[
-              "11 Specialized Service Divisions",
+              "Specialized Service Divisions",
               "Police-Verified Trained Workforce",
               "100% Statutory ESIC & PF Compliance",
               "Flexible Service Contract Packages",
@@ -106,17 +106,17 @@ function AboutBlock() {
             loading="lazy"
             className="h-80 w-full rounded-3xl object-cover shadow-lift sm:h-[26rem]"
           />
-          <div className="bg-navy absolute -bottom-6 left-4 right-4 rounded-2xl p-5 text-white shadow-lift sm:left-8 sm:right-8 border border-gold/30">
-            <p className="text-xs uppercase tracking-widest text-gold font-bold">Corporate Highlights</p>
+          <div className="bg-navy absolute -bottom-6 left-4 right-4 rounded-2xl p-5 text-white shadow-lift sm:left-8 sm:right-8 border border-gold/40">
+            <p className="text-xs uppercase tracking-widest text-gold font-extrabold">Corporate Highlights</p>
             <div className="mt-3 grid grid-cols-3 gap-3 text-center">
               {[
-                ["11", "Service Lines"],
+                ["Full Scope", "Service Lines"],
                 ["Pune & PCMC", "Headquartered"],
                 ["Umesh Patil", "Managing Director"],
               ].map(([v, l]) => (
                 <div key={l}>
                   <p className="font-display text-sm sm:text-base font-extrabold text-gold">{v}</p>
-                  <p className="text-[10px] text-white/60">{l}</p>
+                  <p className="text-xs font-medium text-white">{l}</p>
                 </div>
               ))}
             </div>
@@ -157,7 +157,7 @@ export default function HomePage() {
       <section className="section-y bg-mist">
         <div className="container-x">
           <SectionTitle
-            eyebrow="Our 11 Core Service Lines"
+            eyebrow="Core Service Lines"
             title="Integrated Facility Services Delivered End to End"
             subtitle="From security guarding and housekeeping to tank sanitation, electrical upkeep and waterproofing — single partner accountability."
             center
@@ -192,7 +192,7 @@ export default function HomePage() {
 
           <div className="mt-10 text-center">
             <Link href="/services" className="btn-base btn-navy text-xs font-bold px-6 py-3">
-              Explore All 11 Service Divisions <Icon name="arrow" className="h-4 w-4" />
+              Explore All Services <Icon name="arrow" className="h-4 w-4" />
             </Link>
           </div>
         </div>

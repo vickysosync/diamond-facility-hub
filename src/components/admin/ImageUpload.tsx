@@ -50,7 +50,7 @@ export default function ImageUpload({
         throw new Error(data.error || "Upload failed");
       }
 
-      onChange(data.url);
+      onChange(data.secure_url || data.url);
     } catch (err: any) {
       console.error("Image upload error:", err);
       setError(err?.message || "Failed to upload image.");

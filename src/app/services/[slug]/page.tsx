@@ -14,7 +14,7 @@ function ServiceNotFound() {
         <h1 className="text-2xl font-extrabold text-navy">Service category not found</h1>
         <p className="mt-2 text-sm text-muted-foreground">This service line is not available or has been moved.</p>
         <Link href="/services" className="btn-base btn-navy mt-6">
-          ← View All 11 Service Divisions
+          ← View All Service Divisions
         </Link>
       </div>
     </SiteLayout>
@@ -81,18 +81,13 @@ export default function ServiceDetailPage({
         <div className="container-x relative py-16 lg:py-24">
           <div className="flex items-center gap-2">
             <Link href="/services" className="text-xs font-bold uppercase tracking-[0.16em] text-gold hover:underline">
-              ← All 11 Service Divisions
+              ← All Service Divisions
             </Link>
-            {category.categoryNumber && (
-              <span className="px-2 py-0.5 rounded bg-gold/20 text-gold font-mono font-bold text-xs">
-                Division #{category.categoryNumber}
-              </span>
-            )}
           </div>
           <h1 className="mt-4 max-w-3xl text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
             {category.name}
           </h1>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white sm:text-base">
             {category.shortDescription}
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
@@ -102,8 +97,8 @@ export default function ServiceDetailPage({
             >
               Get Custom Quote <Icon name="arrow" className="w-4 h-4" />
             </button>
-            <Link href="/pricing-estimator" className="btn-base btn-outline-light">
-              Calculate Cost Online
+            <Link href="/contact" className="btn-base btn-outline-light">
+              Contact Our Team
             </Link>
           </div>
         </div>
@@ -157,7 +152,7 @@ export default function ServiceDetailPage({
 
             <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
               <h3 className="font-display text-xs font-bold uppercase tracking-widest text-navy mb-3">
-                All 11 Service Divisions
+                All Service Divisions
               </h3>
               <ul className="space-y-1 max-h-96 overflow-y-auto pr-1">
                 {others.map((o) => (

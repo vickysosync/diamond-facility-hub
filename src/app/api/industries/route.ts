@@ -6,8 +6,21 @@ import { verifyAdminRequest } from "@/lib/auth";
 export async function GET() {
   try {
     await connectToDatabase();
-    const industries = await Industry.find().sort({ sortOrder: 1, createdAt: 1 });
-    return NextResponse.json(industries);
+    const industries = await Industry.find().sort({ sortOrder: 1, createdAt: 1 }).lean();
+    
+    // Auto-resolve any legacy default facility.jpg image paths to unique sector images
+    const resolvedIndustries = industries.map((ind: any) => {
+      if (!ind.image || ind.image === "/images/facility.jpg" || ind.image === "") {
+        const slug = ind.slug || ind.name?.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+        return {
+          ...ind,
+          image: `/images/industries/${slug}.jpg`,
+        };
+      }
+      return ind;
+    });
+
+    return NextResponse.json(resolvedIndustries);
   } catch (error: any) {
     console.error("GET /api/industries error:", error);
     return NextResponse.json({ error: "Failed to fetch industries" }, { status: 500 });

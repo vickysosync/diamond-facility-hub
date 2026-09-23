@@ -335,20 +335,21 @@ export interface IndustryItem {
   id: number;
   name: string;
   icon: string;
+  image?: string;
   description: string;
 }
 
 export const industries: IndustryItem[] = [
-  { id: 1, name: "Corporate Offices", icon: "building", description: "Front-desk security, housekeeping support and scheduled maintenance for office campuses." },
-  { id: 2, name: "Residential Societies", icon: "home", description: "Gate management, society pest control and periodic tank cleaning contracts." },
-  { id: 3, name: "Commercial Buildings", icon: "store", description: "Multi-tenant facility coordination with common-area upkeep and access control." },
-  { id: 4, name: "Industrial Facilities", icon: "factory", description: "Shift-based industrial security and plant maintenance painting programmes." },
-  { id: 5, name: "Warehouses", icon: "box", description: "Perimeter security, rodent control and large-area maintenance support." },
-  { id: 6, name: "Schools & Institutions", icon: "school", description: "Safe-campus security cover and hygiene-critical tank cleaning schedules." },
-  { id: 7, name: "Hospitals & Healthcare", icon: "cross", description: "Hygiene-first pest management and disciplined visitor control." },
-  { id: 8, name: "Retail Spaces", icon: "cart", description: "Customer-facing guards and after-hours cleaning and painting works." },
-  { id: 9, name: "Hospitality", icon: "bed", description: "Guest-area presentation, preventive pest cover and water hygiene." },
-  { id: 10, name: "Construction & Property Sites", icon: "cone", description: "Site security deployment and handover painting for new properties." },
+  { id: 1, name: "Corporate Offices", icon: "building", image: "/images/industries/corporate-offices.jpg", description: "Front-desk security, housekeeping support and scheduled maintenance for office campuses." },
+  { id: 2, name: "Residential Societies", icon: "home", image: "/images/industries/residential-societies.jpg", description: "Gate management, society pest control and periodic tank cleaning contracts." },
+  { id: 3, name: "Commercial Buildings", icon: "store", image: "/images/industries/commercial-buildings.jpg", description: "Multi-tenant facility coordination with common-area upkeep and access control." },
+  { id: 4, name: "Industrial Facilities", icon: "factory", image: "/images/industries/industrial-facilities.jpg", description: "Shift-based industrial security and plant maintenance painting programmes." },
+  { id: 5, name: "Warehouses", icon: "box", image: "/images/industries/warehouses.jpg", description: "Perimeter security, rodent control and large-area maintenance support." },
+  { id: 6, name: "Schools & Institutions", icon: "school", image: "/images/industries/schools-institutions.jpg", description: "Safe-campus security cover and hygiene-critical tank cleaning schedules." },
+  { id: 7, name: "Hospitals & Healthcare", icon: "cross", image: "/images/industries/hospitals-healthcare.jpg", description: "Hygiene-first pest management and disciplined visitor control." },
+  { id: 8, name: "Retail Spaces", icon: "cart", image: "/images/industries/retail-spaces.jpg", description: "Customer-facing guards and after-hours cleaning and painting works." },
+  { id: 9, name: "Hospitality", icon: "bed", image: "/images/industries/hospitality.jpg", description: "Guest-area presentation, preventive pest cover and water hygiene." },
+  { id: 10, name: "Construction & Property Sites", icon: "cone", image: "/images/industries/construction-sites.jpg", description: "Site security deployment and handover painting for new properties." },
 ];
 
 export interface PortfolioItem {

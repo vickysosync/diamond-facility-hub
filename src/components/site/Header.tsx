@@ -12,7 +12,7 @@ const nav = [
   { href: "/services", label: "Services" },
   { href: "/industries", label: "Industries" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/pricing-estimator", label: "Pricing" },
+  // { href: "/pricing-estimator", label: "Pricing" }, // Disabled (Preserved, can be re-enabled anytime)
   { href: "/gallery", label: "Gallery" },
 ];
 

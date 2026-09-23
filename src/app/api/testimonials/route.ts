@@ -50,10 +50,15 @@ export async function POST(req: NextRequest) {
     const testimonial = await Testimonial.create({
       name,
       company,
+      role: data.role || "Facility Client",
       industry: data.industry || data.serviceCategory || "Facility Services",
       review,
+      content: review,
       rating: Number(data.rating) || 5,
-      image: data.image || "",
+      image: data.image || data.avatar || "",
+      avatar: data.avatar || data.image || "",
+      featured: !!data.featured,
+      sortOrder: Number(data.sortOrder) || 1,
       status,
     });
     return NextResponse.json({ success: true, data: testimonial, testimonial }, { status: 201 });

@@ -66,37 +66,45 @@ export default function GalleryPage() {
 
       <section className="section-y bg-background">
         <div className="container-x">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
+          {/* Category Dropdown Filter */}
+          <div className="mt-8 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-border/70 pb-5">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-gold">Facility Highlights</p>
-              <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-navy">
+              <h2 className="mt-0.5 text-2xl sm:text-3xl font-extrabold text-navy">
                 On-Ground Operations Showcase
               </h2>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Showing {filteredItems.length} of {items.length} verified operations visuals
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground font-mono">
-              Showing {filteredItems.length} of {items.length} verified visuals
-            </p>
-          </div>
-
-          {/* Category Filter Pills */}
-          <div className="mt-6 flex flex-wrap gap-2 overflow-x-auto pb-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`rounded-full border px-4 py-2 text-xs font-bold transition-all ${
-                  selectedCategory === cat
-                    ? "border-gold bg-gold text-white shadow-xs"
-                    : "border-border bg-card text-navy hover:border-gold/60 hover:text-gold"
-                }`}
-              >
-                {cat}
-                <span className="ml-1.5 opacity-70 font-normal">
-                  ({cat === "All" ? items.length : items.filter((i) => i.category === cat).length})
-                </span>
-              </button>
-            ))}
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <label htmlFor="gallery-category-filter" className="text-xs sm:text-sm font-bold text-navy whitespace-nowrap">
+                Filter by Category
+              </label>
+              <div className="relative flex-1 sm:w-64">
+                <select
+                  id="gallery-category-filter"
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full appearance-none rounded-xl border border-border bg-white px-4 py-2.5 pr-10 text-xs sm:text-sm font-semibold text-navy shadow-xs focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold cursor-pointer transition-all hover:border-gold/60"
+                >
+                  <option value="All">All Categories ({items.length})</option>
+                  {categories.filter((c) => c !== "All").map((cat) => {
+                    const count = items.filter((i) => i.category === cat).length;
+                    return (
+                      <option key={cat} value={cat}>
+                        {cat} ({count})
+                      </option>
+                    );
+                  })}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-navy">
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Gallery Grid */}

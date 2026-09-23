@@ -185,8 +185,8 @@ export default function AdminServiceCategoriesPage() {
 
   return (
     <AdminLayout
-      title="11 Main Service Categories"
-      description="Official service divisions from the company business card"
+      title="Main Service Categories"
+      description="Official service divisions and facility lines"
       actions={
         <button
           onClick={openCreate}

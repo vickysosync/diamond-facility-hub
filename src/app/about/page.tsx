@@ -55,14 +55,14 @@ export default function AboutPage() {
               <h3 className="font-display text-base font-bold text-white">Company Highlights</h3>
               <ul className="mt-4 space-y-3 text-sm">
                 {[
-                  ["Service lines", "11 Core Divisions (Security, Housekeeping, Pest Control, Manpower, Tank Cleaning, CCTV, Civil Upkeep)"],
+                  ["Service lines", "Core Divisions (Security, Housekeeping, Pest Control, Manpower, Tank Cleaning, CCTV, Civil Upkeep)"],
                   ["Client types", "Commercial, Residential, Industrial, Institutional, IT Parks"],
                   ["Service region", "Pune, PCMC & Maharashtra"],
                   ["Engagement", "One-time, monthly, quarterly and annual AMC contracts"],
                 ].map(([k, v]) => (
                   <li key={k} className="border-b border-white/12 pb-3 last:border-0">
                     <p className="text-[11px] uppercase tracking-widest text-safety">{k}</p>
-                    <p className="mt-1 text-white/85">{v}</p>
+                    <p className="mt-1 text-white">{v}</p>
                   </li>
                 ))}
               </ul>

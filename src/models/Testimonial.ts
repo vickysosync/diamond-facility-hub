@@ -3,11 +3,16 @@ import mongoose, { Schema, Document, Model } from "mongoose";
 export interface ITestimonial extends Document {
   name: string;
   company: string;
+  role?: string;
   industry: string;
   review: string;
+  content?: string;
   rating: number;
   image?: string;
+  avatar?: string;
   status: "Approved" | "Pending" | "Rejected";
+  featured?: boolean;
+  sortOrder?: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -21,7 +26,12 @@ const TestimonialSchema = new Schema<ITestimonial>(
     },
     company: {
       type: String,
-      required: [true, "Company name is required"],
+      default: "Client",
+      trim: true,
+    },
+    role: {
+      type: String,
+      default: "Facility Client",
       trim: true,
     },
     industry: {
@@ -31,7 +41,10 @@ const TestimonialSchema = new Schema<ITestimonial>(
     },
     review: {
       type: String,
-      required: [true, "Review text is required"],
+      trim: true,
+    },
+    content: {
+      type: String,
       trim: true,
     },
     rating: {
@@ -44,14 +57,27 @@ const TestimonialSchema = new Schema<ITestimonial>(
       type: String,
       trim: true,
     },
+    avatar: {
+      type: String,
+      trim: true,
+    },
     status: {
       type: String,
       default: "Approved",
       enum: ["Approved", "Pending", "Rejected"],
     },
+    featured: {
+      type: Boolean,
+      default: false,
+    },
+    sortOrder: {
+      type: Number,
+      default: 1,
+    },
   },
   {
     timestamps: true,
+    strict: false,
   }
 );
 

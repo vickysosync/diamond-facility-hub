@@ -39,7 +39,7 @@ export default function AdminDashboardPage() {
   };
 
   const cards = [
-    { label: "11 Service Categories", value: counts.serviceCategories, icon: "layers", href: "/admin/service-categories" },
+    { label: "Service Categories", value: counts.serviceCategories, icon: "layers", href: "/admin/service-categories" },
     { label: "Individual Services", value: counts.services, icon: "briefcase", href: "/admin/services" },
     { label: "Quote Requests", value: counts.quoteRequests, icon: "inbox", href: "/admin/quotes" },
     { label: "Contact Enquiries", value: counts.enquiries, icon: "mail", href: "/admin/enquiries" },
@@ -176,7 +176,7 @@ export default function AdminDashboardPage() {
                 className="p-3 rounded-xl bg-mist hover:bg-gold/10 border border-border hover:border-gold text-xs font-bold text-navy flex items-center gap-2 transition-all"
               >
                 <Icon name="layers" className="w-4 h-4 text-gold" />
-                Manage 11 Categories
+                Manage Categories
               </Link>
               <Link
                 href="/admin/portfolio"

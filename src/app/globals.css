@@ -50,6 +50,9 @@
   --color-navy: var(--brand-primary);
   --color-navy-800: var(--navy-800);
   --color-navy-700: var(--navy-700);
+  --color-gold: #c28b38;
+  --color-gold-light: #e5a951;
+  --color-gold-dark: #9e6d24;
   --color-royal: var(--brand-accent);
   --color-royal-light: var(--brand-accent-light);
   --color-safety: var(--brand-accent);

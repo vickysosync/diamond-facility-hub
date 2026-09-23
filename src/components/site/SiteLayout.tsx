@@ -52,7 +52,7 @@ export function PageHeader({ eyebrow = "", title = "", subtitle = "" }: PageHead
       <div className="container-x relative py-16 lg:py-20">
         {eyebrow && <p className="text-xs font-bold uppercase tracking-[0.18em] text-safety">{eyebrow}</p>}
         <h1 className="mt-3 max-w-3xl text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">{title}</h1>
-        {subtitle && <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base">{subtitle}</p>}
+        {subtitle && <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white sm:text-base">{subtitle}</p>}
       </div>
     </section>
   );

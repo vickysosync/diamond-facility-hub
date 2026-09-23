@@ -255,6 +255,75 @@ export default function AdminCompanyPage() {
               </div>
             </section>
 
+            {/* Social Media & Multimedia Links */}
+            <section className="rounded-2xl border border-border bg-card p-5 shadow-card">
+              <h2 className="font-display text-sm font-bold text-navy pb-2.5 border-b border-border flex items-center gap-2">
+                <Icon name="users" className="w-4 h-4 text-gold" /> Social Media & Multimedia Links
+              </h2>
+              <div className="mt-3.5 grid gap-3 sm:grid-cols-2">
+                <div>
+                  <label className="block font-bold text-navy mb-1">LinkedIn Profile / Page URL</label>
+                  <input
+                    type="url"
+                    className="field text-xs"
+                    placeholder="https://linkedin.com/company/..."
+                    value={form?.socialLinks?.linkedin || ""}
+                    onChange={(e) =>
+                      setForm((prev: any) => ({
+                        ...prev,
+                        socialLinks: { ...(prev?.socialLinks || {}), linkedin: e.target.value },
+                      }))
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold text-navy mb-1">Instagram Profile URL</label>
+                  <input
+                    type="url"
+                    className="field text-xs"
+                    placeholder="https://instagram.com/..."
+                    value={form?.socialLinks?.instagram || ""}
+                    onChange={(e) =>
+                      setForm((prev: any) => ({
+                        ...prev,
+                        socialLinks: { ...(prev?.socialLinks || {}), instagram: e.target.value },
+                      }))
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold text-navy mb-1">Facebook Page URL</label>
+                  <input
+                    type="url"
+                    className="field text-xs"
+                    placeholder="https://facebook.com/..."
+                    value={form?.socialLinks?.facebook || ""}
+                    onChange={(e) =>
+                      setForm((prev: any) => ({
+                        ...prev,
+                        socialLinks: { ...(prev?.socialLinks || {}), facebook: e.target.value },
+                      }))
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold text-navy mb-1">Twitter / X URL</label>
+                  <input
+                    type="url"
+                    className="field text-xs"
+                    placeholder="https://x.com/..."
+                    value={form?.socialLinks?.twitter || ""}
+                    onChange={(e) =>
+                      setForm((prev: any) => ({
+                        ...prev,
+                        socialLinks: { ...(prev?.socialLinks || {}), twitter: e.target.value },
+                      }))
+                    }
+                  />
+                </div>
+              </div>
+            </section>
+
             <div className="flex justify-end pt-2">
               <button
                 type="submit"

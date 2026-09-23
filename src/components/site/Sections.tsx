@@ -24,7 +24,7 @@ export function SectionTitle({
 }: SectionTitleProps = {}) {
   return (
     <div className={`${center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}`}>
-      {eyebrow && <p className={`eyebrow ${light ? "text-safety" : ""}`}>{eyebrow}</p>}
+      {eyebrow && <p className={`eyebrow ${light ? "text-gold font-bold" : ""}`}>{eyebrow}</p>}
       <h2
         className={`mt-3 text-2xl font-extrabold sm:text-3xl lg:text-4xl ${
           light ? "text-white" : "text-navy"
@@ -33,7 +33,7 @@ export function SectionTitle({
         {title}
       </h2>
       {subtitle && (
-        <p className={`mt-3 text-sm leading-relaxed sm:text-base ${light ? "text-white/70" : "text-muted-foreground"}`}>
+        <p className={`mt-3 text-sm leading-relaxed sm:text-base ${light ? "text-white" : "text-muted-foreground"}`}>
           {subtitle}
         </p>
       )}
@@ -177,36 +177,57 @@ export function Testimonials() {
 
   if (list.length === 0) return null;
   const t = list[i % list.length];
+  const avatarUrl = t.avatar || t.image;
 
   return (
     <section className="section-y bg-navy text-white">
       <div className="container-x">
         <SectionTitle eyebrow="Verified Client Reviews" title="What Our Facility Clients Say" light center />
-        <figure className="mx-auto mt-10 max-w-3xl rounded-2xl bg-white/8 p-6 text-center backdrop-blur sm:p-10 border border-white/10">
-          <Icon name="quote" className="mx-auto h-8 w-8 text-gold" />
-          <blockquote className="mt-4 text-sm leading-relaxed text-white/90 sm:text-base italic">
+        <figure className="mx-auto mt-10 max-w-3xl rounded-3xl bg-white/10 p-6 text-center backdrop-blur-md sm:p-10 border border-white/20 shadow-2xl">
+          <div className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-gold/20 text-gold border border-gold/40">
+            <Icon name="quote" className="h-6 w-6 text-gold fill-gold/20" />
+          </div>
+
+          <blockquote className="text-sm sm:text-base md:text-lg leading-relaxed text-white font-normal italic">
             “{t.content || t.review}”
           </blockquote>
-          <figcaption className="mt-6">
-            <p className="font-display text-base font-bold text-gold">{t.name}</p>
-            <p className="text-xs text-white/60">
-              {t.role ? `${t.role} · ` : ""}{t.company} {t.industry ? `(${t.industry})` : ""}
+
+          <figcaption className="mt-7 pt-5 border-t border-white/15">
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt={t.name}
+                loading="lazy"
+                decoding="async"
+                className="mx-auto mb-3 h-14 w-14 rounded-full object-cover border-2 border-gold shadow-md"
+              />
+            ) : (
+              <div className="mx-auto mb-3 h-12 w-12 rounded-full bg-gold/20 border-2 border-gold/40 text-gold font-bold text-lg grid place-items-center">
+                {t.name ? t.name.charAt(0).toUpperCase() : "C"}
+              </div>
+            )}
+            <p className="font-display text-base sm:text-xl font-extrabold text-gold tracking-wide">{t.name}</p>
+            <p className="text-xs sm:text-sm text-white font-medium mt-0.5">
+              {t.role ? `${t.role} · ` : ""}{t.company || "Client"} {t.industry ? `(${t.industry})` : ""}
             </p>
-            <div className="mt-2 flex justify-center gap-1">
+            <div className="mt-3 flex justify-center gap-1.5 text-amber-400">
               {Array.from({ length: t.rating || 5 }).map((_, k) => (
-                <Icon key={k} name="star" className="h-4 w-4 text-gold" />
+                <svg key={k} className="h-4 w-4 fill-amber-400 text-amber-400" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
               ))}
             </div>
           </figcaption>
         </figure>
-        <div className="mt-6 flex justify-center gap-2">
+
+        <div className="mt-8 flex justify-center gap-2">
           {list.map((item, k) => (
             <button
               key={item._id || item.id || k}
               onClick={() => setI(k)}
               aria-label={`Show testimonial ${k + 1}`}
-              className={`h-2 rounded-full transition-all ${
-                k === i % list.length ? "w-7 bg-gold" : "w-2 bg-white/30"
+              className={`h-2.5 rounded-full transition-all ${
+                k === i % list.length ? "w-8 bg-gold shadow-xs" : "w-2.5 bg-white/40 hover:bg-white/70"
               }`}
             />
           ))}
@@ -227,14 +248,14 @@ export function CTABanner() {
             <h2 className="text-2xl font-extrabold text-white sm:text-3xl">
               Looking for a Reliable Integrated Facility Partner in Pune?
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-white/80 leading-relaxed">
+            <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-white leading-relaxed">
               Tell us your property requirements and receive a transparent commercial quotation backed by single-point operations management.
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
               <button className="btn-base btn-accent font-bold" onClick={() => openQuote()}>
                 Get Instant Quote
               </button>
-              <a href="tel:+919689515295" className="btn-base btn-outline-light font-mono font-bold">
+              <a href="tel:+919689515295" className="btn-base btn-outline-light font-mono font-bold text-white">
                 <Icon name="phone" className="h-4 w-4 text-gold" /> +91 9689515295
               </a>
             </div>
@@ -280,28 +301,81 @@ export function IndustriesGrid({ limit }: IndustriesGridProps = {}) {
     );
   }
 
+  const getIndustryImage = (ind: any) => {
+    if (typeof ind.image === "object" && ind.image?.secure_url) {
+      return ind.image.secure_url;
+    }
+    if (ind.image && !ind.image.includes("facility.jpg") && ind.image.startsWith("http")) {
+      return ind.image;
+    }
+    if (ind.image && ind.image.startsWith("/images/industries/")) {
+      return ind.image;
+    }
+    const slug = ind.slug || ind.name?.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    if (slug) {
+      return `/images/industries/${slug}.jpg`;
+    }
+    return "/images/facility.jpg";
+  };
+
   return (
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-      {list.map((ind) => (
-        <div key={ind._id || ind.id} className="card-lift rounded-2xl border border-border bg-card p-5 shadow-card flex flex-col justify-between">
-          <div>
-            <span className="grid h-10 w-10 place-items-center rounded-lg bg-gold/10 text-gold">
-              <Icon name={ind.icon || "building"} />
-            </span>
-            <h3 className="mt-3 text-sm font-bold text-navy">{ind.name}</h3>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{ind.description}</p>
-          </div>
-          {ind.servicesOffered?.length ? (
-            <div className="mt-3 pt-2 border-t border-border/50 flex flex-wrap gap-1">
-              {ind.servicesOffered.slice(0, 2).map((s: string) => (
-                <span key={s} className="text-[9px] px-1.5 py-0.5 rounded bg-mist font-medium text-navy">
-                  {s}
+      {list.map((ind) => {
+        const imgSrc = getIndustryImage(ind);
+        const services = ind.servicesOffered || ind.serviceNames || [];
+
+        return (
+          <div
+            key={ind._id || ind.id}
+            className="group card-lift overflow-hidden rounded-2xl border border-border bg-card shadow-card flex flex-col justify-between"
+          >
+            <div>
+              <div className="relative h-36 w-full overflow-hidden bg-navy/5 border-b border-border">
+                <img
+                  src={imgSrc}
+                  alt={ind.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/images/facility.jpg";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+                <span className="absolute bottom-2.5 left-3 grid h-8 w-8 place-items-center rounded-lg bg-white/95 text-gold shadow-md border border-gold/30">
+                  <Icon name={ind.icon || "building"} className="h-4 w-4" />
                 </span>
-              ))}
+              </div>
+
+              <div className="p-4">
+                <h3 className="text-sm font-bold text-navy group-hover:text-gold transition-colors">
+                  {ind.name}
+                </h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground line-clamp-3">
+                  {ind.description}
+                </p>
+              </div>
             </div>
-          ) : null}
-        </div>
-      ))}
+
+            {services.length > 0 ? (
+              <div className="p-4 pt-0">
+                <div className="pt-2.5 border-t border-border/50 flex flex-wrap gap-1">
+                  {services.slice(0, 2).map((s: string) => (
+                    <span key={s} className="text-[9px] px-1.5 py-0.5 rounded bg-mist font-medium text-navy">
+                      {s}
+                    </span>
+                  ))}
+                  {services.length > 2 && (
+                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-gold/10 text-gold font-bold">
+                      +{services.length - 2}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
     </div>
   );
 }

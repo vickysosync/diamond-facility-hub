@@ -58,36 +58,52 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="grid min-h-screen place-items-center bg-navy px-4 py-10">
-      <div className="w-full max-w-md">
-        <Link href="/" className="mb-6 flex justify-center">
+    <div className="relative isolate min-h-screen flex items-center justify-center overflow-hidden bg-navy px-4 py-12 sm:px-6 lg:px-8">
+      {/* Premium Facility Management Corporate Campus Backdrop */}
+      <img
+        src="/images/admin-bg.jpg"
+        alt="Diamond Integrated Facility Services Management Campus"
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+      />
+      {/* Rich Navy Atmospheric Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/85 to-navy/70 backdrop-blur-[2px]" />
+
+      <div className="relative z-10 w-full max-w-md">
+        <Link href="/" className="mb-6 flex flex-col items-center justify-center gap-1 group">
           <img
             src="/images/logo-white.png"
             alt="Diamond Integrated Facility Services LLP"
-            className="h-14 w-auto max-w-[280px] object-contain"
+            className="h-14 w-auto max-w-[280px] object-contain drop-shadow-md transition-transform group-hover:scale-105 duration-200"
           />
+          <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-navy/80 px-3.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.18em] text-gold backdrop-blur-md shadow-xs">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            Admin Portal
+          </span>
         </Link>
 
         <form
           onSubmit={submit}
           noValidate
-          className="rounded-2xl bg-card p-6 shadow-lift sm:p-8 border border-border"
+          className="rounded-3xl bg-white/95 backdrop-blur-xl p-6 shadow-2xl sm:p-8 border border-white/40 ring-1 ring-black/5"
         >
           <div className="flex items-center justify-between">
-            <h1 className="font-display text-xl font-extrabold text-navy">Admin Portal</h1>
-            <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-gold/15 text-gold border border-gold/30">
-              Secure Access
+            <div>
+              <h1 className="font-display text-xl font-extrabold text-navy">Welcome Back</h1>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Sign in to manage your facility website and operations.
+              </p>
+            </div>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gold/15 text-gold border border-gold/30 shrink-0">
+              Secure
             </span>
           </div>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Sign in to manage services, industries, pricing, portfolio, quotes and enquiries.
-          </p>
 
-          <label className="mt-6 block text-sm">
+          <label className="mt-5 block text-xs sm:text-sm">
             <span className="mb-1.5 block font-semibold text-navy">Admin Email</span>
             <input
               type="email"
-              className="field"
+              className="field text-xs sm:text-sm"
               value={email}
               autoComplete="username"
               onChange={(e) => setEmail(e.target.value)}
@@ -96,11 +112,11 @@ export default function AdminLoginPage() {
             />
           </label>
 
-          <label className="mt-4 block text-sm">
+          <label className="mt-4 block text-xs sm:text-sm">
             <span className="mb-1.5 block font-semibold text-navy">Password</span>
             <input
               type="password"
-              className="field"
+              className="field text-xs sm:text-sm"
               value={password}
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
@@ -110,12 +126,12 @@ export default function AdminLoginPage() {
           </label>
 
           {error && (
-            <p className="mt-4 rounded-lg bg-destructive/10 border border-destructive/20 px-3 py-2 text-xs font-semibold text-destructive">
+            <p className="mt-4 rounded-xl bg-destructive/10 border border-destructive/20 px-3.5 py-2 text-xs font-semibold text-destructive">
               {error}
             </p>
           )}
 
-          <button type="submit" className="btn-base btn-accent mt-6 w-full py-2.5 text-sm" disabled={busy}>
+          <button type="submit" className="btn-base btn-accent mt-6 w-full py-2.5 text-sm font-bold shadow-md hover:shadow-lg transition-all" disabled={busy}>
             {busy ? (
               <span className="flex items-center justify-center gap-2">
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
@@ -126,8 +142,8 @@ export default function AdminLoginPage() {
             )}
           </button>
 
-          <div className="mt-6 rounded-xl bg-mist p-3.5 text-xs text-muted-foreground border border-border">
-            <p className="font-bold text-navy">Default Credentials</p>
+          <div className="mt-6 rounded-2xl bg-mist/90 p-3.5 text-xs text-muted-foreground border border-border/80">
+            <p className="font-bold text-navy text-[11px] uppercase tracking-wider">Default Credentials</p>
             <div className="mt-1 font-mono text-[11px] space-y-0.5">
               <p>Email: <span className="text-navy font-semibold">admin@diamondifs.com</span></p>
               <p>Password: <span className="text-navy font-semibold">admin123</span></p>

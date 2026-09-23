@@ -214,13 +214,13 @@ export default function Estimator() {
 
         <div className="mt-5 space-y-3">
           {breakdown.length === 0 ? (
-            <p className="rounded-xl bg-white/8 p-4 text-sm text-white/70">
+            <p className="rounded-xl bg-white/8 p-4 text-sm text-white">
               Select at least one service above to see your customized estimate.
             </p>
           ) : (
             breakdown.map((b) => (
               <div key={b.id} className="flex items-center justify-between border-b border-white/12 pb-3 text-sm">
-                <span className="text-white/80">{b.name}</span>
+                <span className="text-white">{b.name}</span>
                 <span className="font-semibold text-white font-mono">{formatINR(b.cost)}</span>
               </div>
             ))
@@ -228,16 +228,16 @@ export default function Estimator() {
         </div>
 
         <div className="mt-6 rounded-xl bg-white/10 p-4 border border-white/10">
-          <p className="text-xs uppercase tracking-widest text-white/60">Estimated Service Cost</p>
+          <p className="text-xs uppercase tracking-widest text-white/90">Estimated Service Cost</p>
           <p className="mt-1 font-display text-3xl font-extrabold text-gold sm:text-4xl">
             {formatINR(total)}
           </p>
-          <p className="mt-1 text-xs text-white/60">
+          <p className="mt-1 text-xs text-white">
             {freq.label} · {size.toLocaleString("en-IN")} sq.ft
           </p>
         </div>
 
-        <p className="mt-4 text-xs leading-relaxed text-white/60">
+        <p className="mt-4 text-xs leading-relaxed text-white">
           This is an indicative estimate. Final pricing may vary based on physical site survey, specialized compliance requirements, and custom equipment needs.
         </p>
 

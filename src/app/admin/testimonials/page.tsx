@@ -93,8 +93,8 @@ export default function AdminTestimonialsPage() {
       role: t.role || "",
       industry: t.industry || "",
       rating: t.rating || 5,
-      content: t.content || "",
-      avatar: t.avatar || "",
+      content: t.content || (t as any).review || "",
+      avatar: t.avatar || (t as any).image || "",
       status: t.status || "Approved",
       featured: !!t.featured,
       sortOrder: t.sortOrder || 1,
@@ -210,9 +210,9 @@ export default function AdminTestimonialsPage() {
               <div>
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3 min-w-0">
-                    {t.avatar ? (
+                    {t.avatar || (t as any).image ? (
                       <img
-                        src={t.avatar}
+                        src={t.avatar || (t as any).image}
                         alt={t.name}
                         className="w-12 h-12 rounded-full object-cover border-2 border-gold/20 shrink-0 shadow-xs"
                       />
@@ -249,7 +249,7 @@ export default function AdminTestimonialsPage() {
                 </div>
 
                 <p className="mt-3 text-xs leading-relaxed text-navy-700 italic line-clamp-3 bg-surface-subtle/30 p-2.5 rounded-lg border border-border/40">
-                  “{t.content}”
+                  “{t.content || (t as any).review}”
                 </p>
               </div>
 
@@ -323,9 +323,9 @@ export default function AdminTestimonialsPage() {
 
             <div className="mt-4 space-y-4 text-xs">
               <div className="flex items-center gap-3.5 p-3 rounded-xl bg-surface-subtle border border-border">
-                {viewing.avatar ? (
+                {viewing.avatar || (viewing as any).image ? (
                   <img
-                    src={viewing.avatar}
+                    src={viewing.avatar || (viewing as any).image}
                     alt={viewing.name}
                     className="w-14 h-14 rounded-full object-cover border-2 border-gold/30 shadow-xs shrink-0"
                   />
@@ -367,7 +367,7 @@ export default function AdminTestimonialsPage() {
               <div>
                 <h4 className="text-xs font-bold text-navy mb-1.5">Client Review / Statement:</h4>
                 <blockquote className="p-4 rounded-xl bg-surface-subtle border-l-4 border-gold text-xs leading-relaxed text-navy italic">
-                  “{viewing.content}”
+                  “{viewing.content || (viewing as any).review}”
                 </blockquote>
               </div>
 
