@@ -42,6 +42,11 @@ export async function PUT(
 
     const { id } = await params;
     const data = await req.json();
+    if (data.category && !data.categoryName) {
+      data.categoryName = data.category;
+    } else if (data.categoryName && !data.category) {
+      data.category = data.categoryName;
+    }
 
     await connectToDatabase();
     const service = await Service.findByIdAndUpdate(id, data, {

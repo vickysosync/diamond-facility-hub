@@ -95,10 +95,11 @@ export default function AdminServicesPage() {
   const openEdit = (s: Service) => {
     setEditing(s);
     setViewing(null);
+    const catName = s.category || (s as any).categoryName || categories[0]?.name || "Security Guard Services";
     setFormData({
       name: s.name,
       slug: s.slug,
-      category: s.category || categories[0]?.name || "Security Guard Services",
+      category: catName,
       categoryId: s.categoryId || "",
       shortDescription: s.shortDescription || "",
       description: s.description || "",
@@ -157,8 +158,11 @@ export default function AdminServicesPage() {
         .map((f) => f.trim())
         .filter(Boolean);
 
+      const categoryValue = formData.category || categories[0]?.name || "Security Guard Services";
       const payload = {
         ...formData,
+        category: categoryValue,
+        categoryName: categoryValue,
         features,
       };
 
@@ -251,7 +255,7 @@ export default function AdminServicesPage() {
                   </div>
                   <div className="absolute bottom-3 left-3">
                     <span className="text-[10px] font-bold uppercase tracking-wider bg-navy/80 backdrop-blur-xs text-gold px-2.5 py-1 rounded-md border border-gold/30">
-                      {s.category}
+                      {s.category || (s as any).categoryName || "General"}
                     </span>
                   </div>
                 </div>
@@ -320,7 +324,7 @@ export default function AdminServicesPage() {
             <div className="flex items-start justify-between pb-3 border-b border-border mb-4">
               <div>
                 <span className="text-[11px] font-bold uppercase tracking-wider text-gold block mb-1">
-                  Category: {viewing.category}
+                  Category: {viewing.category || (viewing as any).categoryName || "General"}
                 </span>
                 <div className="flex items-center gap-2">
                   <h2 className="font-display text-lg font-bold text-navy">{viewing.name}</h2>

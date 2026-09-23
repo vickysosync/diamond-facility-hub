@@ -30,12 +30,16 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await req.json();
-    if (!data.name || !data.slug || !data.categoryName) {
+    const categoryName = data.categoryName || data.category;
+    if (!data.name || !data.slug || !categoryName) {
       return NextResponse.json(
-        { error: "Name, slug, and categoryName are required" },
+        { error: "Name, slug, and category are required" },
         { status: 400 }
       );
     }
+
+    data.categoryName = categoryName;
+    data.category = categoryName;
 
     await connectToDatabase();
     const service = await Service.create(data);
