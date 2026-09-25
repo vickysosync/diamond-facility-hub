@@ -4,6 +4,7 @@ import { useEffect, useState, ReactNode } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import Icon from "@/components/ui/Icon";
+import Logo from "@/components/ui/Logo";
 
 const nav = [
   { href: "/admin/dashboard", label: "Dashboard", icon: "chart" },
@@ -98,13 +99,13 @@ export default function AdminLayout({
 
   const sidebar = (
     <div className="flex h-full flex-col gap-2 bg-navy p-4 text-white">
-      <Link href="/" className="mb-3 flex flex-col gap-1 rounded-xl bg-white/8 p-3 transition-colors hover:bg-white/12">
+      <Link href="/" className="mb-3 flex flex-col gap-2 rounded-2xl bg-white p-3 shadow-md border border-white/20 transition-all hover:bg-white/95">
         <img
-          src="/images/logo-white.png"
+          src="/images/logo.png"
           alt="Diamond Integrated Facility Services LLP"
-          className="h-9 w-auto max-w-[190px] object-contain"
+          className="h-9 w-auto max-w-[200px] object-contain"
         />
-        <span className="text-[10px] font-bold uppercase tracking-wider text-gold">Admin Portal</span>
+        <span className="text-[10px] font-bold uppercase tracking-wider text-navy font-mono">Admin Portal</span>
       </Link>
       <nav className="flex-1 space-y-1 overflow-y-auto pr-1" aria-label="Admin navigation">
         {nav.map((item) => {

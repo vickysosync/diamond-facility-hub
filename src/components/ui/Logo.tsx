@@ -12,16 +12,10 @@ export default function Logo({
   variant = "dark",
   iconOnly = false,
   className = "",
-  height = 40,
+  height = 44,
   alt = "Diamond Integrated Facility Services LLP",
 }: LogoProps) {
-  let src = "/images/logo.png";
-  if (iconOnly) {
-    src = "/images/logo-icon.png";
-  } else if (variant === "light") {
-    src = "/images/logo-white.png";
-  }
-
+  const src = iconOnly ? "/images/logo-icon.png" : "/images/logo.png";
   const heightStyle = typeof height === "number" ? `${height}px` : height;
 
   return (
@@ -34,3 +28,4 @@ export default function Logo({
     />
   );
 }
+

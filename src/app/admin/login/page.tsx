@@ -70,13 +70,15 @@ export default function AdminLoginPage() {
       <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/85 to-navy/70 backdrop-blur-[2px]" />
 
       <div className="relative z-10 w-full max-w-md">
-        <Link href="/" className="mb-6 flex flex-col items-center justify-center gap-1 group">
-          <img
-            src="/images/logo-white.png"
-            alt="Diamond Integrated Facility Services LLP"
-            className="h-14 w-auto max-w-[280px] object-contain drop-shadow-md transition-transform group-hover:scale-105 duration-200"
-          />
-          <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-navy/80 px-3.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.18em] text-gold backdrop-blur-md shadow-xs">
+        <Link href="/" className="mb-6 flex flex-col items-center justify-center gap-2 group">
+          <div className="rounded-2xl bg-white px-5 py-3 shadow-xl border border-white/40 transition-transform group-hover:scale-105 duration-200">
+            <img
+              src="/images/logo.png"
+              alt="Diamond Integrated Facility Services LLP"
+              className="h-12 w-auto max-w-[260px] object-contain"
+            />
+          </div>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-gold-light/60 bg-navy/90 px-3.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.18em] text-gold-light backdrop-blur-md shadow-xs">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
             Admin Portal
           </span>
@@ -94,7 +96,7 @@ export default function AdminLoginPage() {
                 Sign in to manage your facility website and operations.
               </p>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gold/15 text-gold border border-gold/30 shrink-0">
+            <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-700 border border-amber-500/30 shrink-0 font-mono">
               Secure
             </span>
           </div>
@@ -150,7 +152,7 @@ export default function AdminLoginPage() {
             </div>
           </div>
 
-          <Link href="/" className="mt-5 block text-center text-xs font-semibold text-gold hover:underline">
+          <Link href="/" className="mt-5 block text-center text-xs font-semibold text-gold-dark hover:text-gold hover:underline">
             ← Back to live website
           </Link>
         </form>
@@ -158,3 +160,4 @@ export default function AdminLoginPage() {
     </div>
   );
 }
+

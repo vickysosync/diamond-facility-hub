@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Icon from "@/components/ui/Icon";
+import Logo from "@/components/ui/Logo";
 import { useApp } from "@/store/AppStore";
 
 const nav = [

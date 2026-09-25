@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
+import Logo from "@/components/ui/Logo";
 
 export default function Footer() {
   const [company, setCompany] = useState<any>(null);
@@ -30,11 +31,11 @@ export default function Footer() {
       <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4 text-xs">
         {/* Brand Column */}
         <div className="space-y-4">
-          <Link href="/" className="inline-block">
+          <Link href="/" className="inline-block rounded-2xl bg-white p-2.5 shadow-md border border-white/20 transition-transform hover:scale-105">
             <img
-              src="/images/logo-white.png"
+              src="/images/logo.png"
               alt="Diamond Integrated Facility Services LLP"
-              className="h-12 w-auto max-w-[260px] object-contain"
+              className="h-11 w-auto max-w-[250px] object-contain"
             />
           </Link>
           <p className="text-white leading-relaxed">

@@ -50,8 +50,8 @@
   --color-navy: var(--brand-primary);
   --color-navy-800: var(--navy-800);
   --color-navy-700: var(--navy-700);
-  --color-gold: #c28b38;
-  --color-gold-light: #e5a951;
+  --color-gold: #d99b38;
+  --color-gold-light: #f5be4f;
   --color-gold-dark: #9e6d24;
   --color-royal: var(--brand-accent);
   --color-royal-light: var(--brand-accent-light);
@@ -86,7 +86,7 @@
      OFFICIAL LOGO BRAND PALETTE
      - Primary: Deep Diamond Charcoal/Navy (#0f1824)
      - Secondary: Deep Umber Bronze (#3c2f12)
-     - Accent: Rich Gold / Bronze Ochre (#a3722e / #835a23)
+     - Accent: Rich Gold / Bronze Ochre (#c88a2e / #d99b38)
      - Light / Neutral: Clean Crisp Slate/Mist (#f6f8fb)
      - Dark: Midnight Onyx (#0a1019)
      ========================================================================= */
@@ -94,9 +94,9 @@
   --brand-primary-hover: #1c293c;
   --brand-secondary: #3c2f12;
   --brand-secondary-light: #52401a;
-  --brand-accent: #a3722e;
-  --brand-accent-hover: #b88235;
-  --brand-accent-light: #d69f4c;
+  --brand-accent: #c88a2e;
+  --brand-accent-hover: #db9d3b;
+  --brand-accent-light: #f5be4f;
   --brand-light: #f6f8fb;
   --brand-dark: #0a1019;
   --brand-surface: #ffffff;
@@ -150,7 +150,7 @@
   --sidebar-ring: var(--brand-accent);
 
   --gradient-navy: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-primary) 55%, #1d2c40 100%);
-  --gradient-accent: linear-gradient(135deg, var(--brand-accent-hover) 0%, var(--brand-accent) 55%, #85591e 100%);
+  --gradient-accent: linear-gradient(135deg, #d99b38 0%, #be7e22 100%);
 }
 
 .dark {
@@ -253,12 +253,12 @@
 @utility btn-accent {
   background-image: var(--gradient-accent);
   color: #ffffff;
-  box-shadow: 0 8px 24px -8px rgba(163, 114, 46, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px -8px rgba(217, 155, 56, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   &:hover {
     filter: brightness(1.08);
     transform: translateY(-1px);
-    box-shadow: 0 12px 28px -8px rgba(163, 114, 46, 0.7);
+    box-shadow: 0 12px 28px -8px rgba(217, 155, 56, 0.7);
   }
 }
 
