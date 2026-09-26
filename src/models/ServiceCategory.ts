@@ -90,7 +90,6 @@ const ServiceCategorySchema = new Schema<IServiceCategory>(
   }
 );
 
-ServiceCategorySchema.index({ slug: 1 });
 ServiceCategorySchema.index({ sortOrder: 1 });
 
 export const ServiceCategory: Model<IServiceCategory> =

@@ -197,6 +197,30 @@
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
+
+  /* Custom sleek scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(15, 24, 36, 0.18);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(217, 155, 56, 0.7);
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
 }
 
 @utility gradient-navy {
@@ -319,3 +343,267 @@
   text-transform: uppercase;
   color: var(--brand-accent);
 }
+
+/* =========================================================================
+   PREMIUM LIVE ANIMATIONS & BUTTON EFFECTS
+   ========================================================================= */
+
+@keyframes gold-breathe {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(217, 155, 56, 0.4), 0 8px 24px -4px rgba(217, 155, 56, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(217, 155, 56, 0.85), 0 14px 38px -2px rgba(217, 155, 56, 0.95);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  30%, 100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+@keyframes icon-bounce-x {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+@utility btn-live-gold {
+  position: relative;
+  overflow: hidden;
+  background-image: var(--gradient-accent);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+  animation: gold-breathe 3.5s ease-in-out infinite;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px) scale(1.025);
+    box-shadow: 0 0 36px rgba(217, 155, 56, 0.9), 0 14px 40px -4px rgba(217, 155, 56, 0.95);
+  }
+  &:active {
+    transform: translateY(1px) scale(0.98);
+  }
+}
+
+@utility btn-live-glass {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: rgba(217, 155, 56, 0.7);
+    color: #f5be4f;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 24px rgba(217, 155, 56, 0.3), 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  }
+  &:active {
+    transform: translateY(1px) scale(0.98);
+  }
+}
+
+@utility btn-live-navy {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--brand-primary);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background-color: var(--brand-primary-hover);
+    border-color: rgba(217, 155, 56, 0.5);
+    color: #ffffff;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 24px rgba(217, 155, 56, 0.25), 0 12px 28px -6px rgba(15, 24, 36, 0.4);
+  }
+  &:active {
+    transform: translateY(1px) scale(0.98);
+  }
+}
+
+/* =========================================================================
+   3D GLASSMORPHIC SURFACES & SCROLL REVEAL
+   ========================================================================= */
+
+@utility card-3d {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px -4px rgba(15, 24, 36, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    border-color: rgba(217, 155, 56, 0.6);
+    box-shadow: 0 20px 45px -12px rgba(15, 24, 36, 0.2);
+    transform: translateY(-5px);
+  }
+}
+
+@utility inview {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+@utility inview-on {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================================================
+   LIVE ANIMATED BORDER BEAM (ROTATING CONIC GRADIENT)
+   ========================================================================= */
+
+@keyframes border-beam-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@utility card-border-beam {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: 1.5px;
+  background-color: rgba(226, 230, 235, 0.7);
+  overflow: hidden;
+  box-shadow: 0 4px 20px -4px rgba(15, 24, 36, 0.08);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      transparent 0deg,
+      transparent 220deg,
+      rgba(217, 155, 56, 0.25) 270deg,
+      rgba(217, 155, 56, 0.95) 320deg,
+      #ffffff 345deg,
+      rgba(245, 190, 79, 0.95) 355deg,
+      transparent 360deg
+    );
+    animation: border-beam-spin 6s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 32px rgba(217, 155, 56, 0.3), 0 20px 45px -10px rgba(15, 24, 36, 0.16);
+    background-color: rgba(217, 155, 56, 0.4);
+    &::before {
+      animation-duration: 3s;
+    }
+  }
+}
+
+@utility card-border-beam-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(1.25rem - 1.5px);
+  background-color: #ffffff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* =========================================================================
+   3D LIVE WHATSAPP ANIMATED BORDER BEAM
+   ========================================================================= */
+
+@keyframes whatsapp-glow-breathe {
+  0%, 100% {
+    box-shadow: 0 8px 28px -4px rgba(37, 211, 102, 0.5), 0 0 16px rgba(37, 211, 102, 0.35);
+  }
+  50% {
+    box-shadow: 0 14px 36px -2px rgba(37, 211, 102, 0.85), 0 0 28px rgba(37, 211, 102, 0.65);
+  }
+}
+
+@utility whatsapp-border-beam {
+  position: relative;
+  border-radius: 9999px;
+  padding: 2.5px;
+  background-color: rgba(37, 211, 102, 0.3);
+  overflow: hidden;
+  animation: whatsapp-glow-breathe 3.5s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      transparent 0deg,
+      transparent 200deg,
+      rgba(37, 211, 102, 0.3) 240deg,
+      rgba(217, 155, 56, 0.9) 290deg,
+      #ffffff 330deg,
+      rgba(37, 211, 102, 1) 350deg,
+      transparent 360deg
+    );
+    animation: border-beam-spin 3.5s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  &:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 14px 40px rgba(37, 211, 102, 0.8), 0 0 32px rgba(217, 155, 56, 0.5);
+    &::before {
+      animation-duration: 2s;
+    }
+  }
+  &:active {
+    transform: translateY(1px) scale(0.96);
+  }
+}
+
+@utility footer-card-3d {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    border-color: rgba(217, 155, 56, 0.45);
+    box-shadow: 0 16px 40px -8px rgba(15, 24, 36, 0.6), 0 0 24px rgba(217, 155, 56, 0.15), inset 0 1px 0 rgba(217, 155, 56, 0.4);
+    transform: translateY(-3px);
+  }
+}
+
+
+
+

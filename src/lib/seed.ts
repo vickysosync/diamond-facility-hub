@@ -784,21 +784,73 @@ export async function seedDatabase() {
     }
   }
 
-  // 7. Seed Hero Banners
-  const existingBanner = await Banner.findOne({ sortOrder: 1 });
-  if (!existingBanner) {
-    await Banner.create({
+  // 7. Seed Hero Banners (All 5 Divisions)
+  const heroBannersSeed = [
+    {
       title: "Complete Facility Services.",
       subtitle: "One Trusted Partner.",
       description:
-        "Professional security, housekeeping, property management, pest control, manpower, tank cleaning, gardening, CCTV and civil maintenance solutions across Pune.",
-      image: "/images/hero.jpg",
-      ctaText: "Get Free Quote",
-      ctaLink: "/pricing-estimator",
-      status: "Active",
+        "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.",
+      image: "/images/hero/slide-security.png",
+      ctaText: "Get Free Instant Quote",
+      ctaLink: "/contact",
+      status: "Active" as const,
       sortOrder: 1,
-    });
-    console.log("Seeded primary hero banner");
+    },
+    {
+      title: "Impeccable Facility Cleanliness.",
+      subtitle: "Zero Compromise.",
+      description:
+        "Supervisor-monitored corporate housekeeping, daily office cleaning, mechanized floor scrubbing, and hospital-grade deep sanitization for IT parks and societies.",
+      image: "/images/hero/slide-housekeeping.png",
+      ctaText: "Book Housekeeping Audit",
+      ctaLink: "/services/housekeeping-services",
+      status: "Active" as const,
+      sortOrder: 2,
+    },
+    {
+      title: "Seamless Property Operations.",
+      subtitle: "Built Around Your Campus.",
+      description:
+        "End-to-end facility operations, multi-vendor coordination, residential society administration, and routine technical condition reporting.",
+      image: "/images/hero/slide-facility.png",
+      ctaText: "Request Facility Proposal",
+      ctaLink: "/services/property-management",
+      status: "Active" as const,
+      sortOrder: 3,
+    },
+    {
+      title: "Certified Water Tank Cleaning.",
+      subtitle: "Pure Hygiene & Green Care.",
+      description:
+        "6-stage mechanized cleaning for overhead and underground water storage tanks, accompanied by structured garden upkeep and landscape preservation.",
+      image: "/images/hero/slide-tank.png",
+      ctaText: "Schedule Tank Cleaning",
+      ctaLink: "/services/tank-cleaning-gardening-landscaping",
+      status: "Active" as const,
+      sortOrder: 4,
+    },
+    {
+      title: "Advanced CCTV & Civil Upkeep.",
+      subtitle: "Always Protected.",
+      description:
+        "Turnkey HD surveillance installation, round-the-clock control room monitoring, certified electrical, plumbing, painting, and terrace waterproofing.",
+      image: "/images/hero/slide-cctv.png",
+      ctaText: "Get Technical Estimate",
+      ctaLink: "/services/cctv-installation-maintenance",
+      status: "Active" as const,
+      sortOrder: 5,
+    },
+  ];
+
+  for (const b of heroBannersSeed) {
+    const existing = await Banner.findOne({ sortOrder: b.sortOrder });
+    if (!existing) {
+      await Banner.create(b);
+      console.log(`Seeded hero banner #${b.sortOrder}: ${b.title}`);
+    } else {
+      await Banner.updateOne({ sortOrder: b.sortOrder }, { $set: b });
+    }
   }
 
   // 8. Seed Website Content

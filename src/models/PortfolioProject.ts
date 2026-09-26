@@ -89,7 +89,6 @@ const PortfolioProjectSchema = new Schema<IPortfolioProject>(
   }
 );
 
-PortfolioProjectSchema.index({ slug: 1 });
 PortfolioProjectSchema.index({ category: 1 });
 PortfolioProjectSchema.index({ status: 1 });
 

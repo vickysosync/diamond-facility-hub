@@ -109,7 +109,6 @@ const ServiceSchema = new Schema<IService>(
   }
 );
 
-ServiceSchema.index({ slug: 1 });
 ServiceSchema.index({ categoryName: 1 });
 ServiceSchema.index({ status: 1 });
 

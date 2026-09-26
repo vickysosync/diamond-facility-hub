@@ -3,13 +3,26 @@
 import { useEffect, useMemo, useState } from "react";
 import SiteLayout, { PageHeader, useQuote } from "@/components/site/SiteLayout";
 import Icon from "@/components/ui/Icon";
+import InView from "@/components/ui/InView";
 import Modal from "@/components/ui/Modal";
 import { CTABanner, SectionTitle } from "@/components/site/Sections";
 
-const statusTone: Record<string, string> = {
-  Completed: "bg-emerald-500/15 text-emerald-700 border border-emerald-500/30",
-  Ongoing: "bg-blue-500/15 text-blue-700 border border-blue-500/30",
-  "In Progress": "bg-amber-500/15 text-amber-700 border border-amber-500/30",
+const statusConfig: Record<string, { label: string; tone: string; dot: string }> = {
+  Completed: {
+    label: "Completed",
+    tone: "bg-emerald-500/10 text-emerald-700 border-emerald-500/30",
+    dot: "bg-emerald-500",
+  },
+  Ongoing: {
+    label: "Ongoing",
+    tone: "bg-blue-500/10 text-blue-700 border-blue-500/30",
+    dot: "bg-blue-500",
+  },
+  "In Progress": {
+    label: "In Progress",
+    tone: "bg-amber-500/10 text-amber-700 border-amber-500/30",
+    dot: "bg-amber-500",
+  },
 };
 
 export default function PortfolioPage() {
@@ -50,56 +63,66 @@ export default function PortfolioPage() {
   return (
     <SiteLayout>
       <PageHeader
-        eyebrow="Proven Deployments"
+        eyebrow="Proven Deployments & Track Record"
         title="Facility Operations Delivered Across Pune & Maharashtra"
-        subtitle="Explore our verified facility management contracts, security deployments, pest eradication projects, and civil upkeep case studies."
+        highlightedTitle="Facility Operations Delivered"
+        subtitle="Explore our verified facility management contracts, security deployments, mechanized cleaning turnarounds, and preventative upkeep case studies."
+        image="/images/headers/portfolio-header.png"
+        imageAlt="Proven Facility Operations and Verified Case Studies Delivered Across Pune"
+        ctaText="Discuss Your Facility"
+        secondaryCtaText="View Field Gallery"
+        secondaryCtaLink="/gallery"
       />
 
-      <section className="section-y bg-background">
+      <section className="section-y bg-background relative overflow-hidden">
         <div className="container-x">
-          <SectionTitle
-            eyebrow="Case Studies"
-            title="Projects & Client Deployments"
-            subtitle="Filter by service division to review executed scope of work and verified deliverables."
-          />
+          <InView direction="up">
+            <SectionTitle
+              eyebrow="Case Studies"
+              title="Projects & Client Deployments"
+              subtitle="Filter by service division to review executed scope of work and verified deliverables."
+            />
+          </InView>
 
           {/* Category Dropdown Filter */}
-          <div className="mt-8 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-border/70 pb-5">
-            <div>
-              <h2 className="font-display text-xl font-bold text-navy">Deployments & Case Studies</h2>
-              <p className="text-xs text-muted-foreground mt-0.5">
-                Showing {list.length} of {projects.length} verified operations
-              </p>
-            </div>
-            <div className="flex items-center gap-3 w-full sm:w-auto">
-              <label htmlFor="portfolio-category-filter" className="text-xs sm:text-sm font-bold text-navy whitespace-nowrap">
-                Filter by Category
-              </label>
-              <div className="relative flex-1 sm:w-64">
-                <select
-                  id="portfolio-category-filter"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="w-full appearance-none rounded-xl border border-border bg-white px-4 py-2.5 pr-10 text-xs sm:text-sm font-semibold text-navy shadow-xs focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold cursor-pointer transition-all hover:border-gold/60"
-                >
-                  <option value="All">All Categories ({projects.length})</option>
-                  {categories.map((c) => {
-                    const count = projects.filter((p) => p.category === c.name).length;
-                    return (
-                      <option key={c._id || c.name} value={c.name}>
-                        {c.name} ({count})
-                      </option>
-                    );
-                  })}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-navy">
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
+          <InView direction="up" delay={100}>
+            <div className="mt-8 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-5">
+              <div>
+                <h2 className="font-display text-xl font-bold text-navy">Deployments & Case Studies</h2>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Showing {list.length} of {projects.length} verified operations
+                </p>
+              </div>
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <label htmlFor="portfolio-category-filter" className="text-xs sm:text-sm font-bold text-navy whitespace-nowrap">
+                  Filter by Category
+                </label>
+                <div className="relative flex-1 sm:w-64">
+                  <select
+                    id="portfolio-category-filter"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-2.5 pr-10 text-xs sm:text-sm font-semibold text-navy shadow-xs focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold cursor-pointer transition-all hover:border-gold/60"
+                  >
+                    <option value="All">All Categories ({projects.length})</option>
+                    {categories.map((c) => {
+                      const count = projects.filter((p) => p.category === c.name).length;
+                      return (
+                        <option key={c._id || c.name} value={c.name}>
+                          {c.name} ({count})
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-navy">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </InView>
 
           {loading ? (
             <div className="py-20 text-center">
@@ -107,7 +130,7 @@ export default function PortfolioPage() {
               <p className="mt-2 text-xs font-semibold text-navy">Loading portfolio showcase from MongoDB…</p>
             </div>
           ) : list.length === 0 ? (
-            <div className="mt-10 rounded-2xl border border-dashed border-border bg-card p-12 text-center">
+            <div className="mt-10 rounded-2xl border border-dashed border-slate-200 bg-card p-12 text-center">
               <Icon name="inbox" className="mx-auto h-8 w-8 text-muted-foreground" />
               <p className="mt-3 text-sm font-semibold text-navy">No projects listed under this category yet</p>
               <p className="mt-1 text-xs text-muted-foreground">
@@ -116,51 +139,76 @@ export default function PortfolioPage() {
             </div>
           ) : (
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {list.map((p) => (
-                <article
-                  key={p._id || p.id}
-                  className="card-lift group overflow-hidden rounded-2xl border border-border bg-card shadow-card flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                      <img
-                        src={p.image || "/images/hero.jpg"}
-                        alt={`${p.title} in ${p.location}`}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <span className="absolute left-3 top-3 rounded-full bg-navy/90 px-3 py-1 text-[11px] font-bold text-gold backdrop-blur">
-                        {p.category}
-                      </span>
-                    </div>
-                    <div className="p-5">
-                      <div className="flex flex-wrap items-center gap-2 text-[11px] font-bold">
-                        <span className={`rounded-full px-2.5 py-0.5 ${statusTone[p.status] ?? "bg-muted text-navy"}`}>
-                          {p.status}
-                        </span>
-                        <span className="text-muted-foreground font-mono">{p.year}</span>
-                      </div>
-                      <h3 className="mt-3 text-base font-bold leading-snug text-navy">{p.title}</h3>
-                      <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <Icon name="pin" className="h-3.5 w-3.5 shrink-0 text-gold" />
-                        {p.location}
-                      </p>
-                      <p className="mt-3 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
-                        {p.description}
-                      </p>
-                    </div>
-                  </div>
+              {list.map((p, idx) => {
+                const status = statusConfig[p.status] || {
+                  label: p.status || "Ongoing",
+                  tone: "bg-blue-500/10 text-blue-700 border-blue-500/30",
+                  dot: "bg-blue-500",
+                };
 
-                  <div className="p-5 pt-0">
-                    <button
-                      className="btn-base btn-ghost-navy w-full text-xs font-bold"
-                      onClick={() => setActive(p)}
-                    >
-                      View Case Study Details
-                    </button>
-                  </div>
-                </article>
-              ))}
+                return (
+                  <InView key={p._id || p.id} direction="up" delay={(idx % 3) * 100}>
+                    <article className="card-border-beam group h-full">
+                      <div className="card-border-beam-inner">
+                        <div>
+                          {/* Image Banner */}
+                          <div className="relative aspect-[16/10] w-full overflow-hidden bg-navy/5 border-b border-border/60">
+                            <img
+                              src={p.image || "/images/hero.jpg"}
+                              alt={`${p.title} in ${p.location}`}
+                              loading="lazy"
+                              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent" />
+                            <span className="absolute left-3 top-3 rounded-lg bg-navy/90 px-3 py-1 text-[11px] font-bold text-gold backdrop-blur-md border border-gold/40 shadow-sm">
+                              {p.category}
+                            </span>
+                          </div>
+
+                          {/* Body Content */}
+                          <div className="p-5">
+                            <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-bold">
+                              <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 border ${status.tone} shadow-2xs`}>
+                                <span className={`h-1.5 w-1.5 rounded-full ${status.dot} animate-pulse`} />
+                                {status.label}
+                              </span>
+                              <span className="text-slate-400 font-mono text-xs">{p.year}</span>
+                            </div>
+
+                            <h3 className="mt-3 font-display text-base font-bold leading-snug text-navy group-hover:text-gold transition-colors">
+                              {p.title}
+                            </h3>
+
+                            <p className="mt-1.5 flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+                              <Icon name="pin" className="h-3.5 w-3.5 shrink-0 text-gold" />
+                              {p.location}
+                            </p>
+
+                            <p className="mt-3 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+                              {p.description}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Action CTA Button */}
+                        <div className="p-5 pt-0">
+                          <button
+                            className="btn-base btn-live-navy w-full text-xs font-bold py-2.5 rounded-xl shadow-2xs flex items-center justify-center gap-2 group/btn border border-slate-200"
+                            onClick={() => setActive(p)}
+                          >
+                            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none animate-[shimmer-sweep_4s_infinite]" />
+                            <span className="relative z-10">View Case Study Details</span>
+                            <Icon
+                              name="arrow"
+                              className="relative z-10 h-3.5 w-3.5 text-gold transition-transform duration-300 group-hover/btn:translate-x-1"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                    </article>
+                  </InView>
+                );
+              })}
             </div>
           )}
         </div>
@@ -170,12 +218,15 @@ export default function PortfolioPage() {
       <Modal open={!!active} onClose={() => setActive(null)} title={active?.title ?? ""}>
         {active && (
           <div className="space-y-4 text-xs">
-            <img
-              src={active.image || "/images/hero.jpg"}
-              alt={`${active.title} project photograph`}
-              className="aspect-[16/9] w-full rounded-xl object-cover border border-border"
-            />
-            <dl className="grid gap-3 sm:grid-cols-2 bg-mist/50 p-4 rounded-xl border border-border">
+            <div className="relative overflow-hidden rounded-xl border border-gold/30 shadow-md">
+              <img
+                src={active.image || "/images/hero.jpg"}
+                alt={`${active.title} project photograph`}
+                className="aspect-[16/9] w-full object-cover"
+              />
+            </div>
+            
+            <dl className="grid gap-3 sm:grid-cols-2 bg-slate-50 p-4 rounded-xl border border-slate-200">
               <div>
                 <dt className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                   Service Category
@@ -199,7 +250,8 @@ export default function PortfolioPage() {
                   Contract Status
                 </dt>
                 <dd className="mt-0.5">
-                  <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${statusTone[active.status] || "bg-muted"}`}>
+                  <span className={`inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-bold border ${statusConfig[active.status]?.tone || "bg-muted"}`}>
+                    <span className={`h-1.5 w-1.5 rounded-full ${statusConfig[active.status]?.dot || "bg-navy"} animate-pulse`} />
                     {active.status}
                   </span>
                 </dd>
@@ -211,12 +263,17 @@ export default function PortfolioPage() {
             </p>
 
             {active.scopeOfWork?.length ? (
-              <div>
-                <h4 className="font-bold text-navy mb-2">Scope of Operations Executed:</h4>
-                <ul className="space-y-1">
+              <div className="p-3.5 rounded-xl bg-gold/5 border border-gold/20">
+                <h4 className="font-bold text-navy mb-2 flex items-center gap-1.5">
+                  <Icon name="check" className="w-3.5 h-3.5 text-gold" />
+                  Scope of Operations Executed:
+                </h4>
+                <ul className="space-y-1.5">
                   {active.scopeOfWork.map((s: string) => (
-                    <li key={s} className="flex items-center gap-2 text-navy-700">
-                      <Icon name="check" className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <li key={s} className="flex items-center gap-2 text-navy-700 font-medium">
+                      <span className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-emerald-500/15 text-emerald-600">
+                        <Icon name="check" className="w-2.5 h-2.5" strokeWidth={3} />
+                      </span>
                       <span>{s}</span>
                     </li>
                   ))}
@@ -224,18 +281,23 @@ export default function PortfolioPage() {
               </div>
             ) : null}
 
-            <div className="flex flex-wrap gap-2 pt-3 border-t border-border">
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200">
               <button
-                className="btn-base btn-accent text-xs font-bold"
+                className="btn-base btn-live-gold text-xs font-bold px-6 py-2.5 rounded-xl shadow-md flex items-center gap-2 group"
                 onClick={() => {
                   const services = [active.category];
                   setActive(null);
                   openQuote({ services });
                 }}
               >
-                Request Similar Facility Scope
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none animate-[shimmer-sweep_3.5s_infinite]" />
+                <span className="relative z-10">Request Similar Facility Scope</span>
+                <Icon name="arrow" className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
-              <button className="btn-base btn-secondary text-xs" onClick={() => setActive(null)}>
+              <button
+                className="btn-base btn-ghost-navy text-xs font-semibold px-4 py-2"
+                onClick={() => setActive(null)}
+              >
                 Close
               </button>
             </div>
@@ -243,7 +305,9 @@ export default function PortfolioPage() {
         )}
       </Modal>
 
-      <CTABanner />
+      <InView direction="up">
+        <CTABanner />
+      </InView>
     </SiteLayout>
   );
 }

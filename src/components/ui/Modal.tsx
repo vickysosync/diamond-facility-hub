@@ -26,7 +26,7 @@ export default function Modal({ open, onClose, title, children, maxWidth = "max-
   return (
     <div className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:items-center sm:p-6">
       <div
-        className="absolute inset-0 bg-navy/70 backdrop-blur-sm animate-in fade-in"
+        className="absolute inset-0 bg-navy/75 backdrop-blur-md transition-opacity animate-in fade-in duration-300"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -34,14 +34,17 @@ export default function Modal({ open, onClose, title, children, maxWidth = "max-
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className={`relative z-10 w-full ${maxWidth} max-h-[92vh] overflow-y-auto rounded-t-2xl bg-card p-5 shadow-lift animate-in fade-in slide-in-from-bottom-4 sm:rounded-2xl sm:p-7`}
+        className={`relative z-10 w-full ${maxWidth} max-h-[92vh] overflow-y-auto no-scrollbar rounded-t-3xl bg-white p-6 shadow-[0_25px_60px_rgba(15,24,36,0.45)] border border-slate-200/90 animate-in fade-in slide-in-from-bottom-6 duration-300 sm:rounded-3xl sm:p-8 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold before:to-transparent`}
       >
-        <div className="mb-5 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4">
-          <h3 className="min-w-0 text-lg font-bold text-navy sm:text-xl">{title}</h3>
+        <div className="mb-6 flex items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <div className="flex items-center gap-2.5">
+            <span className="h-2 w-2 rounded-full bg-gold animate-pulse shadow-[0_0_6px_rgba(217,155,56,0.8)]" />
+            <h3 className="min-w-0 font-display text-lg font-bold text-navy sm:text-xl tracking-tight">{title}</h3>
+          </div>
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="shrink-0 rounded-lg border border-border p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-navy"
+            className="shrink-0 rounded-xl border border-slate-200 bg-slate-50 p-2 text-navy-700 transition-all hover:border-gold hover:bg-gold/10 hover:text-gold shadow-2xs"
           >
             <Icon name="close" className="h-4 w-4" />
           </button>
@@ -65,11 +68,11 @@ export function ConfirmDialog({ open, onClose, onConfirm, title = "Confirm delet
     <Modal open={open} onClose={onClose} title={title} maxWidth="max-w-md">
       <p className="text-sm text-muted-foreground">{message}</p>
       <div className="mt-6 flex flex-wrap justify-end gap-2">
-        <button className="btn-base btn-ghost-navy" onClick={onClose}>
+        <button className="btn-base btn-ghost-navy text-xs font-semibold px-4 py-2" onClick={onClose}>
           Cancel
         </button>
         <button
-          className="btn-base bg-destructive text-destructive-foreground hover:brightness-110"
+          className="btn-base bg-destructive text-destructive-foreground hover:brightness-110 text-xs font-bold px-4 py-2 rounded-xl shadow-md"
           onClick={() => {
             onConfirm();
             onClose();

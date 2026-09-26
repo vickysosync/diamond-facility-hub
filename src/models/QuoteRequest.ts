@@ -95,7 +95,6 @@ const QuoteRequestSchema = new Schema<IQuoteRequest>(
   }
 );
 
-QuoteRequestSchema.index({ quoteId: 1 });
 QuoteRequestSchema.index({ status: 1 });
 QuoteRequestSchema.index({ createdAt: -1 });
 

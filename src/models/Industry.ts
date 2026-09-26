@@ -71,7 +71,6 @@ const IndustrySchema = new Schema<IIndustry>(
   }
 );
 
-IndustrySchema.index({ slug: 1 });
 IndustrySchema.index({ status: 1 });
 
 export const Industry: Model<IIndustry> =

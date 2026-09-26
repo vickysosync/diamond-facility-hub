@@ -69,7 +69,6 @@ const EnquirySchema = new Schema<IEnquiry>(
   }
 );
 
-EnquirySchema.index({ enquiryId: 1 });
 EnquirySchema.index({ status: 1 });
 EnquirySchema.index({ createdAt: -1 });
 

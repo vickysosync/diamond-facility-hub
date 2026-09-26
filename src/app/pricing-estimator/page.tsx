@@ -27,9 +27,10 @@ export default function PricingEstimatorPage() {
   return (
     <SiteLayout>
       <PageHeader
-        eyebrow="Pricing Estimator"
-        title="Estimate Your Facility Service Cost"
-        subtitle="Select your required services and facility size to get an instant estimated cost breakdown."
+        eyebrow="Instant Commercial Estimator"
+        title="Estimate Your Facility Service Cost in Seconds"
+        highlightedTitle="Facility Service Cost"
+        subtitle="Select your required service divisions and facility square footage to calculate an immediate transparent pricing breakdown."
       />
 
       <section className="section-y">
