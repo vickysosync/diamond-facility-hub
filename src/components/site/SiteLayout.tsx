@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useMemo, useState, ReactNode } 
 import Header from "./Header";
 import Footer from "./Footer";
 import QuoteModal from "./QuoteModal";
+import WhatsAppButton from "./WhatsAppButton";
 
 interface QuoteContextType {
   openQuote: (data?: any) => void;
@@ -33,6 +34,7 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
         <Header onQuote={() => openQuote()} />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </div>
       <QuoteModal key={open ? "open" : "closed"} open={open} onClose={() => setOpen(false)} prefill={prefill} />
     </QuoteContext.Provider>
