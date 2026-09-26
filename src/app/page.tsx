@@ -27,9 +27,9 @@ function AboutBlock() {
         <InView direction="up">
           <div>
             {/* 3D Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-gold shadow-xs backdrop-blur-xs">
-              <span className="h-2 w-2 rounded-full bg-gold animate-pulse shadow-[0_0_6px_rgba(217,155,56,0.8)]" />
-              <span>About Diamond Integrated Facility Services</span>
+            <div className="inline-flex items-start sm:items-center gap-2 max-w-full rounded-xl sm:rounded-full border border-gold/40 bg-gold/10 px-3 py-1 sm:px-3.5 sm:py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-[0.16em] text-gold shadow-xs backdrop-blur-xs">
+              <span className="h-2 w-2 rounded-full bg-gold animate-pulse shadow-[0_0_6px_rgba(217,155,56,0.8)] shrink-0 mt-0.5 sm:mt-0" />
+              <span className="break-words">About Diamond Integrated Facility Services</span>
             </div>
 
             <h2 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight">
@@ -72,7 +72,7 @@ function AboutBlock() {
             <div className="mt-8">
               <Link
                 href="/about"
-                className="btn-base btn-live-navy text-xs sm:text-sm font-bold px-6 py-3.5 inline-flex items-center gap-2 group rounded-xl shadow-md"
+                className="btn-base btn-live-navy text-xs sm:text-sm font-bold px-6 py-3.5 inline-flex items-center justify-center gap-2 group rounded-xl shadow-md w-full sm:w-auto"
               >
                 {/* Specular live shimmer sweep */}
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none animate-[shimmer-sweep_4s_infinite]" />
@@ -89,36 +89,36 @@ function AboutBlock() {
 
         {/* Right Column: 3D Floating Image & Glass Highlights Card */}
         <InView direction="up" delay={150}>
-          <div className="relative group">
+          <div className="relative group pb-4 sm:pb-6 lg:pb-0">
             {/* Main 3D Framed Image */}
-            <div className="relative overflow-hidden rounded-3xl border border-gold/30 bg-navy shadow-[0_25px_50px_-12px_rgba(15,24,36,0.3)] transition-all duration-500 group-hover:border-gold/60 group-hover:shadow-[0_30px_60px_-15px_rgba(217,155,56,0.35)]">
+            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-[0_25px_50px_-12px_rgba(15,24,36,0.3)] transition-all duration-500 group-hover:border-gold/60 group-hover:shadow-[0_30px_60px_-15px_rgba(217,155,56,0.35)]">
               <img
                 src="/images/facility.jpg"
                 alt="Integrated facility management team supporting a corporate property in Pune"
                 loading="lazy"
-                className="h-80 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-[27rem]"
+                className="h-72 w-full object-cover sm:h-96 md:h-[26rem] lg:h-[28rem] transition-transform duration-700 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
 
               {/* Top-Right 3D Floating Verified Badge */}
-              <div className="absolute top-4 right-4 rounded-full border border-gold/50 bg-[#0a1019]/80 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-gold shadow-lg backdrop-blur-md flex items-center gap-2">
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 rounded-full border border-gold/50 bg-[#0a1019]/85 px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[9.5px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-wider text-gold shadow-lg backdrop-blur-md flex items-center gap-1.5 sm:gap-2">
                 <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
                 <span>Verified & Compliant</span>
               </div>
             </div>
 
-            {/* 3D Floating Glassmorphic Corporate Highlights Card */}
-            <div className="absolute -bottom-6 left-4 right-4 sm:left-8 sm:right-8 rounded-2xl border border-gold/50 bg-[#0a1019]/90 p-5 text-white shadow-[0_20px_45px_rgba(0,0,0,0.55)] backdrop-blur-xl transition-all duration-300 hover:border-gold hover:-translate-y-1 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold before:to-transparent">
-              <p className="text-[11px] uppercase tracking-[0.18em] text-gold font-extrabold">Corporate Highlights</p>
-              <div className="mt-3 grid grid-cols-3 gap-3 text-center divide-x divide-white/10">
+            {/* 3D Floating Glassmorphic Corporate Highlights Card (Responsive: Relative overlap on mobile, Absolute on desktop) */}
+            <div className="relative -mt-12 mx-2.5 sm:mx-6 lg:absolute lg:-bottom-6 lg:left-6 lg:right-6 lg:mx-0 lg:mt-0 z-10 rounded-2xl border border-gold/50 bg-[#0a1019]/95 p-3.5 sm:p-5 text-white shadow-[0_20px_45px_rgba(0,0,0,0.55)] backdrop-blur-xl transition-all duration-300 hover:border-gold hover:-translate-y-1 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold before:to-transparent">
+              <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-gold font-extrabold text-center sm:text-left">Corporate Highlights</p>
+              <div className="mt-2.5 sm:mt-3 grid grid-cols-3 gap-1 sm:gap-3 text-center divide-x divide-white/10">
                 {[
                   ["Full Scope", "Service Lines"],
                   ["Pune & PCMC", "Headquartered"],
                   ["Umesh Patil", "Managing Director"],
                 ].map(([v, l]) => (
                   <div key={l} className="px-1">
-                    <p className="font-display text-xs sm:text-base font-extrabold text-gold tracking-tight">{v}</p>
-                    <p className="text-[10px] sm:text-xs font-medium text-slate-300 mt-0.5">{l}</p>
+                    <p className="font-display text-xs sm:text-sm md:text-base font-extrabold text-gold tracking-tight">{v}</p>
+                    <p className="text-[9px] sm:text-xs font-medium text-slate-300 mt-0.5 leading-tight">{l}</p>
                   </div>
                 ))}
               </div>

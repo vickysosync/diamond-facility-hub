@@ -166,7 +166,7 @@ export default function HeroSlider() {
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative isolate min-h-[640px] lg:min-h-[720px] xl:min-h-[760px] overflow-hidden bg-[#0a1019] select-none"
+      className="relative isolate min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] xl:min-h-[760px] overflow-hidden bg-[#0a1019] select-none"
     >
       {/* Top Gold Continuous Progress Bar */}
       <div className="absolute top-0 left-0 right-0 z-30 h-1 bg-white/10 backdrop-blur-xs">
@@ -177,7 +177,7 @@ export default function HeroSlider() {
       </div>
 
       {/* Layer 0: Multi-Slide Backgrounds with Ken Burns Slow Zoom & Crossfade */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {heroSlides.map((slide, idx) => {
           const isActive = idx === current;
           return (
@@ -185,14 +185,14 @@ export default function HeroSlider() {
               key={slide.id}
               aria-hidden={!isActive}
               className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                isActive ? "opacity-100 z-10" : "opacity-0 z-0"
               }`}
             >
               <img
                 src={slide.image}
                 alt={slide.title}
-                className={`h-full w-full object-cover object-right md:object-center transition-transform duration-[6500ms] ease-out ${
-                  isActive ? "scale-106 translate-x-1" : "scale-100 translate-x-0"
+                className={`h-full w-full object-cover object-[center_20%] sm:object-center transition-transform duration-[6500ms] ease-out ${
+                  isActive ? "scale-105 sm:scale-106" : "scale-100"
                 }`}
                 loading={idx === 0 ? "eager" : "lazy"}
               />
@@ -204,28 +204,31 @@ export default function HeroSlider() {
         })}
       </div>
 
-      {/* Layer 1: Multi-Stop Dark Slate/Navy Gradient Overlays for 100% Typography Contrast */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-[#0a1019] via-[#0f1824]/90 via-50% to-[#0f1824]/30" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-[#0a1019] via-[#0a1019]/60 via-30% to-transparent" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_top_left,rgba(217,155,56,0.12),transparent_60%)]" />
+      {/* Layer 1: Adaptive Gradients (Top clear on mobile, dark on text side) */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-[#0a1019] via-[#0a1019]/70 via-55% to-transparent sm:bg-gradient-to-r sm:from-[#0a1019] sm:via-[#0f1824]/85 sm:to-transparent" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-[#0a1019]/40 via-transparent to-transparent sm:from-[#0a1019]/20" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_top_left,rgba(217,155,56,0.15),transparent_60%)]" />
 
       {/* Layer 2: Foreground Content */}
-      <div className="container-x relative z-20 flex flex-col justify-between pt-20 pb-12 lg:pt-28 lg:pb-16 min-h-[640px] lg:min-h-[720px] xl:min-h-[760px]">
+      <div className="container-x relative z-20 flex flex-col justify-between pt-14 pb-8 sm:pt-20 sm:pb-12 lg:pt-28 lg:pb-16 min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] xl:min-h-[760px]">
         {/* Main Content Area */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl pt-2 sm:pt-0">
           {/* Glass Pill Badge */}
           <div
             key={`badge-${current}`}
-            className="animate-in fade-in slide-in-from-bottom-3 duration-500 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-gold shadow-[0_4px_20px_rgba(217,155,56,0.25)] backdrop-blur-md"
+            className="animate-in fade-in slide-in-from-bottom-3 duration-500 inline-flex items-start sm:items-center gap-2 max-w-full rounded-xl sm:rounded-full border border-gold/50 bg-navy/80 px-3 py-1 sm:px-4 sm:py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-[0.16em] text-amber-300 shadow-[0_4px_20px_rgba(217,155,56,0.25)] backdrop-blur-md"
           >
-            <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-            <span>{activeSlide.badge}</span>
+            <span className="relative flex h-2 w-2 shrink-0 mt-1 sm:mt-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
+            </span>
+            <span className="break-words leading-relaxed sm:leading-normal">{activeSlide.badge}</span>
           </div>
 
           {/* Animated Headline */}
           <h1
             key={`title-${current}`}
-            className="animate-in fade-in slide-in-from-bottom-4 duration-600 mt-5 font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] text-white tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.8)]"
+            className="animate-in fade-in slide-in-from-bottom-4 duration-600 mt-3 sm:mt-5 font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.16] sm:leading-[1.12] text-white tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.8)]"
           >
             {activeSlide.title}{" "}
             <span className="bg-gradient-to-r from-gold-light via-gold to-brand-accent bg-clip-text text-transparent drop-shadow-sm">
@@ -236,7 +239,7 @@ export default function HeroSlider() {
           {/* Animated Description */}
           <p
             key={`desc-${current}`}
-            className="animate-in fade-in slide-in-from-bottom-5 duration-700 mt-5 max-w-2xl text-sm sm:text-base lg:text-lg leading-relaxed text-slate-200 font-medium drop-shadow-[0_1px_8px_rgba(0,0,0,0.7)]"
+            className="animate-in fade-in slide-in-from-bottom-5 duration-700 mt-2.5 sm:mt-5 max-w-2xl text-xs sm:text-base lg:text-lg leading-relaxed text-slate-100 font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.7)] line-clamp-3 sm:line-clamp-none"
           >
             {activeSlide.description}
           </p>
@@ -244,7 +247,7 @@ export default function HeroSlider() {
           {/* Action Buttons with Live Animations & Glowing Effects */}
           <div
             key={`btns-${current}`}
-            className="animate-in fade-in slide-in-from-bottom-6 duration-700 mt-8 flex flex-wrap items-center gap-3.5"
+            className="animate-in fade-in slide-in-from-bottom-6 duration-700 mt-5 sm:mt-8 flex flex-wrap items-center gap-2.5 sm:gap-3.5"
           >
             <button
               onClick={() =>
@@ -254,7 +257,7 @@ export default function HeroSlider() {
                     : undefined
                 )
               }
-              className="btn-base btn-live-gold font-bold text-sm px-6 py-3.5 flex items-center gap-2.5 group rounded-xl"
+              className="btn-base btn-live-gold font-bold text-xs sm:text-sm px-4.5 py-2.5 sm:px-6 sm:py-3.5 flex items-center gap-2 group rounded-xl shadow-lg"
             >
               {/* Continuous live specular shimmer ray sweep */}
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none animate-[shimmer-sweep_3.5s_infinite]" />
@@ -262,28 +265,25 @@ export default function HeroSlider() {
               <span className="relative z-10 drop-shadow-sm">{activeSlide.primaryCtaText}</span>
               <Icon
                 name="arrow"
-                className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5"
+                className="relative z-10 h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform duration-300 group-hover:translate-x-1.5"
               />
             </button>
 
             <Link
               href={activeSlide.secondaryCtaLink}
-              className="btn-base btn-live-glass text-sm px-5 py-3.5 font-semibold rounded-xl group flex items-center gap-2"
+              className="btn-base btn-live-glass text-xs sm:text-sm px-4 py-2.5 sm:px-5 sm:py-3.5 font-semibold rounded-xl group flex items-center gap-2 shadow-md"
             >
-              {/* Subtle hover shimmer */}
-              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none" />
-
               <span className="relative z-10">{activeSlide.secondaryCtaText}</span>
             </Link>
           </div>
         </div>
 
         {/* Bottom Section: Stat Metric Cards & Interactive Controls */}
-        <div className="mt-12 lg:mt-16 space-y-6">
+        <div className="mt-8 sm:mt-12 lg:mt-16 space-y-4 sm:space-y-6">
           {/* Interactive Carousel Navigation Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
+          <div className="flex items-center justify-between gap-4 pt-3 sm:pt-4 border-t border-white/10">
             {/* Pill Pagination Indicators */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               {heroSlides.map((slide, index) => {
                 const isActive = index === current;
                 return (
@@ -291,10 +291,10 @@ export default function HeroSlider() {
                     key={slide.id}
                     onClick={() => goToSlide(index)}
                     aria-label={`Go to slide ${index + 1}: ${slide.title}`}
-                    className={`h-2.5 rounded-full transition-all duration-500 ease-out cursor-pointer ${
+                    className={`h-2 sm:h-2.5 rounded-full transition-all duration-500 ease-out cursor-pointer ${
                       isActive
-                        ? "w-10 bg-gradient-to-r from-gold-light via-gold to-brand-accent shadow-[0_0_12px_rgba(217,155,56,0.7)]"
-                        : "w-2.5 bg-white/30 hover:bg-white/60 hover:w-5"
+                        ? "w-8 sm:w-10 bg-gradient-to-r from-gold-light via-gold to-brand-accent shadow-[0_0_12px_rgba(217,155,56,0.7)]"
+                        : "w-2 sm:w-2.5 bg-white/30 hover:bg-white/60 hover:w-4"
                     }`}
                   />
                 );
@@ -302,14 +302,14 @@ export default function HeroSlider() {
             </div>
 
             {/* Next / Previous Frosted Glass Buttons */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <button
                 onClick={prevSlide}
                 aria-label="Previous slide"
-                className="h-9 w-9 rounded-full bg-white/10 hover:bg-gold/20 border border-white/20 hover:border-gold/60 text-white hover:text-gold flex items-center justify-center backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 shadow-md"
+                className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white/10 hover:bg-gold/20 border border-white/20 hover:border-gold/60 text-white hover:text-gold flex items-center justify-center backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 shadow-md"
               >
                 <svg
-                  className="h-4 w-4"
+                  className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -322,10 +322,10 @@ export default function HeroSlider() {
               <button
                 onClick={nextSlide}
                 aria-label="Next slide"
-                className="h-9 w-9 rounded-full bg-white/10 hover:bg-gold/20 border border-white/20 hover:border-gold/60 text-white hover:text-gold flex items-center justify-center backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 shadow-md"
+                className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white/10 hover:bg-gold/20 border border-white/20 hover:border-gold/60 text-white hover:text-gold flex items-center justify-center backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 shadow-md"
               >
                 <svg
-                  className="h-4 w-4"
+                  className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -337,21 +337,21 @@ export default function HeroSlider() {
             </div>
           </div>
 
-          {/* 4 Stat Metric Cards with Live Gold Top Line & Hover Sheen */}
-          <dl className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+          {/* 4 Stat Metric Cards with Live Gold Top Line & Hover Sheen (2x2 on mobile, 4-col on desktop) */}
+          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
             {stats.map((s, i) => (
               <div
                 key={s.label}
                 style={{ animationDelay: `${i * 80}ms` }}
-                className="group relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.07] p-4 sm:p-5 backdrop-blur-md duration-300 transition-all hover:border-gold/60 hover:bg-white/[0.12] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.55)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/40 before:to-transparent hover:before:via-gold"
+                className="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/15 bg-white/[0.07] p-3 sm:p-5 backdrop-blur-md duration-300 transition-all hover:border-gold/60 hover:bg-white/[0.12] hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.55)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/40 before:to-transparent hover:before:via-gold"
               >
                 {/* Specular Highlight Sheen on Hover */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none" />
 
-                <dt className="font-display text-2xl sm:text-3xl font-extrabold text-gold tracking-tight group-hover:text-gold-light group-hover:scale-105 transition-all duration-300">
+                <dt className="font-display text-lg sm:text-2xl lg:text-3xl font-extrabold text-gold tracking-tight group-hover:text-gold-light group-hover:scale-105 transition-all duration-300">
                   {s.value}
                 </dt>
-                <dd className="mt-1.5 text-xs font-semibold uppercase tracking-wider text-slate-200 group-hover:text-white transition-colors duration-200">
+                <dd className="mt-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-200 group-hover:text-white transition-colors duration-200 line-clamp-2">
                   {s.label}
                 </dd>
               </div>

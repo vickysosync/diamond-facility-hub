@@ -180,17 +180,17 @@ export function HowItWorks() {
           subtitle="From site survey to ongoing SLA governance in four clear steps."
           center
         />
-        <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-8 sm:mt-12 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((s) => (
             <li key={s.no} className="card-border-beam group list-none">
-              <div className="card-border-beam-inner p-6">
+              <div className="card-border-beam-inner p-5 sm:p-6">
                 <div className="flex items-center justify-between">
-                  <span className="font-display text-3xl sm:text-4xl font-extrabold text-gold/30 group-hover:text-gold/70 transition-colors">
+                  <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gold/30 group-hover:text-gold/70 transition-colors">
                     {s.no}
                   </span>
                   <span className="h-2.5 w-2.5 rounded-full bg-gold/40 group-hover:bg-gold group-hover:shadow-[0_0_8px_rgba(217,155,56,0.8)] transition-all" />
                 </div>
-                <h3 className="mt-3 text-base font-bold text-navy group-hover:text-navy-800">{s.title}</h3>
+                <h3 className="mt-3 text-sm sm:text-base font-bold text-navy group-hover:text-navy-800">{s.title}</h3>
                 <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">{s.text}</p>
               </div>
             </li>
@@ -385,16 +385,16 @@ export function IndustriesGrid({ limit }: IndustriesGridProps = {}) {
   };
 
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+    <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {list.map((ind) => {
         const imgSrc = getIndustryImage(ind);
         const services = ind.servicesOffered || ind.serviceNames || [];
 
         return (
           <div key={ind._id || ind.id} className="card-border-beam group">
-            <div className="card-border-beam-inner">
+            <div className="card-border-beam-inner flex flex-col justify-between h-full">
               <div>
-                <div className="relative h-36 w-full overflow-hidden bg-navy/5 border-b border-border/60">
+                <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-navy/5 border-b border-border/60">
                   <img
                     src={imgSrc}
                     alt={ind.name}
@@ -411,8 +411,8 @@ export function IndustriesGrid({ limit }: IndustriesGridProps = {}) {
                   </span>
                 </div>
 
-                <div className="p-4">
-                  <h3 className="text-sm font-bold text-navy group-hover:text-gold transition-colors">
+                <div className="p-4 sm:p-4.5">
+                  <h3 className="font-display text-sm sm:text-base font-bold text-navy group-hover:text-gold transition-colors">
                     {ind.name}
                   </h3>
                   <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground line-clamp-3">
@@ -422,16 +422,16 @@ export function IndustriesGrid({ limit }: IndustriesGridProps = {}) {
               </div>
 
               {services.length > 0 ? (
-                <div className="p-4 pt-0">
+                <div className="p-4 sm:p-4.5 pt-0">
                   <div className="pt-2.5 border-t border-slate-100 flex flex-wrap gap-1">
-                    {services.slice(0, 2).map((s: string) => (
-                      <span key={s} className="text-[9px] px-1.5 py-0.5 rounded bg-mist font-medium text-navy border border-slate-200/60">
+                    {services.slice(0, 3).map((s: string) => (
+                      <span key={s} className="text-[9.5px] px-1.5 py-0.5 rounded bg-mist font-medium text-navy border border-slate-200/60">
                         {s}
                       </span>
                     ))}
-                    {services.length > 2 && (
-                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-gold/10 text-gold font-bold border border-gold/20">
-                        +{services.length - 2}
+                    {services.length > 3 && (
+                      <span className="text-[9.5px] px-1.5 py-0.5 rounded bg-gold/10 text-gold font-bold border border-gold/20">
+                        +{services.length - 3}
                       </span>
                     )}
                   </div>

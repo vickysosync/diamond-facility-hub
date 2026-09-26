@@ -98,18 +98,18 @@ export function PageHeader({
   };
 
   return (
-    <section className="group relative overflow-hidden bg-navy isolate border-b border-gold/30 min-h-[340px] sm:min-h-[390px] lg:min-h-[430px] flex items-center before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/50 before:to-transparent before:z-20 after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-gold/25 after:to-transparent after:z-20">
-      {/* Background Image Layer (Full-Bleed, High Visibility) */}
+    <section className="group relative overflow-hidden bg-navy isolate border-b border-gold/30 min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] flex items-center before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/50 before:to-transparent before:z-20 after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-gold/25 after:to-transparent after:z-20">
+      {/* Background Image Layer (Full-Bleed, Responsive Staging) */}
       {image ? (
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <img
             src={image}
             alt={imageAlt || title}
-            className="h-full w-full object-cover object-center transform scale-100 transition-transform duration-1000 ease-out group-hover:scale-105"
+            className="h-full w-full object-cover object-[center_20%] sm:object-center transform scale-100 transition-transform duration-1000 ease-out group-hover:scale-105"
             loading="eager"
           />
-          {/* Soft directional gradient: dark on left for text legibility, clear and visible on the right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/50 via-40% to-transparent" />
+          {/* Adaptive directional gradient: bottom vignette on mobile for clear top visual, left fade on desktop */}
+          <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/60 via-50% to-transparent sm:bg-gradient-to-r sm:from-navy/90 sm:via-navy/50 sm:via-40% sm:to-transparent" />
           {/* Gentle vertical top/bottom blend */}
           <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/40" />
         </div>
@@ -119,40 +119,40 @@ export function PageHeader({
         </div>
       )}
 
-      {/* Foreground Content Layer (Clean, Spacious & Minimal) */}
-      <div className="container-x relative z-10 w-full py-14 sm:py-18 lg:py-20">
+      {/* Foreground Content Layer (Clean, Spacious & Responsive) */}
+      <div className="container-x relative z-10 w-full py-10 sm:py-16 lg:py-20">
         <div className="max-w-3xl flex flex-col items-start">
           {/* Eyebrow Pill */}
           {eyebrow && (
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-navy/80 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-amber-300 shadow-md backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
+            <div className="inline-flex items-start sm:items-center gap-2 max-w-full rounded-xl sm:rounded-full border border-gold/40 bg-navy/80 px-3 py-1 sm:px-3.5 sm:py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-[0.18em] text-amber-300 shadow-md backdrop-blur-md">
+              <span className="relative flex h-2 w-2 shrink-0 mt-1 sm:mt-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-gold shadow-[0_0_8px_rgba(217,155,56,0.9)]" />
               </span>
-              <span>{eyebrow}</span>
+              <span className="break-words leading-relaxed sm:leading-normal">{eyebrow}</span>
             </div>
           )}
 
           {/* 3D Display Title */}
-          <h1 className="mt-3.5 font-display text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl xl:text-[3.15rem] tracking-tight leading-[1.16] drop-shadow-lg">
+          <h1 className="mt-2.5 sm:mt-3.5 font-display text-2xl sm:text-4xl lg:text-5xl xl:text-[3.15rem] font-extrabold text-white tracking-tight leading-[1.18] sm:leading-[1.16] drop-shadow-lg">
             {renderTitle()}
           </h1>
 
           {/* Subtitle */}
           {subtitle && (
-            <p className="mt-3.5 max-w-2xl text-sm leading-relaxed text-slate-100 sm:text-base lg:text-[1.05rem] font-normal drop-shadow-md">
+            <p className="mt-2.5 sm:mt-3.5 max-w-2xl text-xs sm:text-base lg:text-[1.05rem] leading-relaxed text-slate-100 font-normal drop-shadow-md">
               {subtitle}
             </p>
           )}
 
           {/* Compact Action Buttons Row */}
           {(ctaText || secondaryCtaText) && (
-            <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-3 sm:gap-3.5">
+            <div className="mt-5 sm:mt-7 flex flex-wrap items-center gap-2.5 sm:gap-3.5">
               {ctaText && (
                 ctaLink ? (
                   <Link
                     href={ctaLink}
-                    className="btn-base btn-live-gold px-4.5 py-2 sm:py-2.5 text-xs font-bold tracking-wider uppercase rounded-lg shadow-lg shadow-gold/25"
+                    className="btn-base btn-live-gold px-4 py-2 sm:px-4.5 sm:py-2.5 text-xs font-bold tracking-wider uppercase rounded-lg shadow-lg shadow-gold/25"
                   >
                     <span>{ctaText}</span>
                     <Icon name="arrow" className="h-3.5 w-3.5" />
@@ -161,7 +161,7 @@ export function PageHeader({
                   <button
                     type="button"
                     onClick={ctaAction || (() => openQuote())}
-                    className="btn-base btn-live-gold px-4.5 py-2 sm:py-2.5 text-xs font-bold tracking-wider uppercase rounded-lg shadow-lg shadow-gold/25"
+                    className="btn-base btn-live-gold px-4 py-2 sm:px-4.5 sm:py-2.5 text-xs font-bold tracking-wider uppercase rounded-lg shadow-lg shadow-gold/25"
                   >
                     <span>{ctaText}</span>
                     <Icon name="arrow" className="h-3.5 w-3.5" />
@@ -173,7 +173,7 @@ export function PageHeader({
                 secondaryCtaLink ? (
                   <Link
                     href={secondaryCtaLink}
-                    className="btn-base btn-live-glass px-4.5 py-2 sm:py-2.5 text-xs font-semibold tracking-wide rounded-lg shadow-md"
+                    className="btn-base btn-live-glass px-4 py-2 sm:px-4.5 sm:py-2.5 text-xs font-semibold tracking-wide rounded-lg shadow-md"
                   >
                     <span>{secondaryCtaText}</span>
                   </Link>
@@ -181,7 +181,7 @@ export function PageHeader({
                   <button
                     type="button"
                     onClick={secondaryCtaAction || (() => openQuote())}
-                    className="btn-base btn-live-glass px-4.5 py-2 sm:py-2.5 text-xs font-semibold tracking-wide rounded-lg shadow-md"
+                    className="btn-base btn-live-glass px-4 py-2 sm:px-4.5 sm:py-2.5 text-xs font-semibold tracking-wide rounded-lg shadow-md"
                   >
                     <span>{secondaryCtaText}</span>
                   </button>
