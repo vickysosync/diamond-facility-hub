@@ -5,7 +5,6 @@ import Link from "next/link";
 import SiteLayout, { PageHeader, useQuote } from "@/components/site/SiteLayout";
 import Icon from "@/components/ui/Icon";
 import InView from "@/components/ui/InView";
-import { formatINR } from "@/data/mock";
 import { CTABanner, HowItWorks } from "@/components/site/Sections";
 
 function ServiceNotFound() {
@@ -156,11 +155,11 @@ export default function ServiceDetailPage({
                 </div>
 
                 <div className="mt-3 pt-3 border-t border-white/10">
-                  <p className="text-xs text-slate-300">Starting From</p>
+                  <p className="text-xs text-slate-300">Commercial Scope</p>
                   <p className="font-display text-2xl sm:text-3xl font-extrabold text-gold tracking-tight mt-0.5">
-                    {category.startingPrice ? formatINR(category.startingPrice) : "Custom Assessment"}
+                    Custom Assessment
                   </p>
-                  <p className="text-[11px] text-slate-300 mt-1">{category.priceNote || "per site contract"}</p>
+                  <p className="text-[11px] text-slate-300 mt-1">Tailored to site requirements & SLA</p>
                 </div>
 
                 <button

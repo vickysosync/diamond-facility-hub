@@ -112,6 +112,237 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Vision, Mission, Values & Strengths (Alternating 2-Column Layout matching Reference) */}
+      <section className="section-y bg-slate-50/70 relative overflow-hidden border-y border-slate-100">
+        <div className="container-x space-y-16 sm:space-y-20 lg:space-y-28">
+          
+          {/* 1. Vision: Image Left, Content Right */}
+          <InView direction="up">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+              <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-xl group">
+                <img
+                  src="/images/about/vision.jpg"
+                  alt="Diamond Integrated Facility Services Vision for India"
+                  loading="lazy"
+                  className="h-64 sm:h-80 lg:h-96 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 rounded-xl border border-gold/40 bg-navy/85 px-3.5 py-1.5 text-xs font-bold text-gold backdrop-blur-md">
+                  Pan-India IFMS Vision
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold">
+                  <span className="h-1.5 w-6 rounded-full bg-gold" />
+                  Our Future Roadmap
+                </div>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight">
+                  Vision
+                </h2>
+                <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
+                  To emerge as India’s fastest-growing and leading Integrated Facility Management Services (IFMS) company, becoming the most preferred partner for our valued customers by securing, managing, and maintaining their critical assets through customized, sustainable solutions powered by world-class technology, quality-driven processes, and convenient infrastructure management services.
+                </p>
+                <div className="pt-2 flex flex-wrap gap-2 sm:gap-3">
+                  {["Technology-Driven Operations", "Quality-Driven Processes", "Sustainable Infrastructure"].map((tag) => (
+                    <span key={tag} className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-navy shadow-2xs">
+                      <Icon name="check" className="h-3.5 w-3.5 text-emerald-600" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </InView>
+
+          {/* 2. Mission: Content Left, Image Right */}
+          <InView direction="up">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+              <div className="space-y-4 order-2 lg:order-1">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold">
+                  <span className="h-1.5 w-6 rounded-full bg-gold" />
+                  Our Daily Purpose
+                </div>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight">
+                  Mission
+                </h2>
+                <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
+                  To deliver tailored, innovative, and sustainable facility management solutions that protect and optimize our clients’ assets across Pune, PCMC, and Maharashtra, leveraging advanced technology and a commitment to quality, environmental stewardship, and operational excellence for seamless, efficient, and eco-friendly service delivery.
+                </p>
+                <div className="pt-2 flex flex-wrap gap-2 sm:gap-3">
+                  {["Operational Excellence", "100% Asset Protection", "Eco-Friendly Delivery"].map((tag) => (
+                    <span key={tag} className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-navy shadow-2xs">
+                      <Icon name="check" className="h-3.5 w-3.5 text-emerald-600" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-xl group order-1 lg:order-2">
+                <img
+                  src="/images/about/mission.jpg"
+                  alt="Diamond Integrated Facility Services Mission Execution"
+                  loading="lazy"
+                  className="h-64 sm:h-80 lg:h-96 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+                <div className="absolute bottom-4 right-4 rounded-xl border border-gold/40 bg-navy/85 px-3.5 py-1.5 text-xs font-bold text-gold backdrop-blur-md">
+                  Operational Accountability
+                </div>
+              </div>
+            </div>
+          </InView>
+
+          {/* 3. Our Values: Image Left, Content Right */}
+          <InView direction="up">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+              <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-xl group">
+                <img
+                  src="/images/about/values.jpg"
+                  alt="Diamond Integrated Facility Services Team and Values"
+                  loading="lazy"
+                  className="h-64 sm:h-80 lg:h-96 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 rounded-xl border border-gold/40 bg-navy/85 px-3.5 py-1.5 text-xs font-bold text-gold backdrop-blur-md">
+                  Client-Centric Integrity
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold">
+                  <span className="h-1.5 w-6 rounded-full bg-gold" />
+                  Guiding Principles
+                </div>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight">
+                  Our Values
+                </h2>
+                <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
+                  The foundational principles that guide our personnel across every deployment, audit, and facility across India.
+                </p>
+
+                <div className="pt-2 grid gap-3 sm:grid-cols-2">
+                  {[
+                    {
+                      title: "Integrity & Trust",
+                      desc: "100% transparent statutory records, honest billing, and uncompromised ethical standards.",
+                      icon: "shield",
+                    },
+                    {
+                      title: "Customer Centricity",
+                      desc: "Customizing solutions around unique property needs with direct responsiveness.",
+                      icon: "users",
+                    },
+                    {
+                      title: "Safety & Compliance",
+                      desc: "Strict adherence to Indian labor laws (ESIC, EPFO, PSARA) and safety SOPs.",
+                      icon: "check",
+                    },
+                    {
+                      title: "Excellence & Innovation",
+                      desc: "Modern mechanized equipment, digital QR checklists, and sustainable green chemicals.",
+                      icon: "sparkles",
+                    },
+                  ].map((val) => (
+                    <div key={val.title} className="rounded-xl border border-slate-200/85 bg-white p-3.5 shadow-2xs hover:border-gold/50 transition-colors">
+                      <div className="flex items-center gap-2">
+                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gold/15 text-gold border border-gold/30">
+                          <Icon name={val.icon} className="h-3.5 w-3.5" />
+                        </span>
+                        <h4 className="text-xs sm:text-sm font-bold text-navy">{val.title}</h4>
+                      </div>
+                      <p className="mt-2 text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                        {val.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </InView>
+
+          {/* 4. Core Strengths: Content Left, Image Right */}
+          <InView direction="up">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+              <div className="space-y-4 order-2 lg:order-1">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold">
+                  <span className="h-1.5 w-6 rounded-full bg-gold" />
+                  Why We Excel
+                </div>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight">
+                  Core Strengths
+                </h2>
+                <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
+                  Operational differentiators that make Diamond Integrated Facility Services the trusted choice for commercial and residential establishments across Pune and PCMC.
+                </p>
+
+                <div className="pt-2 grid gap-3 sm:grid-cols-2">
+                  {[
+                    {
+                      title: "100% Statutory Compliance",
+                      desc: "ESIC, EPFO, GST, Minimum Wages Act, and PSARA verified personnel.",
+                      icon: "shield",
+                    },
+                    {
+                      title: "Verified & Skilled Staff",
+                      desc: "Police verified, background checked, and structured SOP training.",
+                      icon: "users",
+                    },
+                    {
+                      title: "24/7 Command & QRT Response",
+                      desc: "Continuous control room oversight with mobile patrol supervisors.",
+                      icon: "headset",
+                    },
+                    {
+                      title: "Single Integrated Vendor",
+                      desc: "Unified facility account under one monthly invoice and dedicated SLA.",
+                      icon: "layers",
+                    },
+                    {
+                      title: "Digital Quality Inspection",
+                      desc: "QR-code verified patrol logging and real-time supervisor audits.",
+                      icon: "sparkles",
+                    },
+                    {
+                      title: "Local Maharashtra Footprint",
+                      desc: "Presence across Hinjewadi, Chakan, Talegaon, Bhosari, Kharadi & PCMC.",
+                      icon: "map-pin",
+                    },
+                  ].map((str) => (
+                    <div key={str.title} className="rounded-xl border border-slate-200/85 bg-white p-3.5 shadow-2xs hover:border-gold/50 transition-colors">
+                      <div className="flex items-center gap-2">
+                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gold/15 text-gold border border-gold/30">
+                          <Icon name={str.icon} className="h-3.5 w-3.5" />
+                        </span>
+                        <h4 className="text-xs sm:text-sm font-bold text-navy">{str.title}</h4>
+                      </div>
+                      <p className="mt-1.5 text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                        {str.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-xl group order-1 lg:order-2">
+                <img
+                  src="/images/about/strengths.jpg"
+                  alt="Diamond Integrated Facility Services 24/7 Command Center Operations"
+                  loading="lazy"
+                  className="h-64 sm:h-80 lg:h-96 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+                <div className="absolute bottom-4 right-4 rounded-xl border border-gold/40 bg-navy/85 px-3.5 py-1.5 text-xs font-bold text-gold backdrop-blur-md">
+                  24/7 Command & Control
+                </div>
+              </div>
+            </div>
+          </InView>
+
+        </div>
+      </section>
+
       {/* Leadership & Statutory Governance Trust Block */}
       <section className="section-y bg-gradient-to-b from-mist via-slate-50 to-mist relative overflow-hidden">
         <div className="container-x">

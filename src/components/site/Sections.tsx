@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 import { useApp } from "@/store/AppStore";
-import { formatINR, processSteps, whyChooseUs } from "@/data/mock";
+import { processSteps, whyChooseUs } from "@/data/mock";
 import { useQuote } from "./SiteLayout";
 
 export interface SectionTitleProps {
@@ -107,14 +107,11 @@ export function ServiceCard({ service }: ServiceCardProps) {
         </div>
 
         <div className="p-5 pt-0">
-          <div className="flex items-end justify-between border-t border-slate-100 pt-4">
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Starting from</p>
-              <p className="font-display text-lg sm:text-xl font-extrabold text-navy">
-                {formatINR(service.startingPrice)}
-              </p>
-              <p className="text-[10px] text-muted-foreground">{service.priceNote}</p>
-            </div>
+          <div className="flex items-center justify-between border-t border-slate-100 pt-4">
+            <span className="text-[11px] font-bold text-navy flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-gold" />
+              Custom Proposal
+            </span>
             <Link
               href={`/services/${service.slug}`}
               className="rounded-lg border border-slate-200 bg-slate-50/80 px-3 py-1.5 text-xs font-semibold text-navy transition-all hover:border-gold hover:bg-gold/10 hover:text-gold shadow-2xs"
