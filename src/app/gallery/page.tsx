@@ -64,7 +64,7 @@ export default function GalleryPage() {
         title="Field Operations & Service Delivery Gallery"
         highlightedTitle="Service Delivery Gallery"
         subtitle="Explore high-resolution visual documentation of our on-site security deployments, mechanized cleaning, water tank sanitization, civil painting, and integrated facility operations across Pune & PCMC."
-        image="/images/headers/gallery-header.png"
+        image="/images/headers/gallery-header.webp"
         imageAlt="Field Operations & Service Delivery Gallery in Pune and PCMC"
         ctaText="Request Site Audit"
         ctaAction={() => openQuote()}

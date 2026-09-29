@@ -67,7 +67,7 @@ export default function PortfolioPage() {
         title="Facility Operations Delivered Across Pune & Maharashtra"
         highlightedTitle="Facility Operations Delivered"
         subtitle="Explore our verified facility management contracts, security deployments, mechanized cleaning turnarounds, and preventative upkeep case studies."
-        image="/images/headers/portfolio-header.png"
+        image="/images/headers/portfolio-header.webp"
         imageAlt="Proven Facility Operations and Verified Case Studies Delivered Across Pune"
         ctaText="Discuss Your Facility"
         ctaAction={() => openQuote()}

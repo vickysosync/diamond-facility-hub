@@ -26,7 +26,7 @@ export const heroSlides: HeroSlideData[] = [
     highlightedTitle: "One Trusted Partner.",
     description:
       "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.",
-    image: "/images/hero/slide-security.png",
+    image: "/images/hero/slide-security.webp",
     serviceCategory: "Security Guard Services",
     primaryCtaText: "Get Free Instant Quote",
     secondaryCtaText: "Explore All Services",
@@ -39,7 +39,7 @@ export const heroSlides: HeroSlideData[] = [
     highlightedTitle: "Zero Compromise.",
     description:
       "Supervisor-monitored corporate housekeeping, daily office cleaning, mechanized floor scrubbing, and hospital-grade deep sanitization for IT parks and societies.",
-    image: "/images/hero/slide-housekeeping.png",
+    image: "/images/hero/slide-housekeeping.webp",
     serviceCategory: "Housekeeping Services",
     primaryCtaText: "Book Housekeeping Audit",
     secondaryCtaText: "View Housekeeping Scope",
@@ -52,7 +52,7 @@ export const heroSlides: HeroSlideData[] = [
     highlightedTitle: "Built Around Your Campus.",
     description:
       "End-to-end facility operations, multi-vendor coordination, residential society administration, and routine technical condition reporting.",
-    image: "/images/hero/slide-facility.png",
+    image: "/images/hero/slide-facility.webp",
     serviceCategory: "Facility Management Solutions",
     primaryCtaText: "Request Facility Proposal",
     secondaryCtaText: "Explore Property Scope",
@@ -65,7 +65,7 @@ export const heroSlides: HeroSlideData[] = [
     highlightedTitle: "Pure Hygiene & Green Care.",
     description:
       "6-stage mechanized cleaning for overhead and underground water storage tanks, accompanied by structured garden upkeep and landscape preservation.",
-    image: "/images/hero/slide-tank.png",
+    image: "/images/hero/slide-tank.webp",
     serviceCategory: "Tank Cleaning, Gardening and Landscaping etc.",
     primaryCtaText: "Schedule Tank Cleaning",
     secondaryCtaText: "See Sanitization Process",
@@ -78,7 +78,7 @@ export const heroSlides: HeroSlideData[] = [
     highlightedTitle: "Always Protected.",
     description:
       "Turnkey HD surveillance installation, round-the-clock control room monitoring, certified electrical, plumbing, painting, and terrace waterproofing.",
-    image: "/images/hero/slide-cctv.png",
+    image: "/images/hero/slide-cctv.webp",
     serviceCategory: "CCTV Installation and Maintenance",
     primaryCtaText: "Get Technical Estimate",
     secondaryCtaText: "View Technical Services",
@@ -161,127 +161,127 @@ export default function HeroSlider() {
   const activeSlide = heroSlides[current];
 
   return (
-    <section
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      className="relative isolate min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] xl:min-h-[760px] overflow-hidden bg-[#0a1019] select-none"
-    >
-      {/* Top Gold Continuous Progress Bar */}
-      <div className="absolute top-0 left-0 right-0 z-30 h-1 bg-white/10 backdrop-blur-xs">
-        <div
-          className="h-full bg-gradient-to-r from-gold-light via-gold to-brand-accent shadow-[0_0_12px_rgba(217,155,56,0.8)] transition-all duration-75 ease-linear"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-
-      {/* Layer 0: Multi-Slide Backgrounds with Ken Burns Slow Zoom & Crossfade */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {heroSlides.map((slide, idx) => {
-          const isActive = idx === current;
-          return (
-            <div
-              key={slide.id}
-              aria-hidden={!isActive}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isActive ? "opacity-100 z-10" : "opacity-0 z-0"
-              }`}
-            >
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className={`h-full w-full object-cover object-[center_20%] sm:object-center transition-transform duration-[6500ms] ease-out ${
-                  isActive ? "scale-105 sm:scale-106" : "scale-100"
-                }`}
-                loading={idx === 0 ? "eager" : "lazy"}
-              />
-
-              {/* Ambient Glow behind subject */}
-              <div className="absolute top-1/4 right-1/4 h-96 w-96 rounded-full bg-gold/10 blur-3xl pointer-events-none transition-opacity duration-1000" />
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Layer 1: Adaptive Gradients (Top clear on mobile, dark on text side) */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-[#0a1019] via-[#0a1019]/70 via-55% to-transparent sm:bg-gradient-to-r sm:from-[#0a1019] sm:via-[#0f1824]/85 sm:to-transparent" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-[#0a1019]/40 via-transparent to-transparent sm:from-[#0a1019]/20" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_top_left,rgba(217,155,56,0.15),transparent_60%)]" />
-
-      {/* Layer 2: Foreground Content */}
-      <div className="container-x relative z-20 flex flex-col justify-between pt-14 pb-8 sm:pt-20 sm:pb-12 lg:pt-28 lg:pb-16 min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] xl:min-h-[760px]">
-        {/* Main Content Area */}
-        <div className="max-w-3xl pt-2 sm:pt-0">
-          {/* Glass Pill Badge */}
+    <div className="relative select-none">
+      <section
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className="relative isolate min-h-[460px] xs:min-h-[500px] sm:min-h-[580px] lg:min-h-[640px] xl:min-h-[700px] overflow-hidden bg-[#0a1019]"
+      >
+        {/* Top Gold Continuous Progress Bar */}
+        <div className="absolute top-0 left-0 right-0 z-30 h-1 bg-white/10 backdrop-blur-xs">
           <div
-            key={`badge-${current}`}
-            className="animate-in fade-in slide-in-from-bottom-3 duration-500 inline-flex items-start sm:items-center gap-2 max-w-full rounded-xl sm:rounded-full border border-gold/50 bg-navy/80 px-3 py-1 sm:px-4 sm:py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-[0.16em] text-amber-300 shadow-[0_4px_20px_rgba(217,155,56,0.25)] backdrop-blur-md"
-          >
-            <span className="relative flex h-2 w-2 shrink-0 mt-1 sm:mt-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
-            </span>
-            <span className="break-words leading-relaxed sm:leading-normal">{activeSlide.badge}</span>
-          </div>
-
-          {/* Animated Headline */}
-          <h1
-            key={`title-${current}`}
-            className="animate-in fade-in slide-in-from-bottom-4 duration-600 mt-3 sm:mt-5 font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.16] sm:leading-[1.12] text-white tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.8)]"
-          >
-            {activeSlide.title}{" "}
-            <span className="bg-gradient-to-r from-gold-light via-gold to-brand-accent bg-clip-text text-transparent drop-shadow-sm">
-              {activeSlide.highlightedTitle}
-            </span>
-          </h1>
-
-          {/* Animated Description */}
-          <p
-            key={`desc-${current}`}
-            className="animate-in fade-in slide-in-from-bottom-5 duration-700 mt-2.5 sm:mt-5 max-w-2xl text-xs sm:text-base lg:text-lg leading-relaxed text-slate-100 font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.7)] line-clamp-3 sm:line-clamp-none"
-          >
-            {activeSlide.description}
-          </p>
-
-          {/* Action Buttons with Live Animations & Glowing Effects */}
-          <div
-            key={`btns-${current}`}
-            className="animate-in fade-in slide-in-from-bottom-6 duration-700 mt-5 sm:mt-8 flex flex-wrap items-center gap-2.5 sm:gap-3.5"
-          >
-            <button
-              onClick={() =>
-                openQuote(
-                  activeSlide.serviceCategory
-                    ? { services: [activeSlide.serviceCategory] }
-                    : undefined
-                )
-              }
-              className="btn-base btn-live-gold font-bold text-xs sm:text-sm px-4.5 py-2.5 sm:px-6 sm:py-3.5 flex items-center gap-2 group rounded-xl shadow-lg"
-            >
-              {/* Continuous live specular shimmer ray sweep */}
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none animate-[shimmer-sweep_3.5s_infinite]" />
-
-              <span className="relative z-10 drop-shadow-sm">{activeSlide.primaryCtaText}</span>
-              <Icon
-                name="arrow"
-                className="relative z-10 h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform duration-300 group-hover:translate-x-1.5"
-              />
-            </button>
-
-            <Link
-              href={activeSlide.secondaryCtaLink}
-              className="btn-base btn-live-glass text-xs sm:text-sm px-4 py-2.5 sm:px-5 sm:py-3.5 font-semibold rounded-xl group flex items-center gap-2 shadow-md"
-            >
-              <span className="relative z-10">{activeSlide.secondaryCtaText}</span>
-            </Link>
-          </div>
+            className="h-full bg-gradient-to-r from-gold-light via-gold to-brand-accent shadow-[0_0_12px_rgba(217,155,56,0.8)] transition-all duration-75 ease-linear"
+            style={{ width: `${progress}%` }}
+          />
         </div>
 
-        {/* Bottom Section: Stat Metric Cards & Interactive Controls */}
-        <div className="mt-8 sm:mt-12 lg:mt-16 space-y-4 sm:space-y-6">
-          {/* Interactive Carousel Navigation Bar */}
-          <div className="flex items-center justify-between gap-4 pt-3 sm:pt-4 border-t border-white/10">
+        {/* Layer 0: Multi-Slide Backgrounds with Ken Burns Slow Zoom & Crossfade */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          {heroSlides.map((slide, idx) => {
+            const isActive = idx === current;
+            return (
+              <div
+                key={slide.id}
+                aria-hidden={!isActive}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className={`h-full w-full object-cover object-[72%_center] sm:object-center transition-transform duration-[6500ms] ease-out ${
+                    isActive ? "scale-105 sm:scale-106" : "scale-100"
+                  }`}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  decoding={idx === 0 ? "sync" : "async"}
+                />
+
+                {/* Ambient Glow behind subject */}
+                <div className="absolute top-1/4 right-1/4 h-96 w-96 rounded-full bg-gold/10 blur-3xl pointer-events-none transition-opacity duration-1000" />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Layer 1: Adaptive Gradients (Top clear on mobile, dark on text side) */}
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-[#0a1019] via-[#0a1019]/75 via-45% to-transparent sm:bg-gradient-to-r sm:from-[#0a1019] sm:via-[#0f1824]/85 sm:to-transparent" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-[#0a1019]/40 via-transparent to-transparent sm:from-[#0a1019]/20" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_top_left,rgba(217,155,56,0.15),transparent_60%)]" />
+
+        {/* Layer 2: Foreground Content */}
+        <div className="container-x relative z-20 flex flex-col justify-between pt-6 pb-4 sm:pt-14 sm:pb-8 lg:pt-20 lg:pb-10 min-h-[460px] xs:min-h-[500px] sm:min-h-[580px] lg:min-h-[640px] xl:min-h-[700px]">
+          {/* Main Content Area */}
+          <div className="max-w-3xl pt-1 sm:pt-2">
+            {/* Glass Pill Badge */}
+            <div
+              key={`badge-${current}`}
+              className="animate-in fade-in slide-in-from-bottom-3 duration-500 inline-flex items-center gap-1.5 sm:gap-2 max-w-full rounded-full border border-gold/50 bg-[#0a1019]/90 px-2.5 py-1 sm:px-4 sm:py-1.5 text-[9.5px] sm:text-[11px] font-bold uppercase tracking-wider sm:tracking-[0.16em] text-amber-300 shadow-[0_2px_14px_rgba(217,155,56,0.25)] backdrop-blur-md"
+            >
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
+              </span>
+              <span className="truncate leading-normal">{activeSlide.badge}</span>
+            </div>
+
+            {/* Animated Headline */}
+            <h1
+              key={`title-${current}`}
+              className="animate-in fade-in slide-in-from-bottom-4 duration-600 mt-2.5 sm:mt-5 font-display text-[22px] xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.18] sm:leading-[1.12] text-white tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.8)]"
+            >
+              {activeSlide.title}{" "}
+              <span className="bg-gradient-to-r from-gold-light via-gold to-brand-accent bg-clip-text text-transparent drop-shadow-sm">
+                {activeSlide.highlightedTitle}
+              </span>
+            </h1>
+
+            {/* Animated Description */}
+            <p
+              key={`desc-${current}`}
+              className="animate-in fade-in slide-in-from-bottom-5 duration-700 mt-2 sm:mt-4 max-w-2xl text-[12px] sm:text-base lg:text-lg leading-relaxed text-slate-200 font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.7)] line-clamp-2 sm:line-clamp-none"
+            >
+              {activeSlide.description}
+            </p>
+
+            {/* Action Buttons with Live Animations & Glowing Effects */}
+            <div
+              key={`btns-${current}`}
+              className="animate-in fade-in slide-in-from-bottom-6 duration-700 mt-3.5 sm:mt-7 flex flex-wrap items-center gap-2 sm:gap-3.5"
+            >
+              <button
+                onClick={() =>
+                  openQuote(
+                    activeSlide.serviceCategory
+                      ? { services: [activeSlide.serviceCategory] }
+                      : undefined
+                  )
+                }
+                className="btn-base btn-live-gold font-bold text-xs sm:text-sm px-4 py-2 sm:px-6 sm:py-3.5 flex items-center gap-1.5 sm:gap-2 group rounded-xl shadow-lg"
+              >
+                {/* Continuous live specular shimmer ray sweep */}
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none animate-[shimmer-sweep_3.5s_infinite]" />
+
+                <span className="relative z-10 drop-shadow-sm">{activeSlide.primaryCtaText}</span>
+                <Icon
+                  name="arrow"
+                  className="relative z-10 h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform duration-300 group-hover:translate-x-1.5"
+                />
+              </button>
+
+              <Link
+                href={activeSlide.secondaryCtaLink}
+                className="btn-base btn-live-glass text-xs sm:text-sm px-3.5 py-2 sm:px-5 sm:py-3.5 font-semibold rounded-xl group flex items-center gap-1.5 sm:gap-2 shadow-md"
+              >
+                <span className="relative z-10">{activeSlide.secondaryCtaText}</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Carousel Interactive Controls (Pill Indicators + Prev/Next Buttons) */}
+          <div className="flex items-center justify-between gap-4 pt-3 sm:pt-4 border-t border-white/10 mt-4 sm:mt-6">
             {/* Pill Pagination Indicators */}
             <div className="flex items-center gap-1.5 sm:gap-2">
               {heroSlides.map((slide, index) => {
@@ -291,10 +291,10 @@ export default function HeroSlider() {
                     key={slide.id}
                     onClick={() => goToSlide(index)}
                     aria-label={`Go to slide ${index + 1}: ${slide.title}`}
-                    className={`h-2 sm:h-2.5 rounded-full transition-all duration-500 ease-out cursor-pointer ${
+                    className={`h-1.5 sm:h-2.5 rounded-full transition-all duration-500 ease-out cursor-pointer ${
                       isActive
-                        ? "w-8 sm:w-10 bg-gradient-to-r from-gold-light via-gold to-brand-accent shadow-[0_0_12px_rgba(217,155,56,0.7)]"
-                        : "w-2 sm:w-2.5 bg-white/30 hover:bg-white/60 hover:w-4"
+                        ? "w-7 sm:w-10 bg-gradient-to-r from-gold-light via-gold to-brand-accent shadow-[0_0_12px_rgba(217,155,56,0.7)]"
+                        : "w-1.5 sm:w-2.5 bg-white/30 hover:bg-white/60 hover:w-3 sm:hover:w-4"
                     }`}
                   />
                 );
@@ -306,10 +306,10 @@ export default function HeroSlider() {
               <button
                 onClick={prevSlide}
                 aria-label="Previous slide"
-                className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white/10 hover:bg-gold/20 border border-white/20 hover:border-gold/60 text-white hover:text-gold flex items-center justify-center backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 shadow-md"
+                className="h-7 w-7 sm:h-9 sm:w-9 rounded-full bg-white/10 hover:bg-gold/20 border border-white/20 hover:border-gold/60 text-white hover:text-gold flex items-center justify-center backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 shadow-md"
               >
                 <svg
-                  className="h-3.5 w-3.5 sm:h-4 sm:w-4"
+                  className="h-3 w-3 sm:h-4 sm:w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -322,10 +322,10 @@ export default function HeroSlider() {
               <button
                 onClick={nextSlide}
                 aria-label="Next slide"
-                className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white/10 hover:bg-gold/20 border border-white/20 hover:border-gold/60 text-white hover:text-gold flex items-center justify-center backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 shadow-md"
+                className="h-7 w-7 sm:h-9 sm:w-9 rounded-full bg-white/10 hover:bg-gold/20 border border-white/20 hover:border-gold/60 text-white hover:text-gold flex items-center justify-center backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 shadow-md"
               >
                 <svg
-                  className="h-3.5 w-3.5 sm:h-4 sm:w-4"
+                  className="h-3 w-3 sm:h-4 sm:w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -336,22 +336,26 @@ export default function HeroSlider() {
               </button>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* 4 Stat Metric Cards with Live Gold Top Line & Hover Sheen (2x2 on mobile, 4-col on desktop) */}
-          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+      {/* Stats Bar: 4 Metric Cards with Live Gold Top Line & Glassmorphism */}
+      <div className="relative z-20 border-b border-white/10 bg-[#070c14] py-3.5 sm:py-5">
+        <div className="container-x">
+          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3.5">
             {stats.map((s, i) => (
               <div
                 key={s.label}
                 style={{ animationDelay: `${i * 80}ms` }}
-                className="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/15 bg-white/[0.07] p-3 sm:p-5 backdrop-blur-md duration-300 transition-all hover:border-gold/60 hover:bg-white/[0.12] hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.55)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/40 before:to-transparent hover:before:via-gold"
+                className="group relative overflow-hidden rounded-xl border border-white/15 bg-white/[0.05] p-2.5 sm:p-4 backdrop-blur-md duration-300 transition-all hover:border-gold/60 hover:bg-white/[0.10] hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(0,0,0,0.5)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/40 before:to-transparent hover:before:via-gold"
               >
                 {/* Specular Highlight Sheen on Hover */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none" />
 
-                <dt className="font-display text-lg sm:text-2xl lg:text-3xl font-extrabold text-gold tracking-tight group-hover:text-gold-light group-hover:scale-105 transition-all duration-300">
+                <dt className="font-display text-lg sm:text-2xl lg:text-3xl font-extrabold text-gold tracking-tight group-hover:text-gold-light transition-all duration-300">
                   {s.value}
                 </dt>
-                <dd className="mt-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-200 group-hover:text-white transition-colors duration-200 line-clamp-2">
+                <dd className="mt-0.5 sm:mt-1 text-[9.5px] sm:text-xs font-semibold uppercase tracking-wider text-slate-300 group-hover:text-white transition-colors duration-200 line-clamp-1 sm:line-clamp-2">
                   {s.label}
                 </dd>
               </div>
@@ -359,6 +363,6 @@ export default function HeroSlider() {
           </dl>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

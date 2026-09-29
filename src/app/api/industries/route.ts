@@ -20,7 +20,11 @@ export async function GET() {
       return ind;
     });
 
-    return NextResponse.json(resolvedIndustries);
+    return NextResponse.json(resolvedIndustries, {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error: any) {
     console.error("GET /api/industries error:", error);
     return NextResponse.json({ error: "Failed to fetch industries" }, { status: 500 });

@@ -15,7 +15,11 @@ export async function GET(req: NextRequest) {
     if (status && status !== "All") query.status = status;
 
     const projects = await PortfolioProject.find(query).sort({ sortOrder: 1, createdAt: -1 });
-    return NextResponse.json(projects);
+    return NextResponse.json(projects, {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error: any) {
     console.error("GET /api/portfolio error:", error);
     return NextResponse.json({ error: "Failed to fetch portfolio projects" }, { status: 500 });

@@ -10,7 +10,11 @@ export async function GET() {
     if (!company) {
       company = await CompanySettings.create({});
     }
-    return NextResponse.json(company);
+    return NextResponse.json(company, {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error: any) {
     console.error("GET /api/company error:", error);
     return NextResponse.json({ error: "Failed to fetch company settings" }, { status: 500 });

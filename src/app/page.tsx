@@ -93,7 +93,7 @@ function AboutBlock() {
             {/* Main 3D Framed Image */}
             <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-[0_25px_50px_-12px_rgba(15,24,36,0.3)] transition-all duration-500 group-hover:border-gold/60 group-hover:shadow-[0_30px_60px_-15px_rgba(217,155,56,0.35)]">
               <img
-                src="/images/facility.jpg"
+                src="/images/facility.webp"
                 alt="Integrated facility management team supporting a corporate property in Pune"
                 loading="lazy"
                 className="h-72 w-full object-cover sm:h-96 md:h-[26rem] lg:h-[28rem] transition-transform duration-700 ease-out group-hover:scale-105"
@@ -130,23 +130,35 @@ function AboutBlock() {
   );
 }
 
+import { services as defaultServices } from "@/data/mock";
+
 export default function HomePage() {
-  const [categories, setCategories] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState<any[]>(() => {
+    return defaultServices.map((s) => ({
+      _id: s.id,
+      slug: s.slug,
+      name: s.name,
+      shortDescription: s.short,
+      icon: s.icon,
+      image: s.image?.replace(/\.(png|jpg|jpeg)$/i, ".webp"),
+      features: s.features,
+      startingPrice: s.startingPrice,
+      priceNote: s.priceNote,
+      status: "Active",
+    }));
+  });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function loadCats() {
       try {
-        setLoading(true);
         const res = await fetch("/api/service-categories");
         const data = await res.json();
-        if (Array.isArray(data)) {
+        if (Array.isArray(data) && data.length > 0) {
           setCategories(data.filter((c) => c.status !== "Inactive"));
         }
       } catch (e) {
         console.error("Failed to load categories on homepage:", e);
-      } finally {
-        setLoading(false);
       }
     }
     loadCats();

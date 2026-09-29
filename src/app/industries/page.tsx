@@ -15,7 +15,7 @@ export default function IndustriesPage() {
         title="Tailored Facility Support for Every Type of Property"
         highlightedTitle="Every Type of Property"
         subtitle="Each sector operates under unique access protocols, hygiene mandates, and shift cycles. Our operational plans are custom-engineered for how your facility actually functions across Pune & PCMC."
-        image="/images/headers/industries-header.png"
+        image="/images/headers/industries-header.webp"
         imageAlt="Tailored Facility Support for Commercial, Healthcare, Manufacturing and Residential Properties"
         ctaText="Request Custom Scope"
         ctaAction={() => openQuote()}

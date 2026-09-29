@@ -10,7 +10,11 @@ export async function GET() {
     if (!content) {
       content = await WebsiteContent.create({});
     }
-    return NextResponse.json(content);
+    return NextResponse.json(content, {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error: any) {
     console.error("GET /api/content error:", error);
     return NextResponse.json({ error: "Failed to fetch website content" }, { status: 500 });

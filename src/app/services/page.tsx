@@ -41,7 +41,7 @@ export default function ServicesPage() {
         title="Comprehensive Facility Management Solutions"
         highlightedTitle="Facility Management Solutions"
         subtitle="From armed security & mechanized housekeeping to waterproofing, plumbing, CCTV surveillance and complete facility maintenance contracts — single-point accountability for Pune & PCMC."
-        image="/images/headers/services-header.png"
+        image="/images/headers/services-header.webp"
         imageAlt="Comprehensive Facility Management Solutions and Service Divisions in Pune"
         ctaText="Instant Cost Estimator"
         ctaLink="/pricing-estimator"

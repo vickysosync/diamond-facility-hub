@@ -21,7 +21,11 @@ export async function GET(req: NextRequest) {
     }
 
     const testimonials = await Testimonial.find(query).sort({ createdAt: -1 });
-    return NextResponse.json(testimonials);
+    return NextResponse.json(testimonials, {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error: any) {
     console.error("GET /api/testimonials error:", error);
     return NextResponse.json({ error: "Failed to fetch testimonials" }, { status: 500 });

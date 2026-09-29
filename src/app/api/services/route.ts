@@ -15,7 +15,11 @@ export async function GET(req: NextRequest) {
     if (status) query.status = status;
 
     const services = await Service.find(query).sort({ sortOrder: 1, createdAt: 1 });
-    return NextResponse.json(services);
+    return NextResponse.json(services, {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error: any) {
     console.error("GET /api/services error:", error);
     return NextResponse.json({ error: "Failed to fetch services" }, { status: 500 });

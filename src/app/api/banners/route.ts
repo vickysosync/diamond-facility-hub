@@ -13,7 +13,11 @@ export async function GET(req: NextRequest) {
     if (status) query.status = status;
 
     const banners = await Banner.find(query).sort({ sortOrder: 1, createdAt: 1 });
-    return NextResponse.json(banners);
+    return NextResponse.json(banners, {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error: any) {
     console.error("GET /api/banners error:", error);
     return NextResponse.json({ error: "Failed to fetch banners" }, { status: 500 });

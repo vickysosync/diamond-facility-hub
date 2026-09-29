@@ -23,7 +23,11 @@ export async function GET(req: NextRequest) {
     }
 
     const items = await Gallery.find(query).sort({ sortOrder: 1, createdAt: -1 });
-    return NextResponse.json(items);
+    return NextResponse.json(items, {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error: any) {
     console.error("GET /api/gallery error:", error);
     return NextResponse.json({ error: "Failed to fetch gallery items" }, { status: 500 });

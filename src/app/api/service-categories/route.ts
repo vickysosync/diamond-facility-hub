@@ -7,7 +7,11 @@ export async function GET() {
   try {
     await connectToDatabase();
     const categories = await ServiceCategory.find().sort({ sortOrder: 1, createdAt: 1 });
-    return NextResponse.json(categories);
+    return NextResponse.json(categories, {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (error: any) {
     console.error("GET /api/service-categories error:", error);
     return NextResponse.json({ error: "Failed to fetch service categories" }, { status: 500 });

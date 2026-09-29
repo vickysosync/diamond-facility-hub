@@ -81,7 +81,7 @@ export default function ServiceDetailPage({
         eyebrow="Diamond Facility Service Division"
         title={category.name}
         subtitle={category.shortDescription}
-        image={category.image || "/images/headers/services-header.png"}
+        image={category.image || "/images/headers/services-header.webp"}
         imageAlt={`${category.name} in Pune by Diamond Integrated Facility Services`}
         ctaText="Request Service Quote"
         ctaAction={() => openQuote({ services: [category.name] })}

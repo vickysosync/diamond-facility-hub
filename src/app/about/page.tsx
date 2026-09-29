@@ -16,7 +16,7 @@ export default function AboutPage() {
         title="Integrated Facility Services Built Around Your Needs"
         highlightedTitle="Facility Services"
         subtitle={company.businessDescription || "Integrated facility management and commercial property support services across Pune and PCMC, backed by verified personnel, statutory compliance and flexible service packages."}
-        image="/images/headers/about-header.png"
+        image="/images/headers/about-header.webp"
         imageAlt="Diamond Integrated Facility Services Leadership and Field Operations in Pune"
         ctaText="Request Service Proposal"
         secondaryCtaText="Explore Services"
@@ -69,7 +69,7 @@ export default function AboutPage() {
               {/* Framed Architectural / Operations Visual */}
               <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-lg group">
                 <img
-                  src="/images/facility.jpg"
+                  src="/images/facility.webp"
                   alt="Facility management staff coordinating services at a commercial property"
                   loading="lazy"
                   className="h-56 sm:h-64 lg:h-72 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -121,7 +121,7 @@ export default function AboutPage() {
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
               <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-xl group">
                 <img
-                  src="/images/about/vision.jpg"
+                  src="/images/about/vision.webp"
                   alt="Diamond Integrated Facility Services Vision for India"
                   loading="lazy"
                   className="h-64 sm:h-80 lg:h-96 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -181,7 +181,7 @@ export default function AboutPage() {
 
               <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-xl group order-1 lg:order-2">
                 <img
-                  src="/images/about/mission.jpg"
+                  src="/images/about/mission.webp"
                   alt="Diamond Integrated Facility Services Mission Execution"
                   loading="lazy"
                   className="h-64 sm:h-80 lg:h-96 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -199,7 +199,7 @@ export default function AboutPage() {
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
               <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-xl group">
                 <img
-                  src="/images/about/values.jpg"
+                  src="/images/about/values.webp"
                   alt="Diamond Integrated Facility Services Team and Values"
                   loading="lazy"
                   className="h-64 sm:h-80 lg:h-96 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -327,7 +327,7 @@ export default function AboutPage() {
 
               <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-xl group order-1 lg:order-2">
                 <img
-                  src="/images/about/strengths.jpg"
+                  src="/images/about/strengths.webp"
                   alt="Diamond Integrated Facility Services 24/7 Command Center Operations"
                   loading="lazy"
                   className="h-64 sm:h-80 lg:h-96 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
