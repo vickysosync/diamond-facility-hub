@@ -297,16 +297,16 @@ export function CTABanner() {
             {/* Eyebrow badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-gold shadow-xs backdrop-blur-xs">
               <span className="h-2 w-2 rounded-full bg-gold animate-pulse shadow-[0_0_6px_rgba(217,155,56,0.8)]" />
-              <span>Partner With Pune&apos;s Facility Specialists</span>
+              <span>Pan-India Facility Management Specialists</span>
             </div>
 
             <h2 className="mt-4 font-display text-2xl font-extrabold text-white sm:text-3xl lg:text-4xl tracking-tight">
-              Looking for a Reliable Integrated Facility Partner in Pune?
+              Looking for a Reliable Integrated Facility Partner Across India?
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
               Tell us your property requirements and receive a transparent commercial quotation backed by single-point operations management.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
+            <div className="mt-8 flex flex-wrap justify-center items-center gap-3.5 sm:gap-4">
               <button
                 className="btn-base btn-live-gold font-bold px-7 py-3.5 rounded-xl text-xs sm:text-sm shadow-lg flex items-center gap-2 group"
                 onClick={() => openQuote()}
@@ -316,10 +316,18 @@ export function CTABanner() {
                 <Icon name="arrow" className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
               <a
-                href="tel:+919689515295"
-                className="btn-base btn-live-glass font-mono font-bold text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm flex items-center gap-2 border border-white/25 shadow-md"
+                href="tel:02045355544"
+                className="btn-base btn-live-glass font-mono font-bold text-white px-5 py-3.5 rounded-xl text-xs sm:text-sm flex items-center gap-2 border border-white/25 shadow-md hover:border-gold/60"
               >
-                <Icon name="phone" className="h-4 w-4 text-gold" /> +91 9689515295
+                <Icon name="phone" className="h-4 w-4 text-amber-300" />
+                <span>020 45355544 <span className="text-[10px] font-normal text-slate-300 font-sans">(Landline)</span></span>
+              </a>
+              <a
+                href="tel:+919689515295"
+                className="btn-base btn-live-glass font-mono font-bold text-white px-5 py-3.5 rounded-xl text-xs sm:text-sm flex items-center gap-2 border border-white/25 shadow-md hover:border-gold/60"
+              >
+                <Icon name="phone" className="h-4 w-4 text-gold" />
+                <span>+91 9689515295</span>
               </a>
             </div>
           </div>

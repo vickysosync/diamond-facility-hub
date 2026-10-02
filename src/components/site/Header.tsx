@@ -49,7 +49,7 @@ export default function Header({ onQuote }: HeaderProps) {
         >
           <img
             src="/images/logo.png"
-            alt="Diamond Integrated Facility Services LLP"
+            alt="Diamond Security Services & Integrated Facility Solutions"
             className="h-11 sm:h-12 w-auto max-w-[230px] sm:max-w-[290px] object-contain drop-shadow-xs group-hover:brightness-105 transition-all duration-300"
           />
         </Link>

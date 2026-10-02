@@ -38,20 +38,20 @@ export default function Footer() {
         <div className="space-y-4 lg:col-span-4">
           <Link
             href="/"
-            className="inline-block rounded-2xl bg-white p-2.5 shadow-xl border border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-gold/20"
+            className="inline-flex items-center rounded-full bg-white px-4 py-2 sm:px-5 sm:py-2.5 shadow-xl border border-gold/40 transition-all duration-300 hover:scale-105 hover:border-gold hover:shadow-gold/30"
           >
             <img
               src="/images/logo.png"
-              alt="Diamond Integrated Facility Services LLP"
-              className="h-11 w-auto max-w-[250px] object-contain"
+              alt="Diamond Security Services & Integrated Facility Solutions"
+              className="h-10 sm:h-11 w-auto max-w-[240px] object-contain"
             />
           </Link>
 
           <p className="text-slate-200 leading-relaxed text-xs sm:text-[13px] font-normal">
-            Professional Integrated Facility Management partner delivering 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Sanitization, CCTV and Technical Civil Upkeep in Pune & PCMC.
+            <strong className="text-white font-semibold">Diamond Security Services & Integrated Facility Solutions:</strong> Delivering 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Sanitization, CCTV and Technical Civil Upkeep Pan-India.
           </p>
 
-          <div className="inline-flex items-center gap-2 rounded-xl border border-gold/30 bg-navy-800/80 px-3 py-1.5 text-[11px] font-mono text-slate-200 shadow-sm backdrop-blur-xs">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-navy-800/80 px-3.5 py-1.5 text-[11px] font-mono text-slate-200 shadow-sm backdrop-blur-xs">
             <span className="h-2 w-2 rounded-full bg-gold animate-pulse shadow-[0_0_6px_rgba(217,155,56,0.8)]" />
             <span><strong className="text-amber-300 font-bold">Director:</strong> {company?.directorName || company?.director || "Umesh Patil"} • LLPIN Registered</span>
           </div>
@@ -270,7 +270,7 @@ export default function Footer() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
             </span>
-            <span>Registered Facility Partner • Pune, PCMC & Maharashtra</span>
+            <span>Registered Facility Partner • Pan-India Coverage</span>
           </div>
         </div>
       </div>
