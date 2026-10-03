@@ -37,6 +37,7 @@ export default function ServicesPage() {
   return (
     <SiteLayout>
       <PageHeader
+        placement="page_services"
         eyebrow="Integrated Service Divisions"
         title="Comprehensive Facility Management Solutions"
         highlightedTitle="Facility Management Solutions"

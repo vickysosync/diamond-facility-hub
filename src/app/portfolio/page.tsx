@@ -63,6 +63,7 @@ export default function PortfolioPage() {
   return (
     <SiteLayout>
       <PageHeader
+        placement="page_portfolio"
         eyebrow="Proven Deployments & Track Record"
         title="Facility Operations Delivered Across Pune & Maharashtra"
         highlightedTitle="Facility Operations Delivered"

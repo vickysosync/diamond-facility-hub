@@ -784,72 +784,209 @@ export async function seedDatabase() {
     }
   }
 
-  // 7. Seed Hero Banners (All 5 Divisions)
-  const heroBannersSeed = [
+  // 7. Seed Hero Banners & Page Headers
+  const allBannersSeed = [
+    // 5 Homepage Hero Slides
     {
       title: "Complete Facility Services.",
+      highlightedTitle: "One Trusted Partner.",
+      badge: "24/7 Manned Security • Police-Verified • 100% Compliant",
       subtitle: "One Trusted Partner.",
       description:
         "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.",
-      image: "/images/hero/slide-security.png",
+      image: "/images/hero/slide-security.webp",
+      placement: "home_hero",
+      serviceCategory: "Security Guard Services",
       ctaText: "Get Free Instant Quote",
-      ctaLink: "/contact",
+      ctaLink: "/pricing-estimator",
+      primaryCtaText: "Get Free Instant Quote",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "Explore All Services",
+      secondaryCtaLink: "/services",
       status: "Active" as const,
       sortOrder: 1,
     },
     {
       title: "Impeccable Facility Cleanliness.",
+      highlightedTitle: "Zero Compromise.",
+      badge: "Mechanized Housekeeping • Hygiene Standards • Eco-Safe",
       subtitle: "Zero Compromise.",
       description:
         "Supervisor-monitored corporate housekeeping, daily office cleaning, mechanized floor scrubbing, and hospital-grade deep sanitization for IT parks and societies.",
-      image: "/images/hero/slide-housekeeping.png",
+      image: "/images/hero/slide-housekeeping.webp",
+      placement: "home_hero",
+      serviceCategory: "Housekeeping Services",
       ctaText: "Book Housekeeping Audit",
       ctaLink: "/services/housekeeping-services",
+      primaryCtaText: "Book Housekeeping Audit",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "View Housekeeping Scope",
+      secondaryCtaLink: "/services/housekeeping-services",
       status: "Active" as const,
       sortOrder: 2,
     },
     {
       title: "Seamless Property Operations.",
+      highlightedTitle: "Built Around Your Campus.",
+      badge: "Single Accountable Partner • B2B & Institutional • SLA-Backed",
       subtitle: "Built Around Your Campus.",
       description:
         "End-to-end facility operations, multi-vendor coordination, residential society administration, and routine technical condition reporting.",
-      image: "/images/hero/slide-facility.png",
+      image: "/images/hero/slide-facility.webp",
+      placement: "home_hero",
+      serviceCategory: "Facility Management Solutions",
       ctaText: "Request Facility Proposal",
-      ctaLink: "/services/property-management",
+      ctaLink: "/services/facility-management-solutions",
+      primaryCtaText: "Request Facility Proposal",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "Explore Property Scope",
+      secondaryCtaLink: "/services/property-management",
       status: "Active" as const,
       sortOrder: 3,
     },
     {
       title: "Certified Water Tank Cleaning.",
+      highlightedTitle: "Pure Hygiene & Green Care.",
+      badge: "High-Pressure De-Silting • Antibacterial Sanitization",
       subtitle: "Pure Hygiene & Green Care.",
       description:
         "6-stage mechanized cleaning for overhead and underground water storage tanks, accompanied by structured garden upkeep and landscape preservation.",
-      image: "/images/hero/slide-tank.png",
+      image: "/images/hero/slide-tank.webp",
+      placement: "home_hero",
+      serviceCategory: "Tank Cleaning, Gardening and Landscaping etc.",
       ctaText: "Schedule Tank Cleaning",
       ctaLink: "/services/tank-cleaning-gardening-landscaping",
+      primaryCtaText: "Schedule Tank Cleaning",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "See Sanitization Process",
+      secondaryCtaLink: "/services/tank-cleaning-gardening-landscaping",
       status: "Active" as const,
       sortOrder: 4,
     },
     {
       title: "Advanced CCTV & Civil Upkeep.",
+      highlightedTitle: "Always Protected.",
+      badge: "HD/IP Surveillance • 24/7 Control Room • Licensed Technicians",
       subtitle: "Always Protected.",
       description:
         "Turnkey HD surveillance installation, round-the-clock control room monitoring, certified electrical, plumbing, painting, and terrace waterproofing.",
-      image: "/images/hero/slide-cctv.png",
+      image: "/images/hero/slide-cctv.webp",
+      placement: "home_hero",
+      serviceCategory: "CCTV Installation and Maintenance",
       ctaText: "Get Technical Estimate",
       ctaLink: "/services/cctv-installation-maintenance",
+      primaryCtaText: "Get Technical Estimate",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "View Technical Services",
+      secondaryCtaLink: "/services/cctv-installation-maintenance",
       status: "Active" as const,
       sortOrder: 5,
     },
+    // 5 Page Header Banners
+    {
+      title: "Integrated Facility Services Built Around Your Needs",
+      highlightedTitle: "Facility Services",
+      badge: "About Diamond Integrated Services",
+      subtitle: "Integrated facility management in Pune & PCMC",
+      description:
+        "Integrated facility management and commercial property support services across Pune and PCMC, backed by verified personnel, statutory compliance and flexible service packages.",
+      image: "/images/headers/about-header.webp",
+      placement: "page_about",
+      ctaText: "Request Service Proposal",
+      ctaLink: "/contact",
+      primaryCtaText: "Request Service Proposal",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "Explore Services",
+      secondaryCtaLink: "/services",
+      status: "Active" as const,
+      sortOrder: 6,
+    },
+    {
+      title: "Comprehensive Facility Management Solutions",
+      highlightedTitle: "Facility Management Solutions",
+      badge: "Integrated Service Divisions",
+      subtitle: "Single-point accountability for Pune & PCMC",
+      description:
+        "From armed security & mechanized housekeeping to waterproofing, plumbing, CCTV surveillance and complete facility maintenance contracts — single-point accountability for Pune & PCMC.",
+      image: "/images/headers/services-header.webp",
+      placement: "page_services",
+      ctaText: "Instant Cost Estimator",
+      ctaLink: "/pricing-estimator",
+      primaryCtaText: "Instant Cost Estimator",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "Request Custom Proposal",
+      secondaryCtaLink: "/contact",
+      status: "Active" as const,
+      sortOrder: 7,
+    },
+    {
+      title: "Tailored Sector-Specific Facility Management",
+      highlightedTitle: "Sector-Specific Facility Management",
+      badge: "Sector Solutions & Property Types",
+      subtitle: "Dedicated frameworks for B2B & Residential",
+      description:
+        "Dedicated operational frameworks built for Corporate IT Parks, High-Rise Residential Societies, Industrial Plants, Healthcare and Commercial Retail.",
+      image: "/images/headers/industries-header.webp",
+      placement: "page_industries",
+      ctaText: "Get Sector Proposal",
+      ctaLink: "/pricing-estimator",
+      primaryCtaText: "Get Sector Proposal",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "Calculate Facility Estimate",
+      secondaryCtaLink: "/pricing-estimator",
+      status: "Active" as const,
+      sortOrder: 8,
+    },
+    {
+      title: "Proven Facility Operations & Field Deployments",
+      highlightedTitle: "Field Deployments",
+      badge: "Track Record & Case Studies",
+      subtitle: "Verified Case Studies Delivered Across Pune",
+      description:
+        "Explore verified facility deployments, security guarding operations, mechanized cleaning contracts, and civil upkeep delivered across Pune and PCMC.",
+      image: "/images/headers/portfolio-header.webp",
+      placement: "page_portfolio",
+      ctaText: "Request Similar Deployment",
+      ctaLink: "/pricing-estimator",
+      primaryCtaText: "Request Similar Deployment",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "Explore Live Services",
+      secondaryCtaLink: "/services",
+      status: "Active" as const,
+      sortOrder: 9,
+    },
+    {
+      title: "Field Operations & Service Delivery Gallery",
+      highlightedTitle: "Service Delivery Gallery",
+      badge: "Visual Excellence & On-Ground Operations",
+      subtitle: "Field Operations & Service Delivery in Pune and PCMC",
+      description:
+        "A glimpse into our trained security guards, mechanized housekeeping crews, water tank sanitization teams, and technical engineers at work in Pune & PCMC.",
+      image: "/images/headers/gallery-header.webp",
+      placement: "page_gallery",
+      ctaText: "Book Service Inspection",
+      ctaLink: "/pricing-estimator",
+      primaryCtaText: "Book Service Inspection",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "Explore All Divisions",
+      secondaryCtaLink: "/services",
+      status: "Active" as const,
+      sortOrder: 10,
+    },
   ];
 
-  for (const b of heroBannersSeed) {
-    const existing = await Banner.findOne({ sortOrder: b.sortOrder });
+  for (const b of allBannersSeed) {
+    const existing = await Banner.findOne({
+      $or: [
+        { placement: b.placement, sortOrder: b.sortOrder },
+        { title: b.title },
+      ],
+    });
     if (!existing) {
       await Banner.create(b);
-      console.log(`Seeded hero banner #${b.sortOrder}: ${b.title}`);
+      console.log(`Seeded banner: ${b.title} (${b.placement})`);
     } else {
-      await Banner.updateOne({ sortOrder: b.sortOrder }, { $set: b });
+      await Banner.updateOne({ _id: existing._id }, { $set: b });
     }
   }
 
@@ -1017,6 +1154,180 @@ export async function seedDatabase() {
       console.log(`Seeded gallery item: ${g.title}`);
     } else {
       await Gallery.updateOne({ title: g.title }, { $set: g });
+    }
+  }
+
+  // 11. Seed Banners (Hero Slider + Inner Page Headers)
+  const bannerSeeds = [
+    // Homepage Hero Slides
+    {
+      title: "Complete Facility Services.",
+      highlightedTitle: "One Trusted Partner.",
+      badge: "24/7 Manned Security • Police-Verified • 100% Compliant",
+      description:
+        "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.",
+      image: "/images/hero/slide-security.webp",
+      placement: "home_hero",
+      serviceCategory: "Security Guard Services",
+      primaryCtaText: "Get Free Instant Quote",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "Explore All Services",
+      secondaryCtaLink: "/services",
+      sortOrder: 1,
+      status: "Active" as const,
+    },
+    {
+      title: "Impeccable Facility Cleanliness.",
+      highlightedTitle: "Zero Compromise.",
+      badge: "Mechanized Housekeeping • Hygiene Standards • Eco-Safe",
+      description:
+        "Supervisor-monitored corporate housekeeping, daily office cleaning, mechanized floor scrubbing, and hospital-grade deep sanitization for IT parks and societies.",
+      image: "/images/hero/slide-housekeeping.webp",
+      placement: "home_hero",
+      serviceCategory: "Housekeeping Services",
+      primaryCtaText: "Book Housekeeping Audit",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "View Housekeeping Scope",
+      secondaryCtaLink: "/services/housekeeping-services",
+      sortOrder: 2,
+      status: "Active" as const,
+    },
+    {
+      title: "Seamless Property Operations.",
+      highlightedTitle: "Built Around Your Campus.",
+      badge: "Single Accountable Partner • B2B & Institutional • SLA-Backed",
+      description:
+        "End-to-end facility operations, multi-vendor coordination, residential society administration, and routine technical condition reporting.",
+      image: "/images/hero/slide-facility.webp",
+      placement: "home_hero",
+      serviceCategory: "Facility Management Solutions",
+      primaryCtaText: "Request Facility Proposal",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "Explore Property Scope",
+      secondaryCtaLink: "/services/property-management",
+      sortOrder: 3,
+      status: "Active" as const,
+    },
+    {
+      title: "Certified Water Tank Cleaning.",
+      highlightedTitle: "Pure Hygiene & Green Care.",
+      badge: "High-Pressure De-Silting • Antibacterial Sanitization",
+      description:
+        "6-stage mechanized cleaning for overhead and underground water storage tanks, accompanied by structured garden upkeep and landscape preservation.",
+      image: "/images/hero/slide-tank.webp",
+      placement: "home_hero",
+      serviceCategory: "Tank Cleaning, Gardening and Landscaping etc.",
+      primaryCtaText: "Schedule Tank Cleaning",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "See Sanitization Process",
+      secondaryCtaLink: "/services/tank-cleaning-gardening-landscaping",
+      sortOrder: 4,
+      status: "Active" as const,
+    },
+    {
+      title: "Advanced CCTV & Civil Upkeep.",
+      highlightedTitle: "Always Protected.",
+      badge: "HD/IP Surveillance • 24/7 Control Room • Licensed Technicians",
+      description:
+        "Turnkey HD surveillance installation, round-the-clock control room monitoring, certified electrical, plumbing, painting, and terrace waterproofing.",
+      image: "/images/hero/slide-cctv.webp",
+      placement: "home_hero",
+      serviceCategory: "CCTV Installation and Maintenance",
+      primaryCtaText: "Get Technical Estimate",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "View Technical Services",
+      secondaryCtaLink: "/services/cctv-installation-maintenance",
+      sortOrder: 5,
+      status: "Active" as const,
+    },
+
+    // Inner Page Headers
+    {
+      title: "Integrated Facility Services Built Around Your Needs",
+      highlightedTitle: "Facility Services",
+      badge: "About Diamond Integrated Services",
+      description:
+        "Integrated facility management and commercial property support services across Pune and PCMC, backed by verified personnel, statutory compliance and flexible service packages.",
+      image: "/images/headers/about-header.webp",
+      placement: "page_about",
+      primaryCtaText: "Request Service Proposal",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "Explore Services",
+      secondaryCtaLink: "/services",
+      sortOrder: 1,
+      status: "Active" as const,
+    },
+    {
+      title: "Comprehensive Facility Management Solutions",
+      highlightedTitle: "Facility Management Solutions",
+      badge: "Integrated Service Divisions",
+      description:
+        "From armed security & mechanized housekeeping to waterproofing, plumbing, CCTV surveillance and complete facility maintenance contracts — single-point accountability for Pune & PCMC.",
+      image: "/images/headers/services-header.webp",
+      placement: "page_services",
+      primaryCtaText: "Instant Cost Estimator",
+      primaryCtaLink: "/pricing-estimator",
+      secondaryCtaText: "Request Custom Proposal",
+      secondaryCtaLink: "/contact",
+      sortOrder: 2,
+      status: "Active" as const,
+    },
+    {
+      title: "Tailored Facility Support for Every Type of Property",
+      highlightedTitle: "Every Type of Property",
+      badge: "Specialized Sector Coverage",
+      description:
+        "Each sector operates under unique access protocols, hygiene mandates, and shift cycles. Our operational plans are custom-engineered for how your facility actually functions across Pune & PCMC.",
+      image: "/images/headers/industries-header.webp",
+      placement: "page_industries",
+      primaryCtaText: "Request Custom Scope",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "Explore Case Studies",
+      secondaryCtaLink: "/portfolio",
+      sortOrder: 3,
+      status: "Active" as const,
+    },
+    {
+      title: "Facility Operations Delivered Across Pune & Maharashtra",
+      highlightedTitle: "Facility Operations Delivered",
+      badge: "Proven Deployments & Track Record",
+      description:
+        "Explore our verified facility management contracts, security deployments, mechanized cleaning turnarounds, and preventative upkeep case studies.",
+      image: "/images/headers/portfolio-header.webp",
+      placement: "page_portfolio",
+      primaryCtaText: "Discuss Your Facility",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "View Field Gallery",
+      secondaryCtaLink: "/gallery",
+      sortOrder: 4,
+      status: "Active" as const,
+    },
+    {
+      title: "Field Operations & Service Delivery Gallery",
+      highlightedTitle: "Service Delivery Gallery",
+      badge: "Visual Field Documentation",
+      description:
+        "Explore high-resolution visual documentation of our on-site security deployments, mechanized cleaning, water tank sanitization, civil painting, and integrated facility operations across Pune & PCMC.",
+      image: "/images/headers/gallery-header.webp",
+      placement: "page_gallery",
+      primaryCtaText: "Request Site Audit",
+      primaryCtaLink: "/contact",
+      secondaryCtaText: "Explore Case Studies",
+      secondaryCtaLink: "/portfolio",
+      sortOrder: 5,
+      status: "Active" as const,
+    },
+  ];
+
+  for (const b of bannerSeeds) {
+    const existing = await Banner.findOne({
+      $or: [{ title: b.title }, { placement: b.placement, sortOrder: b.sortOrder }],
+    });
+    if (!existing) {
+      await Banner.create(b);
+      console.log(`Seeded banner: ${b.title} (${b.placement})`);
+    } else {
+      await Banner.updateOne({ _id: existing._id }, { $set: b });
     }
   }
 

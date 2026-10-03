@@ -9,7 +9,7 @@ export async function GET() {
     const categories = await ServiceCategory.find().sort({ sortOrder: 1, createdAt: 1 });
     return NextResponse.json(categories, {
       headers: {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        "Cache-Control": "no-store, max-age=0, must-revalidate",
       },
     });
   } catch (error: any) {

@@ -97,20 +97,52 @@ const SLIDE_DURATION = 6000; // 6 seconds per slide
 
 export default function HeroSlider() {
   const { openQuote } = useQuote();
+  const [slides, setSlides] = useState<HeroSlideData[]>(heroSlides);
   const [current, setCurrent] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  const nextSlide = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % heroSlides.length);
-    setProgress(0);
+  // Fetch dynamic banners from Admin CMS
+  useEffect(() => {
+    async function loadDynamicBanners() {
+      try {
+        const res = await fetch("/api/banners?placement=home_hero&status=Active");
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          const mapped: HeroSlideData[] = data.map((b: any, idx: number) => ({
+            id: b._id || `slide-${idx}`,
+            badge: b.badge || "24/7 Manned Security • 100% Compliant",
+            title: b.title || "",
+            highlightedTitle: b.highlightedTitle || "",
+            description: b.description || b.subtitle || "",
+            image:
+              typeof b.image === "string"
+                ? b.image
+                : b.image?.secure_url || b.imageUrl || heroSlides[idx % heroSlides.length]?.image || "/images/hero/slide-security.webp",
+            serviceCategory: b.serviceCategory || "",
+            primaryCtaText: b.primaryCtaText || b.ctaText || "Get Free Instant Quote",
+            secondaryCtaText: b.secondaryCtaText || "Explore All Services",
+            secondaryCtaLink: b.secondaryCtaLink || "/services",
+          }));
+          setSlides(mapped);
+        }
+      } catch (err) {
+        console.error("Failed to load dynamic hero banners:", err);
+      }
+    }
+    loadDynamicBanners();
   }, []);
 
-  const prevSlide = useCallback(() => {
-    setCurrent((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  const nextSlide = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % slides.length);
     setProgress(0);
-  }, []);
+  }, [slides.length]);
+
+  const prevSlide = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    setProgress(0);
+  }, [slides.length]);
 
   const goToSlide = (index: number) => {
     if (index === current) return;
@@ -120,7 +152,7 @@ export default function HeroSlider() {
 
   // Continuous Progress Bar Timer & Auto-Switch
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || slides.length === 0) return;
 
     const intervalTime = 50; // Smooth 60fps progress update
     const step = (intervalTime / SLIDE_DURATION) * 100;
@@ -136,7 +168,7 @@ export default function HeroSlider() {
     }, intervalTime);
 
     return () => clearInterval(timer);
-  }, [isPaused, nextSlide]);
+  }, [isPaused, nextSlide, slides.length]);
 
   // Touch Swipe Handlers for Mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -158,7 +190,8 @@ export default function HeroSlider() {
     setIsPaused(false);
   };
 
-  const activeSlide = heroSlides[current];
+  const safeCurrent = current < slides.length ? current : 0;
+  const activeSlide = slides[safeCurrent] || heroSlides[0];
 
   return (
     <div className="relative select-none">
@@ -179,11 +212,11 @@ export default function HeroSlider() {
 
         {/* Layer 0: Multi-Slide Backgrounds with Ken Burns Slow Zoom & Crossfade */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          {heroSlides.map((slide, idx) => {
+          {slides.map((slide, idx) => {
             const isActive = idx === current;
             return (
               <div
-                key={slide.id}
+                key={slide.id || `slide-bg-${idx}`}
                 aria-hidden={!isActive}
                 className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                   isActive ? "opacity-100 z-10" : "opacity-0 z-0"
@@ -284,11 +317,11 @@ export default function HeroSlider() {
           <div className="flex items-center justify-between gap-4 pt-3 sm:pt-4 border-t border-white/10 mt-4 sm:mt-6">
             {/* Pill Pagination Indicators */}
             <div className="flex items-center gap-1.5 sm:gap-2">
-              {heroSlides.map((slide, index) => {
+              {slides.map((slide, index) => {
                 const isActive = index === current;
                 return (
                   <button
-                    key={slide.id}
+                    key={slide.id || `indicator-${index}`}
                     onClick={() => goToSlide(index)}
                     aria-label={`Go to slide ${index + 1}: ${slide.title}`}
                     className={`h-1.5 sm:h-2.5 rounded-full transition-all duration-500 ease-out cursor-pointer ${

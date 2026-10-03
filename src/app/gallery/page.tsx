@@ -60,6 +60,7 @@ export default function GalleryPage() {
   return (
     <SiteLayout>
       <PageHeader
+        placement="page_gallery"
         eyebrow="Visual Field Documentation"
         title="Field Operations & Service Delivery Gallery"
         highlightedTitle="Service Delivery Gallery"

@@ -34,8 +34,12 @@ export async function PUT(
     const { id } = await params;
     const data = await req.json();
 
+    if (data.imageUrl && !data.image) {
+      data.image = data.imageUrl;
+    }
+
     await connectToDatabase();
-    const banner = await Banner.findByIdAndUpdate(id, data, { new: true });
+    const banner = await Banner.findByIdAndUpdate(id, data, { new: true, runValidators: true });
 
     if (!banner) {
       return NextResponse.json({ error: "Banner not found" }, { status: 404 });

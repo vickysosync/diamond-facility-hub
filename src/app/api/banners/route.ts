@@ -8,14 +8,16 @@ export async function GET(req: NextRequest) {
     await connectToDatabase();
     const { searchParams } = new URL(req.url);
     const status = searchParams.get("status");
+    const placement = searchParams.get("placement");
 
     const query: any = {};
-    if (status) query.status = status;
+    if (status && status !== "All") query.status = status;
+    if (placement && placement !== "All") query.placement = placement;
 
     const banners = await Banner.find(query).sort({ sortOrder: 1, createdAt: 1 });
     return NextResponse.json(banners, {
       headers: {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        "Cache-Control": "no-store, max-age=0, must-revalidate",
       },
     });
   } catch (error: any) {
@@ -34,6 +36,11 @@ export async function POST(req: NextRequest) {
     const data = await req.json();
     if (!data.title) {
       return NextResponse.json({ error: "Banner title is required" }, { status: 400 });
+    }
+
+    // Support both image and imageUrl
+    if (data.imageUrl && !data.image) {
+      data.image = data.imageUrl;
     }
 
     await connectToDatabase();

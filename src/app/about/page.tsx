@@ -12,6 +12,7 @@ export default function AboutPage() {
   return (
     <SiteLayout>
       <PageHeader
+        placement="page_about"
         eyebrow="About Diamond Integrated Services"
         title="Integrated Facility Services Built Around Your Needs"
         highlightedTitle="Facility Services"

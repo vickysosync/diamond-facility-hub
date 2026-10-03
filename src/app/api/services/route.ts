@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
     const services = await Service.find(query).sort({ sortOrder: 1, createdAt: 1 });
     return NextResponse.json(services, {
       headers: {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        "Cache-Control": "no-store, max-age=0, must-revalidate",
       },
     });
   } catch (error: any) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useMemo, useState, ReactNode } from "react";
+import { createContext, useCallback, useContext, useMemo, useState, useEffect, ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import QuoteModal from "./QuoteModal";
@@ -45,6 +45,7 @@ import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 
 export interface PageHeaderProps {
+  placement?: string;
   eyebrow?: string;
   title: string;
   highlightedTitle?: string;
@@ -65,6 +66,7 @@ export interface PageHeaderProps {
 }
 
 export function PageHeader({
+  placement,
   eyebrow = "",
   title = "",
   highlightedTitle = "",
@@ -80,19 +82,54 @@ export function PageHeader({
   children,
 }: PageHeaderProps) {
   const { openQuote } = useQuote();
+  const [bannerData, setBannerData] = useState<any>(null);
+
+  useEffect(() => {
+    if (!placement) return;
+    let isMounted = true;
+    async function fetchBanner() {
+      try {
+        const res = await fetch(`/api/banners?placement=${placement}&status=Active`);
+        const data = await res.json();
+        if (isMounted && Array.isArray(data) && data.length > 0) {
+          setBannerData(data[0]);
+        }
+      } catch (err) {
+        console.error("Failed to load header banner:", err);
+      }
+    }
+    fetchBanner();
+    return () => {
+      isMounted = false;
+    };
+  }, [placement]);
+
+  const activeTitle = bannerData?.title || title;
+  const activeHighlightedTitle =
+    bannerData?.highlightedTitle !== undefined ? bannerData.highlightedTitle : highlightedTitle;
+  const activeSubtitle = bannerData?.description || bannerData?.subtitle || subtitle;
+  const activeEyebrow = bannerData?.badge || eyebrow;
+  const activeImage =
+    (typeof bannerData?.image === "string" ? bannerData.image : bannerData?.image?.secure_url) ||
+    bannerData?.imageUrl ||
+    image;
+  const activeCtaText = bannerData?.primaryCtaText || bannerData?.ctaText || ctaText;
+  const activeCtaLink = bannerData?.primaryCtaLink || bannerData?.ctaLink || ctaLink;
+  const activeSecondaryCtaText = bannerData?.secondaryCtaText || secondaryCtaText;
+  const activeSecondaryCtaLink = bannerData?.secondaryCtaLink || secondaryCtaLink;
 
   const renderTitle = () => {
-    if (!highlightedTitle || !title.includes(highlightedTitle)) {
-      return title;
+    if (!activeHighlightedTitle || !activeTitle.includes(activeHighlightedTitle)) {
+      return activeTitle;
     }
-    const parts = title.split(highlightedTitle);
+    const parts = activeTitle.split(activeHighlightedTitle);
     return (
       <>
         {parts[0]}
         <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm">
-          {highlightedTitle}
+          {activeHighlightedTitle}
         </span>
-        {parts.slice(1).join(highlightedTitle)}
+        {parts.slice(1).join(activeHighlightedTitle)}
       </>
     );
   };
@@ -107,12 +144,12 @@ export function PageHeader({
       </div>
 
       {/* Right-Side Full Fit Image Layer (100% Uncropped Face, Logo & Subject Visibility) */}
-      {image && (
+      {activeImage && (
         <div className="absolute inset-0 z-0 flex items-center justify-end pointer-events-none overflow-hidden">
           <div className="relative h-full w-full md:w-3/5 lg:w-1/2 xl:w-[48%] flex items-center justify-end">
             <img
-              src={image}
-              alt={imageAlt || title}
+              src={activeImage}
+              alt={imageAlt || activeTitle}
               className="h-full w-full object-contain object-right drop-shadow-2xl transform scale-100 transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               loading="eager"
             />
@@ -128,13 +165,13 @@ export function PageHeader({
       <div className="container-x relative z-10 w-full">
         <div className="max-w-xl lg:max-w-lg xl:max-w-xl flex flex-col items-start space-y-4">
           {/* Eyebrow Pill */}
-          {eyebrow && (
+          {activeEyebrow && (
             <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-[#0a1019]/90 px-3.5 py-1 text-[10.5px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-amber-300 shadow-md backdrop-blur-md">
               <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-gold shadow-[0_0_8px_rgba(217,155,56,0.9)]" />
               </span>
-              <span>{eyebrow}</span>
+              <span>{activeEyebrow}</span>
             </div>
           )}
 
@@ -144,22 +181,22 @@ export function PageHeader({
           </h1>
 
           {/* Subtitle */}
-          {subtitle && (
+          {activeSubtitle && (
             <p className="max-w-xl text-xs sm:text-sm lg:text-base leading-relaxed text-slate-200 font-normal drop-shadow-md">
-              {subtitle}
+              {activeSubtitle}
             </p>
           )}
 
           {/* Action Buttons */}
-          {(ctaText || secondaryCtaText) && (
+          {(activeCtaText || activeSecondaryCtaText) && (
             <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3.5">
-              {ctaText && (
-                ctaLink ? (
+              {activeCtaText && (
+                activeCtaLink ? (
                   <Link
-                    href={ctaLink}
+                    href={activeCtaLink}
                     className="btn-base btn-live-gold px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-xl shadow-lg shadow-gold/25"
                   >
-                    <span>{ctaText}</span>
+                    <span>{activeCtaText}</span>
                     <Icon name="arrow" className="h-4 w-4" />
                   </Link>
                 ) : (
@@ -168,19 +205,19 @@ export function PageHeader({
                     onClick={ctaAction || (() => openQuote())}
                     className="btn-base btn-live-gold px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-xl shadow-lg shadow-gold/25"
                   >
-                    <span>{ctaText}</span>
+                    <span>{activeCtaText}</span>
                     <Icon name="arrow" className="h-4 w-4" />
                   </button>
                 )
               )}
 
-              {secondaryCtaText && (
-                secondaryCtaLink ? (
+              {activeSecondaryCtaText && (
+                activeSecondaryCtaLink ? (
                   <Link
-                    href={secondaryCtaLink}
+                    href={activeSecondaryCtaLink}
                     className="btn-base btn-live-glass px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide rounded-xl shadow-md border border-white/20"
                   >
-                    <span>{secondaryCtaText}</span>
+                    <span>{activeSecondaryCtaText}</span>
                   </Link>
                 ) : (
                   <button
@@ -188,7 +225,7 @@ export function PageHeader({
                     onClick={secondaryCtaAction || (() => openQuote())}
                     className="btn-base btn-live-glass px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide rounded-xl shadow-md border border-white/20"
                   >
-                    <span>{secondaryCtaText}</span>
+                    <span>{activeSecondaryCtaText}</span>
                   </button>
                 )
               )}

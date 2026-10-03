@@ -11,6 +11,7 @@ export default function IndustriesPage() {
   return (
     <SiteLayout>
       <PageHeader
+        placement="page_industries"
         eyebrow="Specialized Sector Coverage"
         title="Tailored Facility Support for Every Type of Property"
         highlightedTitle="Every Type of Property"
