@@ -98,73 +98,78 @@ export function PageHeader({
   };
 
   return (
-    <section className="group relative overflow-hidden bg-navy isolate border-b border-gold/30 min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] flex items-center before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/50 before:to-transparent before:z-20 after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-gold/25 after:to-transparent after:z-20">
-      {/* Background Image Layer (Full-Bleed, Responsive Staging) */}
-      {image ? (
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <img
-            src={image}
-            alt={imageAlt || title}
-            className="h-full w-full object-cover object-[center_20%] sm:object-center transform scale-100 transition-transform duration-1000 ease-out group-hover:scale-105"
-            loading="eager"
-          />
-          {/* Adaptive directional gradient: bottom vignette on mobile for clear top visual, left fade on desktop */}
-          <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/60 via-50% to-transparent sm:bg-gradient-to-r sm:from-navy/90 sm:via-navy/50 sm:via-40% sm:to-transparent" />
-          {/* Gentle vertical top/bottom blend */}
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/40" />
-        </div>
-      ) : (
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-navy">
-          <div className="absolute inset-0 opacity-25 [background:radial-gradient(circle_at_20%_25%,rgba(217,155,56,0.25),transparent_55%)]" />
+    <section className="group relative overflow-hidden bg-[#0a1019] isolate border-b border-gold/30 min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] flex items-center py-10 sm:py-14 lg:py-16 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/50 before:to-transparent before:z-20 after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-gold/25 after:to-transparent after:z-20">
+      {/* Background Ambient Lighting */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#0a1019]">
+        <div className="absolute inset-0 opacity-25 [background:radial-gradient(circle_at_15%_25%,rgba(217,155,56,0.3),transparent_55%)]" />
+        <div className="absolute inset-0 opacity-15 [background:radial-gradient(circle_at_85%_75%,rgba(217,155,56,0.2),transparent_60%)]" />
+        <div className="absolute inset-0 opacity-[0.03] [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] [background-size:32px_32px]" />
+      </div>
+
+      {/* Right-Side Full Fit Image Layer (100% Uncropped Face, Logo & Subject Visibility) */}
+      {image && (
+        <div className="absolute inset-0 z-0 flex items-center justify-end pointer-events-none overflow-hidden">
+          <div className="relative h-full w-full md:w-3/5 lg:w-1/2 xl:w-[48%] flex items-center justify-end">
+            <img
+              src={image}
+              alt={imageAlt || title}
+              className="h-full w-full object-contain object-right drop-shadow-2xl transform scale-100 transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              loading="eager"
+            />
+            {/* Left Edge Seamless Dark Blend */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1019] via-[#0a1019]/70 via-15% to-transparent pointer-events-none" />
+            {/* Top & Bottom Subtle Blend */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a1019]/80 via-transparent to-[#0a1019]/40 pointer-events-none" />
+          </div>
         </div>
       )}
 
-      {/* Foreground Content Layer (Clean, Spacious & Responsive) */}
-      <div className="container-x relative z-10 w-full py-10 sm:py-16 lg:py-20">
-        <div className="max-w-3xl flex flex-col items-start">
+      {/* Foreground Content Layer (Left Aligned for High Contrast & Readability) */}
+      <div className="container-x relative z-10 w-full">
+        <div className="max-w-xl lg:max-w-lg xl:max-w-xl flex flex-col items-start space-y-4">
           {/* Eyebrow Pill */}
           {eyebrow && (
-            <div className="inline-flex items-start sm:items-center gap-2 max-w-full rounded-xl sm:rounded-full border border-gold/40 bg-navy/80 px-3 py-1 sm:px-3.5 sm:py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-[0.18em] text-amber-300 shadow-md backdrop-blur-md">
-              <span className="relative flex h-2 w-2 shrink-0 mt-1 sm:mt-0">
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-[#0a1019]/90 px-3.5 py-1 text-[10.5px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-amber-300 shadow-md backdrop-blur-md">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-gold shadow-[0_0_8px_rgba(217,155,56,0.9)]" />
               </span>
-              <span className="break-words leading-relaxed sm:leading-normal">{eyebrow}</span>
+              <span>{eyebrow}</span>
             </div>
           )}
 
           {/* 3D Display Title */}
-          <h1 className="mt-2.5 sm:mt-3.5 font-display text-2xl sm:text-4xl lg:text-5xl xl:text-[3.15rem] font-extrabold text-white tracking-tight leading-[1.18] sm:leading-[1.16] drop-shadow-lg">
+          <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.18] sm:leading-[1.15] drop-shadow-lg">
             {renderTitle()}
           </h1>
 
           {/* Subtitle */}
           {subtitle && (
-            <p className="mt-2.5 sm:mt-3.5 max-w-2xl text-xs sm:text-base lg:text-[1.05rem] leading-relaxed text-slate-100 font-normal drop-shadow-md">
+            <p className="max-w-xl text-xs sm:text-sm lg:text-base leading-relaxed text-slate-200 font-normal drop-shadow-md">
               {subtitle}
             </p>
           )}
 
-          {/* Compact Action Buttons Row */}
+          {/* Action Buttons */}
           {(ctaText || secondaryCtaText) && (
-            <div className="mt-5 sm:mt-7 flex flex-wrap items-center gap-2.5 sm:gap-3.5">
+            <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3.5">
               {ctaText && (
                 ctaLink ? (
                   <Link
                     href={ctaLink}
-                    className="btn-base btn-live-gold px-4 py-2 sm:px-4.5 sm:py-2.5 text-xs font-bold tracking-wider uppercase rounded-lg shadow-lg shadow-gold/25"
+                    className="btn-base btn-live-gold px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-xl shadow-lg shadow-gold/25"
                   >
                     <span>{ctaText}</span>
-                    <Icon name="arrow" className="h-3.5 w-3.5" />
+                    <Icon name="arrow" className="h-4 w-4" />
                   </Link>
                 ) : (
                   <button
                     type="button"
                     onClick={ctaAction || (() => openQuote())}
-                    className="btn-base btn-live-gold px-4 py-2 sm:px-4.5 sm:py-2.5 text-xs font-bold tracking-wider uppercase rounded-lg shadow-lg shadow-gold/25"
+                    className="btn-base btn-live-gold px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-xl shadow-lg shadow-gold/25"
                   >
                     <span>{ctaText}</span>
-                    <Icon name="arrow" className="h-3.5 w-3.5" />
+                    <Icon name="arrow" className="h-4 w-4" />
                   </button>
                 )
               )}
@@ -173,7 +178,7 @@ export function PageHeader({
                 secondaryCtaLink ? (
                   <Link
                     href={secondaryCtaLink}
-                    className="btn-base btn-live-glass px-4 py-2 sm:px-4.5 sm:py-2.5 text-xs font-semibold tracking-wide rounded-lg shadow-md"
+                    className="btn-base btn-live-glass px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide rounded-xl shadow-md border border-white/20"
                   >
                     <span>{secondaryCtaText}</span>
                   </Link>
@@ -181,7 +186,7 @@ export function PageHeader({
                   <button
                     type="button"
                     onClick={secondaryCtaAction || (() => openQuote())}
-                    className="btn-base btn-live-glass px-4 py-2 sm:px-4.5 sm:py-2.5 text-xs font-semibold tracking-wide rounded-lg shadow-md"
+                    className="btn-base btn-live-glass px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide rounded-xl shadow-md border border-white/20"
                   >
                     <span>{secondaryCtaText}</span>
                   </button>
