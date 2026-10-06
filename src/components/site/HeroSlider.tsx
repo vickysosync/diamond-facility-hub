@@ -21,11 +21,11 @@ export interface HeroSlideData {
 export const heroSlides: HeroSlideData[] = [
   {
     id: "security",
-    badge: "24/7 Manned Security • Police-Verified • 100% Compliant",
+    badge: "24/7 Manned Security • Trained & Groomed Workforce • 100% Compliant",
     title: "Complete Facility Services.",
     highlightedTitle: "One Trusted Partner.",
     description:
-      "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.",
+      "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across PAN India.",
     image: "/images/hero/slide-security.webp",
     serviceCategory: "Security Guard Services",
     primaryCtaText: "Get Free Instant Quote",
@@ -88,7 +88,7 @@ export const heroSlides: HeroSlideData[] = [
 
 const stats = [
   { value: "11", label: "Core Service Divisions" },
-  { value: "500+", label: "Verified Workforce" },
+  { value: "500+", label: "Trained & Groomed Staff" },
   { value: "24/7", label: "Control Room Response" },
   { value: "100%", label: "Statutory ESIC & PF Compliance" },
 ];

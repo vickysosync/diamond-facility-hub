@@ -32,7 +32,7 @@ export const companyInfo: CompanyInfo = {
   about:
     "Diamond Integrated Facility Services LLP provides full-spectrum facility management including 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Bouncer Security, Manpower Supply, Tank Cleaning & Gardening, CCTV Installation & Maintenance, Plumbing, Electrical, Painting, Waterproofing, and Repair & Maintenance Services.",
   businessDescription:
-    "Integrated facility management and commercial property support services across Pune and PCMC, headed by Director Umesh Patil, backed by trained personnel, statutory compliance and flexible service packages.",
+    "Integrated facility management and commercial property support services across PAN India, headed by Director Umesh Patil, backed by trained & groomed personnel, statutory compliance and flexible service packages.",
   businessHours: [
     { day: "Monday – Saturday", hours: "9:00 AM – 6:00 PM" },
     { day: "Sunday", hours: "Emergency Support Only" },
@@ -366,14 +366,14 @@ export interface PortfolioItem {
 }
 
 export const portfolio: PortfolioItem[] = [
-  { id: 1, title: "Corporate Office Security Management", category: "Security", client: "IT Services Company", location: "Hinjawadi, Pune", serviceType: "Security Guard Deployment", year: "2025", status: "Completed", image: "/images/security.jpg", description: "Round-the-clock manned guarding with entry-exit registers and visitor management across a 3-floor corporate office." },
+  { id: 1, title: "Corporate Office Security Management", category: "Security", client: "IT Services Company", location: "Hinjawadi, Pune / PAN India", serviceType: "Security Guard Deployment", year: "2025", status: "Completed", image: "/images/security.jpg", description: "Round-the-clock manned guarding with entry-exit registers and visitor management across a 3-floor corporate office." },
   { id: 2, title: "Residential Society Pest Control", category: "Pest Control", client: "Residential Society", location: "Rahatni, Pune", serviceType: "Preventive Pest Management", year: "2025", status: "Ongoing", image: "/images/pest.jpg", description: "Quarterly cockroach and rodent management across 168 flats, clubhouse and basement parking areas." },
   { id: 3, title: "Commercial Water Tank Cleaning", category: "Tank Cleaning", client: "Business Park", location: "Kalewadi, Pune", serviceType: "Overhead & Underground Cleaning", year: "2024", status: "Completed", image: "/images/tank.jpg", description: "Mechanised cleaning and sanitisation of 6 storage tanks with pre and post service documentation." },
   { id: 4, title: "Office Interior Painting", category: "Painting", client: "Consulting Firm", location: "Baner, Pune", serviceType: "Interior Painting", year: "2025", status: "Completed", image: "/images/painting.jpg", description: "Weekend-phased interior repainting of 9,000 sq.ft workspace with zero working-day disruption." },
-  { id: 5, title: "Industrial Facility Security", category: "Security", client: "Manufacturing Unit", location: "Chakan, Pune", serviceType: "Industrial Security", year: "2024", status: "Ongoing", image: "/images/facility.jpg", description: "Three-shift gate and material-movement security with supervisor-led daily reporting." },
-  { id: 6, title: "Warehouse Maintenance Support", category: "Facility Management", client: "Logistics Operator", location: "Talegaon, Pune", serviceType: "Integrated Facility Support", year: "2025", status: "Ongoing", image: "/images/facility.jpg", description: "Combined security, rodent control and periodic maintenance under a single service contract." },
-  { id: 7, title: "Residential Complex Painting", category: "Painting", client: "Housing Society", location: "Pimpri, Pune", serviceType: "Exterior Painting", year: "2024", status: "Completed", image: "/images/painting.jpg", description: "External repainting of four towers including surface repair and waterproof coating." },
-  { id: 8, title: "Commercial Property Facility Support", category: "Facility Management", client: "Retail Property", location: "Wakad, Pune", serviceType: "Integrated Facility Services", year: "2026", status: "In Progress", image: "/images/facility.jpg", description: "Day-and-night facility cover combining guarding, hygiene services and scheduled upkeep." },
+  { id: 5, title: "Industrial Facility Security", category: "Security", client: "Manufacturing Unit", location: "Chakan Industrial Zone", serviceType: "Industrial Security", year: "2024", status: "Ongoing", image: "/images/facility.jpg", description: "Three-shift gate and material-movement security with supervisor-led daily reporting." },
+  { id: 6, title: "Warehouse Maintenance Support", category: "Facility Management", client: "Logistics Operator", location: "Talegaon Logistics Hub", serviceType: "Integrated Facility Support", year: "2025", status: "Ongoing", image: "/images/facility.jpg", description: "Combined security, rodent control and periodic maintenance under a single service contract." },
+  { id: 7, title: "Residential Complex Painting", category: "Painting", client: "Housing Society", location: "Pimpri Complex", serviceType: "Exterior Painting", year: "2024", status: "Completed", image: "/images/painting.jpg", description: "External repainting of four towers including surface repair and waterproof coating." },
+  { id: 8, title: "Commercial Property Facility Support", category: "Facility Management", client: "Retail Property", location: "Wakad Commercial Center", serviceType: "Integrated Facility Services", year: "2026", status: "In Progress", image: "/images/facility.jpg", description: "Day-and-night facility cover combining guarding, hygiene services and scheduled upkeep." },
 ];
 
 export interface TestimonialItem {

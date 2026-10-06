@@ -64,9 +64,9 @@ export default function GalleryPage() {
         eyebrow="Visual Field Documentation"
         title="Field Operations & Service Delivery Gallery"
         highlightedTitle="Service Delivery Gallery"
-        subtitle="Explore high-resolution visual documentation of our on-site security deployments, mechanized cleaning, water tank sanitization, civil painting, and integrated facility operations across Pune & PCMC."
+        subtitle="Explore high-resolution visual documentation of our on-site security deployments, mechanized cleaning, water tank sanitization, civil painting, and integrated facility operations across PAN India."
         image="/images/headers/gallery-header.webp"
-        imageAlt="Field Operations & Service Delivery Gallery in Pune and PCMC"
+        imageAlt="Field Operations & Service Delivery Gallery Across PAN India"
         ctaText="Request Site Audit"
         ctaAction={() => openQuote()}
         secondaryCtaText="Explore Case Studies"

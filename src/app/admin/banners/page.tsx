@@ -484,7 +484,7 @@ export default function AdminBannersPage() {
                   className="field text-xs"
                   value={formData.badge}
                   onChange={(e) => setFormData({ ...formData, badge: e.target.value })}
-                  placeholder="e.g., 24/7 Manned Security • Police-Verified"
+                  placeholder="e.g., 24/7 Manned Security • Trained & Groomed Workforce"
                 />
               </div>
 

@@ -17,22 +17,23 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: {
-    default: "Diamond Integrated Facility Services LLP | Facility Management Pune",
+    default: "Diamond Integrated Facility Services LLP | Facility Management PAN India",
     template: "%s | Diamond Integrated Facility Services LLP",
   },
   description:
-    "Integrated facility management partner in Pune headed by Director Umesh Patil. Screened Security Guards, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning & Gardening, CCTV, and Civil Maintenance.",
+    "Integrated facility management partner across PAN India headed by Director Umesh Patil. Trained & Groomed Security Guards, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning & Gardening, CCTV, and Civil Maintenance.",
   keywords: [
-    "facility management pune",
-    "security guard services pune",
-    "housekeeping services pune",
-    "property management pune",
-    "pest control pune",
-    "bouncer services pune",
-    "man power supply pune",
-    "tank cleaning pune",
-    "cctv installation pune",
-    "painting and waterproofing pune",
+    "facility management pan india",
+    "facility management india",
+    "facility management services",
+    "security guard services india",
+    "housekeeping services pan india",
+    "property management services",
+    "pest control services",
+    "man power supply india",
+    "tank cleaning services",
+    "cctv installation services",
+    "painting and waterproofing",
     "diamond integrated facility services llp",
     "umesh patil diamond facility",
   ],
@@ -43,9 +44,9 @@ export const metadata: Metadata = {
     apple: "/images/logo-icon.png",
   },
   openGraph: {
-    title: "Diamond Integrated Facility Services LLP | Pune",
+    title: "Diamond Integrated Facility Services LLP | PAN India Facility Management",
     description:
-      "One trusted partner for 11 core facility management services across Pune, PCMC and Maharashtra.",
+      "One trusted partner for 11 core facility management services across PAN India.",
     type: "website",
     locale: "en_IN",
     siteName: "Diamond Integrated Facility Services LLP",

@@ -29,7 +29,7 @@ const WebsiteContentSchema = new Schema<IWebsiteContent>(
     heroSubtitle: {
       type: String,
       default:
-        "Reliable security, housekeeping, property management, pest control, manpower, tank cleaning, gardening & landscaping, CCTV, and technical maintenance solutions across Pune.",
+        "Reliable security, housekeeping, property management, pest control, manpower, tank cleaning, gardening & landscaping, CCTV, and technical maintenance solutions across PAN India.",
     },
     heroBadge: {
       type: String,
@@ -54,7 +54,7 @@ const WebsiteContentSchema = new Schema<IWebsiteContent>(
       default: [
         { value: "11", label: "Core Services" },
         { value: "10+", label: "Industries Served" },
-        { value: "Pune", label: "Headquarters & Operations" },
+        { value: "PAN India", label: "Operations & Service Reach" },
       ],
     },
     whyChooseUs: {
@@ -79,7 +79,7 @@ const WebsiteContentSchema = new Schema<IWebsiteContent>(
     footerText: {
       type: String,
       default:
-        "Integrated facility management and property support services for B2B clients across Pune and Pimpri-Chinchwad, backed by trained personnel, safety-first operations and flexible service packages.",
+        "Integrated facility management and property support services for B2B clients across PAN India, backed by trained & groomed personnel, safety-first operations and flexible service packages.",
     },
   },
   {

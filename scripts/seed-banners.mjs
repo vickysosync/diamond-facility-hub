@@ -42,9 +42,9 @@ const banners = [
   {
     title: "Complete Facility Services.",
     highlightedTitle: "One Trusted Partner.",
-    badge: "24/7 Manned Security • Police-Verified • 100% Compliant",
+    badge: "24/7 Manned Security • Trained & Groomed Workforce • 100% Compliant",
     description:
-      "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.",
+      "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across PAN India.",
     image: "/images/hero/slide-security.webp",
     imageUrl: "/images/hero/slide-security.webp",
     placement: "home_hero",
@@ -131,7 +131,7 @@ const banners = [
     highlightedTitle: "Facility Services",
     badge: "About Diamond Integrated Services",
     description:
-      "Integrated facility management and commercial property support services across Pune and PCMC, backed by verified personnel, statutory compliance and flexible service packages.",
+      "Integrated facility management and commercial property support services across PAN India, backed by trained & groomed personnel, statutory compliance and flexible service packages.",
     image: "/images/headers/about-header.webp",
     imageUrl: "/images/headers/about-header.webp",
     placement: "page_about",
@@ -147,7 +147,7 @@ const banners = [
     highlightedTitle: "Facility Management Solutions",
     badge: "Integrated Service Divisions",
     description:
-      "From armed security & mechanized housekeeping to waterproofing, plumbing, CCTV surveillance and complete facility maintenance contracts — single-point accountability for Pune & PCMC.",
+      "From armed security & mechanized housekeeping to waterproofing, plumbing, CCTV surveillance and complete facility maintenance contracts — single-point accountability across PAN India.",
     image: "/images/headers/services-header.webp",
     imageUrl: "/images/headers/services-header.webp",
     placement: "page_services",
@@ -163,7 +163,7 @@ const banners = [
     highlightedTitle: "Every Type of Property",
     badge: "Specialized Sector Coverage",
     description:
-      "Each sector operates under unique access protocols, hygiene mandates, and shift cycles. Our operational plans are custom-engineered for how your facility actually functions across Pune & PCMC.",
+      "Each sector operates under unique access protocols, hygiene mandates, and shift cycles. Our operational plans are custom-engineered for how your facility actually functions across PAN India.",
     image: "/images/headers/industries-header.webp",
     imageUrl: "/images/headers/industries-header.webp",
     placement: "page_industries",
@@ -175,7 +175,7 @@ const banners = [
     status: "Active",
   },
   {
-    title: "Facility Operations Delivered Across Pune & Maharashtra",
+    title: "Facility Operations Delivered Across PAN India",
     highlightedTitle: "Facility Operations Delivered",
     badge: "Proven Deployments & Track Record",
     description:
@@ -195,7 +195,7 @@ const banners = [
     highlightedTitle: "Service Delivery Gallery",
     badge: "Visual Field Documentation",
     description:
-      "Explore high-resolution visual documentation of our on-site security deployments, mechanized cleaning, water tank sanitization, civil painting, and integrated facility operations across Pune & PCMC.",
+      "Explore high-resolution visual documentation of our on-site security deployments, mechanized cleaning, water tank sanitization, civil painting, and integrated facility operations across PAN India.",
     image: "/images/headers/gallery-header.webp",
     imageUrl: "/images/headers/gallery-header.webp",
     placement: "page_gallery",

@@ -72,7 +72,7 @@ const QuoteRequestSchema = new Schema<IQuoteRequest>(
     },
     city: {
       type: String,
-      default: "Pune",
+      default: "",
       trim: true,
     },
     estimatedCost: {

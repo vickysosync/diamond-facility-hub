@@ -65,11 +65,11 @@ export default function PortfolioPage() {
       <PageHeader
         placement="page_portfolio"
         eyebrow="Proven Deployments & Track Record"
-        title="Facility Operations Delivered Across Pune & Maharashtra"
+        title="Facility Operations Delivered Across PAN India"
         highlightedTitle="Facility Operations Delivered"
         subtitle="Explore our verified facility management contracts, security deployments, mechanized cleaning turnarounds, and preventative upkeep case studies."
         image="/images/headers/portfolio-header.webp"
-        imageAlt="Proven Facility Operations and Verified Case Studies Delivered Across Pune"
+        imageAlt="Proven Facility Operations and Verified Case Studies Delivered Across PAN India"
         ctaText="Discuss Your Facility"
         ctaAction={() => openQuote()}
         secondaryCtaText="View Field Gallery"
@@ -94,7 +94,7 @@ export default function PortfolioPage() {
                   Deployments & Case Studies
                 </h2>
                 <p className="text-xs text-muted-foreground mt-0.5 font-medium">
-                  Showing {list.length} of {projects.length} verified operations across Pune & PCMC
+                  Showing {list.length} of {projects.length} verified operations across PAN India
                 </p>
               </div>
 

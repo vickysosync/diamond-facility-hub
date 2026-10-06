@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
       selectedServices,
       frequency: data.frequency || "Monthly",
       preferredDate: data.preferredDate || data.date || "",
-      city: data.city || "Pune",
+      city: data.city || "PAN India",
       estimatedCost: Number(data.estimatedCost || data.estimatedPrice) || 0,
       notes: data.notes || data.additionalRequirements || "",
       status: "New",

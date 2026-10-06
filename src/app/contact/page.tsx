@@ -11,7 +11,7 @@ export default function ContactPage() {
         eyebrow="Direct Facility Helpdesk"
         title="Talk Directly With Our Operations Team"
         highlightedTitle="Operations Team"
-        subtitle="Share your facility square footage, sector type, and required services. We deliver documented proposals and instant site audits across Pune & PCMC."
+        subtitle="Share your facility square footage, sector type, and required services. We deliver documented proposals and instant site audits across PAN India."
       />
 
       <section className="section-y relative overflow-hidden">

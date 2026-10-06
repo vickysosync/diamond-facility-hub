@@ -16,9 +16,9 @@ export default function AboutPage() {
         eyebrow="About Diamond Integrated Services"
         title="Integrated Facility Services Built Around Your Needs"
         highlightedTitle="Facility Services"
-        subtitle={company.businessDescription || "Integrated facility management and commercial property support services across Pune and PCMC, backed by verified personnel, statutory compliance and flexible service packages."}
+        subtitle={company.businessDescription || "Integrated facility management and commercial property support services across PAN India, backed by trained & groomed personnel, statutory compliance and flexible service packages."}
         image="/images/headers/about-header.webp"
-        imageAlt="Diamond Integrated Facility Services Leadership and Field Operations in Pune"
+        imageAlt="Diamond Integrated Facility Services Leadership and Field Operations"
         ctaText="Request Service Proposal"
         secondaryCtaText="Explore Services"
         secondaryCtaLink="/services"
@@ -32,7 +32,7 @@ export default function AboutPage() {
             <div>
               <SectionTitle eyebrow="Who We Are" title="One Partner. Every Facility Service." />
               <p className="mt-4 sm:mt-5 text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
-                {company.about || "Diamond Integrated Facility Services LLP provides full-spectrum facility management including 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning, CCTV and Technical Civil Maintenance across Pune & PCMC."}
+                {company.about || "Diamond Integrated Facility Services LLP provides full-spectrum facility management including 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning, CCTV and Technical Civil Maintenance across PAN India."}
               </p>
               <p className="mt-3 sm:mt-4 text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
                 Working with a single integrated partner removes the coordination burden of managing multiple contractors. Scope, scheduling, supervision and reporting stay with one dedicated team, ensuring total operational accountability and single-invoice simplicity.
@@ -42,7 +42,7 @@ export default function AboutPage() {
               <div className="mt-6 sm:mt-8 grid gap-2.5 sm:gap-3.5 sm:grid-cols-2">
                 {[
                   ["Professional Service Approach", "briefcase"],
-                  ["Reliable Verified Workforce", "users"],
+                  ["Trained & Groomed Workforce", "users"],
                   ["Safety-Focused Operations", "shield"],
                   ["Flexible Contract Packages", "sliders"],
                   ["B2B Institutional Solutions", "layers"],
@@ -80,7 +80,7 @@ export default function AboutPage() {
                 {/* Floating Credential Pill */}
                 <div className="absolute top-3 right-3 sm:top-4 sm:right-4 rounded-full border border-gold/50 bg-[#0a1019]/85 px-3 py-1 sm:px-3.5 sm:py-1.5 text-[9.5px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-wider text-gold shadow-lg backdrop-blur-md flex items-center gap-1.5 sm:gap-2">
                   <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-                  <span>Registered LLP • Pune HQ</span>
+                  <span>Registered LLP • PAN India Operations</span>
                 </div>
               </div>
 
@@ -98,7 +98,7 @@ export default function AboutPage() {
                   {[
                     ["Service Lines", "11 Core Divisions (Security, Housekeeping, Pest Control, Manpower, Tank Cleaning, CCTV, Civil Upkeep)"],
                     ["Client Types", "Commercial, Residential, Educational, Healthcare, Industrial, IT Parks, etc."],
-                    ["Service Region", "Pan-India / All India Coverage"],
+                    ["Service Region", "PAN India / Nationwide Coverage"],
                     ["Engagement Models", "Comprehensive AMC, Monthly Retainers, On-Demand Deep Cleaning & Turnkey Projects"],
                   ].map(([k, v]) => (
                     <li key={k} className="border-b border-white/10 pb-2.5 last:border-0 last:pb-0">
@@ -345,19 +345,19 @@ export default function AboutPage() {
                   Core Strengths
                 </h2>
                 <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
-                  Operational differentiators that make Diamond Integrated Facility Services the trusted choice for commercial and residential establishments across Pune and PCMC.
+                  Operational differentiators that make Diamond Integrated Facility Services the trusted choice for commercial and residential establishments across PAN India.
                 </p>
 
                 <div className="pt-2 grid gap-3 sm:grid-cols-2">
                   {[
                     {
                       title: "100% Statutory Compliance",
-                      desc: "ESIC, EPFO, GST, Minimum Wages Act, and PSARA verified personnel.",
+                      desc: "ESIC, EPFO, GST, Minimum Wages Act, and statutory compliant workforce.",
                       icon: "shield",
                     },
                     {
-                      title: "Verified & Skilled Staff",
-                      desc: "Police verified, background checked, and structured SOP training.",
+                      title: "Trained & Groomed Workforce",
+                      desc: "Professionally groomed, background checked, and structured SOP training.",
                       icon: "users",
                     },
                     {
@@ -376,8 +376,8 @@ export default function AboutPage() {
                       icon: "sparkles",
                     },
                     {
-                      title: "Local Maharashtra Footprint",
-                      desc: "Presence across Hinjewadi, Chakan, Talegaon, Bhosari, Kharadi & PCMC.",
+                      title: "PAN India Footprint",
+                      desc: "Rapid deployment and nationwide operations across industrial, commercial & residential hubs.",
                       icon: "map-pin",
                     },
                   ].map((str) => (
@@ -431,16 +431,16 @@ export default function AboutPage() {
               {
                 title: "Executive Leadership",
                 subtitle: "Direct Operations Oversight",
-                desc: "Headed by Managing Director Umesh Patil, our executive team maintains direct oversight across all residential and commercial sites in Pune.",
+                desc: "Headed by Managing Director Umesh Patil, our executive team maintains direct oversight across all residential and commercial sites across PAN India.",
                 icon: "users",
                 badge: "Director: Umesh Patil",
               },
               {
                 title: "100% Statutory Compliance",
                 subtitle: "Zero Client Liability",
-                desc: "Full statutory compliance including ESIC, EPFO, GST registration, police-verified guarding personnel, and strict labor code standards.",
+                desc: "Full statutory compliance including ESIC, EPFO, GST registration, trained & groomed guarding personnel, and strict labor code standards.",
                 icon: "shield",
-                badge: "ESIC • EPFO • PSARA Compliant",
+                badge: "ESIC • EPFO • Compliant",
               },
               {
                 title: "24/7 Control Room & SLA",

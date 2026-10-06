@@ -15,7 +15,7 @@ export default function IndustriesPage() {
         eyebrow="Specialized Sector Coverage"
         title="Tailored Facility Support for Every Type of Property"
         highlightedTitle="Every Type of Property"
-        subtitle="Each sector operates under unique access protocols, hygiene mandates, and shift cycles. Our operational plans are custom-engineered for how your facility actually functions across Pune & PCMC."
+        subtitle="Each sector operates under unique access protocols, hygiene mandates, and shift cycles. Our operational plans are custom-engineered for how your facility actually functions across PAN India."
         image="/images/headers/industries-header.webp"
         imageAlt="Tailored Facility Support for Commercial, Healthcare, Manufacturing and Residential Properties"
         ctaText="Request Custom Scope"
@@ -30,7 +30,7 @@ export default function IndustriesPage() {
           <InView direction="up">
             <SectionTitle
               eyebrow="Sectors We Cover"
-              title="Industries We Serve Across Maharashtra"
+              title="Industries We Serve Across PAN India"
               subtitle="From single-office corporate premises to multi-tower residential societies, industrial plants, and healthcare campuses."
             />
           </InView>
@@ -50,7 +50,7 @@ export default function IndustriesPage() {
             <SectionTitle
               eyebrow="Specialized Protocols"
               title="Site-Specific Operational Frameworks"
-              subtitle="Every property type receives dedicated operational manuals, verified workforce uniforms, and tailored escalation protocols."
+              subtitle="Every property type receives dedicated operational manuals, trained & groomed workforce uniforms, and tailored escalation protocols."
               center
             />
           </InView>

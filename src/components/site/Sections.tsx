@@ -77,7 +77,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
           <div className="relative h-48 w-full overflow-hidden bg-navy/5 border-b border-border/60">
             <img
               src={service.image}
-              alt={`${service.name} by Diamond Integrated Facility Services in Pune`}
+              alt={`${service.name} by Diamond Integrated Facility Services`}
               loading="lazy"
               className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
             />
@@ -621,7 +621,7 @@ export function ContactForm() {
   return (
     <form onSubmit={submit} noValidate className="card-3d relative rounded-2xl border border-slate-200/85 bg-white p-6 shadow-[0_4px_20px_-4px_rgba(15,24,36,0.06)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/40 before:to-transparent">
       <h3 className="font-display text-base font-bold text-navy">Send Us a Direct Message</h3>
-      <p className="text-xs text-muted-foreground mt-1">Get in touch for customized facility management solutions in Pune & PCMC</p>
+      <p className="text-xs text-muted-foreground mt-1">Get in touch for customized facility management solutions across PAN India</p>
       
       {errors.form && (
         <p className="mt-3 p-2.5 rounded-lg bg-destructive/10 text-destructive font-semibold text-xs border border-destructive/20">

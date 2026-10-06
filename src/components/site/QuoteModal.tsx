@@ -38,7 +38,7 @@ const emptyForm = {
   serviceCategory: "Security Guard Services",
   frequency: "Monthly",
   date: "",
-  city: "Pune",
+  city: "",
   notes: "",
 };
 
@@ -105,7 +105,7 @@ export default function QuoteModal({ open, onClose, prefill }: QuoteModalProps) 
         facilityType: form.facilityType || "Corporate Office",
         facilitySize: Number(form.facilitySize) || 0,
         frequency: form.frequency || "Monthly",
-        city: form.city || "Pune",
+        city: form.city || "PAN India",
         estimatedCost: prefill?.estimatedCost ?? 0,
         estimatedPrice: prefill?.estimatedCost ?? 0,
         preferredDate: form.date,
@@ -292,7 +292,7 @@ export default function QuoteModal({ open, onClose, prefill }: QuoteModalProps) 
                 className="field text-xs bg-slate-50/70 border-slate-200 rounded-xl focus:bg-white"
                 value={form.city}
                 onChange={(e) => set("city", e.target.value)}
-                placeholder="Pune"
+                placeholder="e.g., Mumbai, Delhi, Pune, Bengaluru"
               />
             </div>
           </div>

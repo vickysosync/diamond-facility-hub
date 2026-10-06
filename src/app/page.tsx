@@ -40,14 +40,14 @@ function AboutBlock() {
             </h2>
 
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground font-normal">
-              Headed by Director Umesh Patil, Diamond Integrated Facility Services LLP provides full-spectrum facility management including 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning, CCTV and Technical Civil Maintenance across Pune & PCMC.
+              Headed by Director Umesh Patil, Diamond Integrated Facility Services LLP provides full-spectrum facility management including 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning, CCTV and Technical Civil Maintenance across PAN India.
             </p>
 
             {/* 6 Interactive 3D Frosted Micro-Cards */}
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {[
                 "Specialized Service Divisions",
-                "Police-Verified Trained Workforce",
+                "Trained & Groomed Workforce",
                 "100% Statutory ESIC & PF Compliance",
                 "Flexible Service Contract Packages",
                 "Dedicated Operations Site Supervisors",
@@ -94,7 +94,7 @@ function AboutBlock() {
             <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gold/30 bg-navy shadow-[0_25px_50px_-12px_rgba(15,24,36,0.3)] transition-all duration-500 group-hover:border-gold/60 group-hover:shadow-[0_30px_60px_-15px_rgba(217,155,56,0.35)]">
               <img
                 src="/images/facility.webp"
-                alt="Integrated facility management team supporting a corporate property in Pune"
+                alt="Integrated facility management team supporting corporate properties across PAN India"
                 loading="lazy"
                 className="h-72 w-full object-cover sm:h-96 md:h-[26rem] lg:h-[28rem] transition-transform duration-700 ease-out group-hover:scale-105"
               />
@@ -113,7 +113,7 @@ function AboutBlock() {
               <div className="mt-2.5 sm:mt-3 grid grid-cols-3 gap-1 sm:gap-3 text-center divide-x divide-white/10">
                 {[
                   ["Full Scope", "Service Lines"],
-                  ["Pune & PCMC", "Headquartered"],
+                  ["PAN India", "Service Reach"],
                   ["Umesh Patil", "Managing Director"],
                 ].map(([v, l]) => (
                   <div key={l} className="px-1">
@@ -230,7 +230,7 @@ export default function HomePage() {
           <InView direction="up">
             <SectionTitle
               eyebrow="Target Sectors"
-              title="Industries We Support Across Maharashtra"
+              title="Industries We Support Across PAN India"
               subtitle="Facility management programs customized to the distinct operational realities of each campus."
               center
             />
@@ -282,7 +282,7 @@ export default function HomePage() {
         <div className="container-x grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
           <InView direction="up">
             <div>
-              <SectionTitle eyebrow="Head Office" title="Connect With Our Pune Management Team" />
+              <SectionTitle eyebrow="Head Office" title="Connect With Our Management Team" />
               <div className="mt-8">
                 <ContactDetails />
               </div>

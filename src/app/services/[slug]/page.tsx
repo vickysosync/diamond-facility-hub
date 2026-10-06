@@ -82,7 +82,7 @@ export default function ServiceDetailPage({
         title={category.name}
         subtitle={category.shortDescription}
         image={category.image || "/images/headers/services-header.webp"}
-        imageAlt={`${category.name} in Pune by Diamond Integrated Facility Services`}
+        imageAlt={`${category.name} by Diamond Integrated Facility Services`}
         ctaText="Request Service Quote"
         ctaAction={() => openQuote({ services: [category.name] })}
         secondaryCtaText="All Service Divisions"
@@ -136,7 +136,7 @@ export default function ServiceDetailPage({
                   SLA & Statutory Compliance Guarantee
                 </h3>
                 <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  All workforce deployed under <strong className="text-navy">{category.name}</strong> undergo police background verification, statutory ESIC/PF enrollment, site-specific safety briefings, and scheduled supervisor audits across Pune & PCMC.
+                  All workforce deployed under <strong className="text-navy">{category.name}</strong> undergo professional training, grooming standards, statutory ESIC/PF enrollment, site-specific safety briefings, and scheduled supervisor audits across PAN India.
                 </p>
               </div>
             </div>
@@ -172,7 +172,7 @@ export default function ServiceDetailPage({
                 </button>
 
                 <p className="mt-3.5 text-[10.5px] sm:text-[11px] text-slate-300 text-center leading-relaxed">
-                  Tailored packages for residential societies, commercial IT parks, industrial campuses and institutions across Pune.
+                  Tailored packages for residential societies, commercial IT parks, industrial campuses and institutions across PAN India.
                 </p>
               </div>
 

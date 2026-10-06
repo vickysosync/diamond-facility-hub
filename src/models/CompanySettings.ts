@@ -103,7 +103,7 @@ const CompanySettingsSchema = new Schema<ICompanySettings>(
     businessDescription: {
       type: String,
       default:
-        "Integrated facility management and property support services for B2B clients across Pune and Pimpri-Chinchwad, backed by trained personnel, safety-first operations and flexible service packages.",
+        "Integrated facility management and property support services for B2B clients across PAN India, backed by trained & groomed personnel, safety-first operations and flexible service packages.",
       trim: true,
     },
     businessHours: {

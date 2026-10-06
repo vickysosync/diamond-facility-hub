@@ -71,7 +71,7 @@ export async function seedDatabase() {
       shortDescription:
         "Screened and trained security personnel, access control and monitoring support for commercial, residential, corporate and industrial premises.",
       description:
-        "Diamond Integrated Facility Services LLP provides disciplined and verified security personnel backed by structured shift planning, digital visitor logs, and round-the-clock supervisor coordination across Pune and Pimpri-Chinchwad.",
+        "Diamond Integrated Facility Services LLP provides disciplined and trained security personnel backed by structured shift planning, digital visitor logs, and round-the-clock supervisor coordination across PAN India.",
       features: [
         "Security Guard Deployment",
         "Residential Security",
@@ -790,10 +790,10 @@ export async function seedDatabase() {
     {
       title: "Complete Facility Services.",
       highlightedTitle: "One Trusted Partner.",
-      badge: "24/7 Manned Security • Police-Verified • 100% Compliant",
+      badge: "24/7 Manned Security • Trained & Groomed Workforce • 100% Compliant",
       subtitle: "One Trusted Partner.",
       description:
-        "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.",
+        "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across PAN India.",
       image: "/images/hero/slide-security.webp",
       placement: "home_hero",
       serviceCategory: "Security Guard Services",
@@ -887,9 +887,9 @@ export async function seedDatabase() {
       title: "Integrated Facility Services Built Around Your Needs",
       highlightedTitle: "Facility Services",
       badge: "About Diamond Integrated Services",
-      subtitle: "Integrated facility management in Pune & PCMC",
+      subtitle: "Integrated facility management across PAN India",
       description:
-        "Integrated facility management and commercial property support services across Pune and PCMC, backed by verified personnel, statutory compliance and flexible service packages.",
+        "Integrated facility management and commercial property support services across PAN India, backed by trained & groomed personnel, statutory compliance and flexible service packages.",
       image: "/images/headers/about-header.webp",
       placement: "page_about",
       ctaText: "Request Service Proposal",
@@ -905,9 +905,9 @@ export async function seedDatabase() {
       title: "Comprehensive Facility Management Solutions",
       highlightedTitle: "Facility Management Solutions",
       badge: "Integrated Service Divisions",
-      subtitle: "Single-point accountability for Pune & PCMC",
+      subtitle: "Single-point accountability across PAN India",
       description:
-        "From armed security & mechanized housekeeping to waterproofing, plumbing, CCTV surveillance and complete facility maintenance contracts — single-point accountability for Pune & PCMC.",
+        "From armed security & mechanized housekeeping to waterproofing, plumbing, CCTV surveillance and complete facility maintenance contracts — single-point accountability across PAN India.",
       image: "/images/headers/services-header.webp",
       placement: "page_services",
       ctaText: "Instant Cost Estimator",
@@ -925,7 +925,7 @@ export async function seedDatabase() {
       badge: "Sector Solutions & Property Types",
       subtitle: "Dedicated frameworks for B2B & Residential",
       description:
-        "Dedicated operational frameworks built for Corporate IT Parks, High-Rise Residential Societies, Industrial Plants, Healthcare and Commercial Retail.",
+        "Dedicated operational frameworks built for Corporate IT Parks, High-Rise Residential Societies, Industrial Plants, Healthcare and Commercial Retail across PAN India.",
       image: "/images/headers/industries-header.webp",
       placement: "page_industries",
       ctaText: "Get Sector Proposal",
@@ -941,9 +941,9 @@ export async function seedDatabase() {
       title: "Proven Facility Operations & Field Deployments",
       highlightedTitle: "Field Deployments",
       badge: "Track Record & Case Studies",
-      subtitle: "Verified Case Studies Delivered Across Pune",
+      subtitle: "Verified Case Studies Delivered Across PAN India",
       description:
-        "Explore verified facility deployments, security guarding operations, mechanized cleaning contracts, and civil upkeep delivered across Pune and PCMC.",
+        "Explore verified facility deployments, security guarding operations, mechanized cleaning contracts, and civil upkeep delivered across PAN India.",
       image: "/images/headers/portfolio-header.webp",
       placement: "page_portfolio",
       ctaText: "Request Similar Deployment",
@@ -959,9 +959,9 @@ export async function seedDatabase() {
       title: "Field Operations & Service Delivery Gallery",
       highlightedTitle: "Service Delivery Gallery",
       badge: "Visual Excellence & On-Ground Operations",
-      subtitle: "Field Operations & Service Delivery in Pune and PCMC",
+      subtitle: "Field Operations & Service Delivery Across PAN India",
       description:
-        "A glimpse into our trained security guards, mechanized housekeeping crews, water tank sanitization teams, and technical engineers at work in Pune & PCMC.",
+        "A glimpse into our trained security guards, mechanized housekeeping crews, water tank sanitization teams, and technical engineers at work across PAN India.",
       image: "/images/headers/gallery-header.webp",
       placement: "page_gallery",
       ctaText: "Book Service Inspection",
@@ -997,7 +997,7 @@ export async function seedDatabase() {
       heroHeading: "Complete Facility Services.",
       heroHighlightedWord: "One Trusted Partner.",
       heroSubtitle:
-        "Reliable security, housekeeping, property management, pest control, manpower, tank cleaning, gardening & landscaping, CCTV, and technical maintenance solutions across Pune.",
+        "Reliable security, housekeeping, property management, pest control, manpower, tank cleaning, gardening & landscaping, CCTV, and technical maintenance solutions across PAN India.",
       heroBadge: "Professional • Reliable • Responsive",
       aboutHeading: "Integrated Facility Services Built Around Your Needs",
       aboutDescription:
@@ -1005,7 +1005,7 @@ export async function seedDatabase() {
       aboutHighlights: [
         { value: "11", label: "Core Services" },
         { value: "10+", label: "Industries Served" },
-        { value: "Pune", label: "Headquarters & Operations" },
+        { value: "PAN India", label: "Operations & Service Reach" },
       ],
       whyChooseUs: [
         {
@@ -1043,7 +1043,7 @@ export async function seedDatabase() {
       ctaText:
         "Tell us about your facility requirements and get a customized service estimate within minutes.",
       footerText:
-        "Integrated facility management and property support services for B2B clients across Pune and Pimpri-Chinchwad, backed by trained personnel, safety-first operations and flexible service packages.",
+        "Integrated facility management and property support services for B2B clients across PAN India, backed by trained & groomed personnel, safety-first operations and flexible service packages.",
     });
     console.log("Seeded website content");
   }
@@ -1068,7 +1068,7 @@ export async function seedDatabase() {
     about:
       "Diamond Integrated Facility Services LLP delivers security, housekeeping, property management, pest control, bouncer security, manpower supply, tank cleaning, gardening & landscaping, facility management, CCTV installation & maintenance, plumbing, electrical, painting, waterproofing, and repair & maintenance services for residential, commercial, industrial and institutional facilities through a single accountable service partner.",
     businessDescription:
-      "Integrated facility management and property support services for B2B clients across Pune and Pimpri-Chinchwad, backed by trained personnel, safety-first operations and flexible service packages.",
+      "Integrated facility management and property support services for B2B clients across PAN India, backed by trained & groomed personnel, safety-first operations and flexible service packages.",
     businessHours: [
       { day: "Monday – Saturday", hours: "9:00 AM – 6:00 PM" },
       { day: "Sunday", hours: "Emergency Support Only" },
@@ -1096,7 +1096,7 @@ export async function seedDatabase() {
       description: "Daily shift briefing and access log verification for corporate IT campus.",
       image: "/images/security.jpg",
       category: "Security Operations",
-      altText: "Security guard team deployment in Pune by Diamond Integrated Facility Services",
+      altText: "Security guard team deployment across PAN India by Diamond Integrated Facility Services",
       sortOrder: 1,
       status: "Active" as const,
     },
@@ -1105,7 +1105,7 @@ export async function seedDatabase() {
       description: "Mechanized floor cleaning and workstation hygiene maintenance.",
       image: "/images/facility.jpg",
       category: "Housekeeping & Sanitization",
-      altText: "Corporate housekeeping services in Pune",
+      altText: "Corporate housekeeping services across PAN India",
       sortOrder: 2,
       status: "Active" as const,
     },
@@ -1114,7 +1114,7 @@ export async function seedDatabase() {
       description: "Six-stage mechanized de-silting, cleaning and antibacterial treatment.",
       image: "/images/tank.jpg",
       category: "Tank Cleaning & Hygiene",
-      altText: "High pressure water tank sanitization Pune",
+      altText: "High pressure water tank sanitization PAN India",
       sortOrder: 3,
       status: "Active" as const,
     },
@@ -1132,7 +1132,7 @@ export async function seedDatabase() {
       description: "Odorless gel treatment and perimeter rodent management for commercial pantry.",
       image: "/images/pest.jpg",
       category: "Pest Management",
-      altText: "Targeted pest eradication commercial kitchens Pune",
+      altText: "Targeted pest eradication commercial kitchens PAN India",
       sortOrder: 5,
       status: "Active" as const,
     },
@@ -1141,7 +1141,7 @@ export async function seedDatabase() {
       description: "Single-point facility supervision and statutory visitor control.",
       image: "/images/hero.jpg",
       category: "Integrated Facility",
-      altText: "Integrated facility management team in Pune",
+      altText: "Integrated facility management team PAN India",
       sortOrder: 6,
       status: "Active" as const,
     },
@@ -1163,9 +1163,9 @@ export async function seedDatabase() {
     {
       title: "Complete Facility Services.",
       highlightedTitle: "One Trusted Partner.",
-      badge: "24/7 Manned Security • Police-Verified • 100% Compliant",
+      badge: "24/7 Manned Security • Trained & Groomed Workforce • 100% Compliant",
       description:
-        "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across Pune & PCMC.",
+        "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across PAN India.",
       image: "/images/hero/slide-security.webp",
       placement: "home_hero",
       serviceCategory: "Security Guard Services",
@@ -1247,7 +1247,7 @@ export async function seedDatabase() {
       highlightedTitle: "Facility Services",
       badge: "About Diamond Integrated Services",
       description:
-        "Integrated facility management and commercial property support services across Pune and PCMC, backed by verified personnel, statutory compliance and flexible service packages.",
+        "Integrated facility management and commercial property support services across PAN India, backed by trained & groomed personnel, statutory compliance and flexible service packages.",
       image: "/images/headers/about-header.webp",
       placement: "page_about",
       primaryCtaText: "Request Service Proposal",
@@ -1262,7 +1262,7 @@ export async function seedDatabase() {
       highlightedTitle: "Facility Management Solutions",
       badge: "Integrated Service Divisions",
       description:
-        "From armed security & mechanized housekeeping to waterproofing, plumbing, CCTV surveillance and complete facility maintenance contracts — single-point accountability for Pune & PCMC.",
+        "From armed security & mechanized housekeeping to waterproofing, plumbing, CCTV surveillance and complete facility maintenance contracts — single-point accountability across PAN India.",
       image: "/images/headers/services-header.webp",
       placement: "page_services",
       primaryCtaText: "Instant Cost Estimator",
@@ -1277,7 +1277,7 @@ export async function seedDatabase() {
       highlightedTitle: "Every Type of Property",
       badge: "Specialized Sector Coverage",
       description:
-        "Each sector operates under unique access protocols, hygiene mandates, and shift cycles. Our operational plans are custom-engineered for how your facility actually functions across Pune & PCMC.",
+        "Each sector operates under unique access protocols, hygiene mandates, and shift cycles. Our operational plans are custom-engineered for how your facility actually functions across PAN India.",
       image: "/images/headers/industries-header.webp",
       placement: "page_industries",
       primaryCtaText: "Request Custom Scope",
@@ -1288,7 +1288,7 @@ export async function seedDatabase() {
       status: "Active" as const,
     },
     {
-      title: "Facility Operations Delivered Across Pune & Maharashtra",
+      title: "Facility Operations Delivered Across PAN India",
       highlightedTitle: "Facility Operations Delivered",
       badge: "Proven Deployments & Track Record",
       description:
@@ -1307,7 +1307,7 @@ export async function seedDatabase() {
       highlightedTitle: "Service Delivery Gallery",
       badge: "Visual Field Documentation",
       description:
-        "Explore high-resolution visual documentation of our on-site security deployments, mechanized cleaning, water tank sanitization, civil painting, and integrated facility operations across Pune & PCMC.",
+        "Explore high-resolution visual documentation of our on-site security deployments, mechanized cleaning, water tank sanitization, civil painting, and integrated facility operations across PAN India.",
       image: "/images/headers/gallery-header.webp",
       placement: "page_gallery",
       primaryCtaText: "Request Site Audit",

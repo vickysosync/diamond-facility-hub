@@ -195,7 +195,7 @@ export default function Footer() {
                 <Icon name="pin" className="h-3.5 w-3.5 text-gold" />
               </span>
               <h3 className="font-display text-xs font-bold uppercase tracking-widest text-amber-300">
-                Head Office Pune
+                Central HQ • PAN India Hub
               </h3>
             </div>
 
