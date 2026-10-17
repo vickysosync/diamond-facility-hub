@@ -393,10 +393,11 @@ export function IndustriesGrid({ limit }: IndustriesGridProps = {}) {
     <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {list.map((ind) => {
         const imgSrc = getIndustryImage(ind);
+        const indSlug = ind.slug || ind.name?.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
         const services = ind.servicesOffered || ind.serviceNames || [];
 
         return (
-          <div key={ind._id || ind.id} className="card-border-beam group">
+          <div key={ind._id || ind.id} id={indSlug} className="card-border-beam group scroll-mt-28">
             <div className="card-border-beam-inner flex flex-col justify-between h-full">
               <div>
                 <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-navy/5 border-b border-border/60">
