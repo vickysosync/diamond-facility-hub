@@ -72,9 +72,67 @@ export default function AdminGalleryPage() {
     loadGallery();
   }, []);
 
+  const formatWithBullets = (text: string) => {
+    if (!text) return "";
+    return text
+      .split(/\r?\n/)
+      .map((line) => {
+        const trimmed = line.trim();
+        if (!trimmed) return "";
+        if (trimmed.startsWith("•") || trimmed.startsWith("-") || trimmed.startsWith("*")) {
+          return "• " + trimmed.replace(/^[•\-\*]\s*/, "");
+        }
+        return "• " + trimmed;
+      })
+      .filter(Boolean)
+      .join("\n");
+  };
+
+  const handleDescriptionKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const textarea = e.currentTarget;
+      const { selectionStart, selectionEnd, value } = textarea;
+
+      const before = value.substring(0, selectionStart);
+      const after = value.substring(selectionEnd);
+      const lines = before.split("\n");
+      const currentLine = lines[lines.length - 1];
+
+      // If current line is only an empty bullet (e.g., user presses Enter again on empty bullet), clear it
+      if (currentLine.trim() === "•" || currentLine.trim() === "-" || currentLine.trim() === "*") {
+        const newBefore = lines.slice(0, -1).join("\n") + (lines.length > 1 ? "\n" : "");
+        const newValue = newBefore + after;
+        setFormData((f) => ({ ...f, description: newValue }));
+        setTimeout(() => {
+          textarea.selectionStart = textarea.selectionEnd = newBefore.length;
+        }, 0);
+        return;
+      }
+
+      // Automatically add new line with bullet
+      const insert = "\n• ";
+      const newValue = before + insert + after;
+      setFormData((f) => ({ ...f, description: newValue }));
+      setTimeout(() => {
+        textarea.selectionStart = textarea.selectionEnd = selectionStart + insert.length;
+      }, 0);
+    }
+  };
+
+  const handleAddBullets = () => {
+    if (!formData.description.trim()) {
+      setFormData((f) => ({ ...f, description: "• " }));
+      return;
+    }
+    const formatted = formatWithBullets(formData.description);
+    setFormData((f) => ({ ...f, description: formatted }));
+  };
+
   const openCreate = () => {
     setFormData({
       ...emptyItem,
+      description: "• ",
       sortOrder: items.length + 1,
     });
     setIsCreating(true);
@@ -87,7 +145,7 @@ export default function AdminGalleryPage() {
     setViewing(null);
     setFormData({
       title: item.title,
-      description: item.description || "",
+      description: formatWithBullets(item.description || ""),
       image: item.image,
       category: item.category,
       altText: item.altText || "",
@@ -111,12 +169,17 @@ export default function AdminGalleryPage() {
     }
 
     setSaving(true);
+    const payload = {
+      ...formData,
+      description: formatWithBullets(formData.description),
+    };
+
     try {
       if (isCreating) {
         const res = await fetch("/api/gallery", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "Failed to create gallery item");
@@ -125,7 +188,7 @@ export default function AdminGalleryPage() {
         const res = await fetch(`/api/gallery/${editing._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "Failed to update gallery item");
@@ -340,10 +403,19 @@ export default function AdminGalleryPage() {
             <div className="space-y-4 text-xs">
               {viewing.description && (
                 <div>
-                  <p className="font-bold text-navy mb-1">Visual Description</p>
-                  <p className="text-muted-foreground leading-relaxed bg-mist/50 p-3 rounded-xl border border-border/50">
-                    {viewing.description}
-                  </p>
+                  <p className="font-bold text-navy mb-1.5">Visual Description</p>
+                  <ul className="space-y-1.5 bg-mist/50 p-3.5 rounded-xl border border-border/50 text-xs text-muted-foreground">
+                    {viewing.description
+                      .split(/\r?\n/)
+                      .map((l) => l.trim())
+                      .filter(Boolean)
+                      .map((line, lIdx) => (
+                        <li key={lIdx} className="flex items-start gap-2">
+                          <span className="text-gold font-bold shrink-0 text-sm leading-tight">•</span>
+                          <span>{line.replace(/^[•\-\*]\s*/, "")}</span>
+                        </li>
+                      ))}
+                  </ul>
                 </div>
               )}
 
@@ -458,14 +530,29 @@ export default function AdminGalleryPage() {
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block font-bold text-navy mb-1">Short Description</label>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block font-bold text-navy">Short Description</label>
+                  <button
+                    type="button"
+                    onClick={handleAddBullets}
+                    className="inline-flex items-center gap-1 text-[11px] font-bold text-gold hover:text-gold-dark hover:underline bg-gold/10 px-2.5 py-0.5 rounded-md border border-gold/30 transition-all cursor-pointer"
+                    title="Automatically add bullet point (•) to each line"
+                  >
+                    <span>• Add Bullet Points</span>
+                  </button>
+                </div>
                 <textarea
-                  rows={2}
-                  className="field text-xs"
-                  placeholder="Brief context regarding the deployment or site shown…"
+                  rows={4}
+                  className="field text-xs leading-relaxed font-sans"
+                  placeholder="• Enter bullet point 1&#10;• Enter bullet point 2&#10;• Enter bullet point 3"
                   value={formData.description}
                   onChange={(e) => setFormData((f) => ({ ...f, description: e.target.value }))}
+                  onKeyDown={handleDescriptionKeyDown}
                 />
+                <p className="mt-1 text-[11px] text-muted-foreground flex items-center gap-1">
+                  <span className="font-bold text-gold">• Tip:</span>
+                  <span>Har line ke aage automatically bullet point (&bull;) aayega. Enter press karne par next bullet point start hoga.</span>
+                </p>
               </div>
 
               <div>

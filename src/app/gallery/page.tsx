@@ -178,9 +178,19 @@ export default function GalleryPage() {
                             {item.title}
                           </h3>
                           {item.description && (
-                            <p className="mt-2 text-xs leading-relaxed text-muted-foreground line-clamp-2 font-normal">
-                              {item.description}
-                            </p>
+                            <ul className="mt-2.5 space-y-1">
+                              {item.description
+                                .split(/\r?\n/)
+                                .map((l) => l.trim())
+                                .filter(Boolean)
+                                .slice(0, 3)
+                                .map((line, lIdx) => (
+                                  <li key={lIdx} className="flex items-start gap-1.5 text-xs text-muted-foreground font-normal">
+                                    <span className="text-gold font-bold shrink-0 text-sm leading-tight">•</span>
+                                    <span className="line-clamp-1">{line.replace(/^[•\-\*]\s*/, "")}</span>
+                                  </li>
+                                ))}
+                            </ul>
                           )}
                         </div>
                       </div>
@@ -233,9 +243,21 @@ export default function GalleryPage() {
               />
             </div>
             {previewItem.description && (
-              <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground whitespace-pre-wrap font-normal">
-                {previewItem.description}
-              </p>
+              <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-3.5 sm:p-4">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-navy mb-2">Service Highlights:</p>
+                <ul className="space-y-1.5 text-xs sm:text-sm text-slate-700 font-medium">
+                  {previewItem.description
+                    .split(/\r?\n/)
+                    .map((l) => l.trim())
+                    .filter(Boolean)
+                    .map((line, lIdx) => (
+                      <li key={lIdx} className="flex items-start gap-2">
+                        <span className="text-gold font-bold shrink-0 text-base leading-none mt-0.5">•</span>
+                        <span>{line.replace(/^[•\-\*]\s*/, "")}</span>
+                      </li>
+                    ))}
+                </ul>
+              </div>
             )}
             <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 pt-3.5 border-t border-slate-200">
               <span className="inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-1 bg-gold/10 border border-gold/30 text-[11px] font-mono text-gold font-bold">
