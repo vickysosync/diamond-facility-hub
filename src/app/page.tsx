@@ -32,9 +32,9 @@ function AboutBlock() {
               <span className="break-words">About Diamond Integrated Facility Services</span>
             </div>
 
-            <h2 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight">
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl font-black text-navy tracking-tight leading-tight">
               Comprehensive Facility Management{" "}
-              <span className="bg-gradient-to-r from-gold via-brand-accent to-gold-dark bg-clip-text text-transparent">
+              <span className="font-black bg-gradient-to-r from-gold via-brand-accent to-gold-dark bg-clip-text text-transparent">
                 Built Around Your Operations
               </span>
             </h2>

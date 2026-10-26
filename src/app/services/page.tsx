@@ -56,7 +56,7 @@ export default function ServicesPage() {
           <InView direction="up">
             <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3.5 sm:gap-4 border-b border-slate-200/80 pb-4 sm:pb-5">
               <div>
-                <h2 className="font-display text-lg sm:text-xl font-extrabold text-navy">
+                <h2 className="font-display text-lg sm:text-xl font-black text-navy">
                   Service Catalog
                 </h2>
                 <p className="text-xs text-muted-foreground mt-0.5 font-medium">

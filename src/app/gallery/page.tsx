@@ -80,7 +80,7 @@ export default function GalleryPage() {
             <div className="mt-8 mb-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3.5 sm:gap-4 border-b border-slate-200/80 pb-4 sm:pb-5">
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-gold">Facility Highlights</p>
-                <h2 className="mt-0.5 text-xl sm:text-2xl lg:text-3xl font-extrabold text-navy">
+                <h2 className="mt-0.5 text-xl sm:text-2xl lg:text-3xl font-black font-display text-navy">
                   On-Ground Operations Showcase
                 </h2>
                 <p className="text-xs text-muted-foreground mt-0.5 font-medium">

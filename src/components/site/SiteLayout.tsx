@@ -128,7 +128,7 @@ export function PageHeader({
     return (
       <>
         {parts[0]}
-        <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm">
+        <span className="font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm">
           {activeHighlightedTitle}
         </span>
         {parts.slice(1).join(activeHighlightedTitle)}
@@ -178,7 +178,7 @@ export function PageHeader({
           )}
 
           {/* 3D Display Title */}
-          <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.18] sm:leading-[1.15] drop-shadow-lg">
+          <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.18] sm:leading-[1.15] drop-shadow-lg">
             {renderTitle()}
           </h1>
 

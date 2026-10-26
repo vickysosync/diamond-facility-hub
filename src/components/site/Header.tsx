@@ -321,10 +321,10 @@ export default function Header({ onQuote }: HeaderProps) {
                         )
                       }
                       aria-expanded={isDropdownOpen}
-                      className={`relative flex items-center gap-1.5 rounded-full px-3 2xl:px-4 py-1.5 text-xs 2xl:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                      className={`relative flex items-center gap-1.5 rounded-full px-3 2xl:px-4 py-1.5 text-xs 2xl:text-sm font-bold transition-all duration-300 cursor-pointer ${
                         isActive || isDropdownOpen
-                          ? "border border-gold/40 bg-white dark:bg-[#0f1824] text-gold font-bold shadow-[0_3px_14px_rgba(217,155,56,0.25)] -translate-y-0.5 scale-100"
-                          : "text-slate-700 dark:text-slate-200 hover:bg-white/70 dark:hover:bg-white/15 hover:text-gold hover:-translate-y-0.5 hover:shadow-xs"
+                          ? "border border-gold/40 bg-white dark:bg-[#0f1824] text-gold font-extrabold shadow-[0_3px_14px_rgba(217,155,56,0.25)] -translate-y-0.5 scale-100"
+                          : "text-slate-800 dark:text-white hover:bg-white/70 dark:hover:bg-white/15 hover:text-gold hover:-translate-y-0.5 hover:shadow-xs"
                       }`}
                     >
                       {(isActive || isDropdownOpen) && (
@@ -346,10 +346,10 @@ export default function Header({ onQuote }: HeaderProps) {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpenDropdown(null)}
-                    className={`relative flex items-center gap-1.5 rounded-full px-3 2xl:px-4 py-1.5 text-xs 2xl:text-sm font-semibold transition-all duration-300 ${
+                    className={`relative flex items-center gap-1.5 rounded-full px-3 2xl:px-4 py-1.5 text-xs 2xl:text-sm font-bold transition-all duration-300 ${
                       isActive
-                        ? "border border-gold/40 bg-white dark:bg-[#0f1824] text-gold font-bold shadow-[0_3px_14px_rgba(217,155,56,0.25)] -translate-y-0.5 scale-100"
-                        : "text-slate-700 dark:text-slate-200 hover:bg-white/70 dark:hover:bg-white/15 hover:text-gold hover:-translate-y-0.5 hover:shadow-xs"
+                        ? "border border-gold/40 bg-white dark:bg-[#0f1824] text-gold font-extrabold shadow-[0_3px_14px_rgba(217,155,56,0.25)] -translate-y-0.5 scale-100"
+                        : "text-slate-800 dark:text-white hover:bg-white/70 dark:hover:bg-white/15 hover:text-gold hover:-translate-y-0.5 hover:shadow-xs"
                     }`}
                   >
                     {isActive && (
@@ -568,10 +568,10 @@ export default function Header({ onQuote }: HeaderProps) {
                     <button
                       type="button"
                       onClick={() => setMobileServicesOpen((prev) => !prev)}
-                      className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+                      className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-bold transition-all duration-200 ${
                         isActive || mobileServicesOpen
-                          ? "border border-gold/40 bg-gold/10 text-gold font-bold shadow-xs"
-                          : "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 hover:text-gold"
+                          ? "border border-gold/40 bg-gold/10 text-gold font-extrabold shadow-xs"
+                          : "text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 hover:text-gold"
                       }`}
                     >
                       <span className="flex items-center gap-2">
@@ -625,10 +625,10 @@ export default function Header({ onQuote }: HeaderProps) {
                     <button
                       type="button"
                       onClick={() => setMobileIndustriesOpen((prev) => !prev)}
-                      className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+                      className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-bold transition-all duration-200 ${
                         isActive || mobileIndustriesOpen
-                          ? "border border-gold/40 bg-gold/10 text-gold font-bold shadow-xs"
-                          : "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 hover:text-gold"
+                          ? "border border-gold/40 bg-gold/10 text-gold font-extrabold shadow-xs"
+                          : "text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 hover:text-gold"
                       }`}
                     >
                       <span className="flex items-center gap-2">
@@ -681,10 +681,10 @@ export default function Header({ onQuote }: HeaderProps) {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+                  className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-bold transition-all duration-200 ${
                     isActive
-                      ? "border border-gold/40 bg-gold/10 text-gold font-bold shadow-xs"
-                      : "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 hover:text-gold"
+                      ? "border border-gold/40 bg-gold/10 text-gold font-extrabold shadow-xs"
+                      : "text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 hover:text-gold"
                   }`}
                 >
                   <span className="flex items-center gap-2">
