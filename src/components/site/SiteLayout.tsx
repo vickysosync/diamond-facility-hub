@@ -5,6 +5,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import QuoteModal from "./QuoteModal";
 import WhatsAppButton from "./WhatsAppButton";
+import BrochureButton from "./BrochureButton";
 
 interface QuoteContextType {
   openQuote: (data?: any) => void;
@@ -35,6 +36,7 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <BrochureButton />
       </div>
       <QuoteModal key={open ? "open" : "closed"} open={open} onClose={() => setOpen(false)} prefill={prefill} />
     </QuoteContext.Provider>

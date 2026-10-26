@@ -140,7 +140,7 @@ export default function HomePage() {
       name: s.name,
       shortDescription: s.short,
       icon: s.icon,
-      image: s.image?.replace(/\.(png|jpg|jpeg)$/i, ".webp"),
+      image: s.image?.startsWith("http") ? s.image : s.image?.replace(/\.(png|jpg|jpeg)$/i, ".webp"),
       features: s.features,
       startingPrice: s.startingPrice,
       priceNote: s.priceNote,
@@ -176,7 +176,7 @@ export default function HomePage() {
             <SectionTitle
               eyebrow="Core Service Lines"
               title="Integrated Facility Services Delivered End to End"
-              subtitle="From security guarding and housekeeping to tank sanitation, electrical upkeep and waterproofing — single partner accountability."
+              subtitle="From security guarding and housekeeping to healthcare sanitization, education campus care, IT park operations and technical maintenance — single partner accountability."
               center
             />
           </InView>
@@ -188,7 +188,7 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {categories.slice(0, 8).map((cat, idx) => (
+              {categories.map((cat, idx) => (
                 <InView key={cat._id || cat.slug} direction="up" delay={(idx % 4) * 100}>
                   <ServiceCard
                     service={{

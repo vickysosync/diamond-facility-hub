@@ -80,7 +80,7 @@ export default function AboutPage() {
                 {/* Floating Credential Pill */}
                 <div className="absolute top-3 right-3 sm:top-4 sm:right-4 rounded-full border border-gold/50 bg-[#0a1019]/85 px-3 py-1 sm:px-3.5 sm:py-1.5 text-[9.5px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-wider text-gold shadow-lg backdrop-blur-md flex items-center gap-1.5 sm:gap-2">
                   <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-                  <span>Registered LLP • PAN India Operations</span>
+                  <span>ISO 9001:2015 Certified • PAN India</span>
                 </div>
               </div>
 
@@ -91,11 +91,16 @@ export default function AboutPage() {
                     <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
                     Company Highlights
                   </span>
-                  <span className="text-[10px] font-mono text-gold font-bold">LLPIN: ACJ-3232</span>
+                  <div className="flex items-center gap-2 text-[10px] font-mono font-bold">
+                    <span className="text-gold">LLPIN: ACJ-3232</span>
+                    <span className="text-white/30">•</span>
+                    <span className="text-amber-300">ISO 9001:2015</span>
+                  </div>
                 </h3>
 
                 <ul className="mt-4 space-y-3">
                   {[
+                    ["Quality Certification", "ISO 9001:2015 Certified Quality Management System (QMS) compliant facility operations"],
                     ["Service Lines", "11 Core Divisions (Security, Housekeeping, Pest Control, Manpower, Tank Cleaning, CCTV, Civil Upkeep)"],
                     ["Client Types", "Commercial, Residential, Educational, Healthcare, Industrial, IT Parks, etc."],
                     ["Service Region", "PAN India / Nationwide Coverage"],
@@ -107,6 +112,19 @@ export default function AboutPage() {
                     </li>
                   ))}
                 </ul>
+
+                {/* ISO 9001:2015 Certified Seal Card */}
+                <div className="mt-4 pt-3.5 border-t border-white/10 flex items-center gap-3 bg-white/5 rounded-xl p-3 border border-gold/30">
+                  <img
+                    src="/images/iso-9001-2015.svg"
+                    alt="ISO 9001:2015 Certified"
+                    className="h-10 w-10 shrink-0 object-contain drop-shadow"
+                  />
+                  <div>
+                    <p className="text-xs font-bold text-amber-300">ISO 9001:2015 Certified</p>
+                    <p className="text-[10.5px] text-slate-300">Quality Management System (QMS) Verified</p>
+                  </div>
+                </div>
               </div>
             </aside>
           </InView>
@@ -438,9 +456,9 @@ export default function AboutPage() {
               {
                 title: "100% Statutory Compliance",
                 subtitle: "Zero Client Liability",
-                desc: "Full statutory compliance including ESIC, EPFO, GST registration, trained & groomed guarding personnel, and strict labor code standards.",
+                desc: "Full statutory compliance including ISO 9001:2015 QMS standards, ESIC, EPFO, GST registration, trained & groomed guarding personnel, and strict labor code standards.",
                 icon: "shield",
-                badge: "ESIC • EPFO • Compliant",
+                badge: "ISO 9001:2015 • ESIC • EPFO",
               },
               {
                 title: "24/7 Control Room & SLA",

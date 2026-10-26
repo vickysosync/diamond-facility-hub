@@ -23,6 +23,7 @@ export interface ICompanySettings extends Document {
     linkedin?: string;
     twitter?: string;
     instagram?: string;
+    youtube?: string;
   };
   createdAt: Date;
   updatedAt: Date;
@@ -127,6 +128,7 @@ const CompanySettingsSchema = new Schema<ICompanySettings>(
       linkedin: { type: String, default: "" },
       twitter: { type: String, default: "" },
       instagram: { type: String, default: "" },
+      youtube: { type: String, default: "" },
     },
   },
   {

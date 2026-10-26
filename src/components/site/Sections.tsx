@@ -467,9 +467,12 @@ export function ContactDetails() {
             <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gold/15 text-gold border border-gold/30">
               <Icon name="pin" className="h-4 w-4" />
             </span>
-            <span className="text-muted-foreground leading-relaxed">
-              Office No-A2, Sai Pritam Nagari, Chhatrapati Chowk, Rahatani-Kalewadi Link Road, Rahatani, Pune, Maharashtra, India - 411017
-            </span>
+            <div className="space-y-0.5">
+              <span className="font-bold text-navy block text-xs uppercase tracking-wider">Registered Office:</span>
+              <span className="text-muted-foreground leading-relaxed">
+                Office No-A2, Sai Pritam Nagari, Chhatrapati Chowk, Rahatani-Kalewadi Link Road, Rahatani, Pune, Maharashtra, India - 411017
+              </span>
+            </div>
           </li>
           <li className="flex gap-3">
             <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gold/15 text-gold border border-gold/30">
@@ -491,9 +494,17 @@ export function ContactDetails() {
             <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gold/15 text-gold border border-gold/30">
               <Icon name="mail" className="h-4 w-4" />
             </span>
-            <a href="mailto:info@diamondifs.com" className="break-all font-semibold text-navy hover:text-gold font-mono transition-colors">
-              info@diamondifs.com
-            </a>
+            <div className="space-y-1 text-xs">
+              <a href="mailto:sales@diamondifs.com" className="block font-semibold text-navy hover:text-gold font-mono transition-colors">
+                sales@diamondifs.com <span className="font-normal text-muted-foreground text-[11px] font-sans">(Corporate Sales & Contracts)</span>
+              </a>
+              <a href="mailto:info@diamondifs.com" className="block font-semibold text-navy hover:text-gold font-mono transition-colors">
+                info@diamondifs.com <span className="font-normal text-muted-foreground text-[11px] font-sans">(General Enquiries)</span>
+              </a>
+              <a href="mailto:support@diamondifs.com" className="block font-semibold text-navy hover:text-gold font-mono transition-colors">
+                support@diamondifs.com <span className="font-normal text-muted-foreground text-[11px] font-sans">(24/7 Operations Support)</span>
+              </a>
+            </div>
           </li>
         </ul>
       </div>

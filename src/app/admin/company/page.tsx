@@ -180,7 +180,7 @@ export default function AdminCompanyPage() {
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="block font-bold text-navy mb-1">Official Office Address *</label>
+                  <label className="block font-bold text-navy mb-1">Registered Office Address *</label>
                   <textarea
                     rows={2}
                     required
@@ -317,6 +317,21 @@ export default function AdminCompanyPage() {
                       setForm((prev: any) => ({
                         ...prev,
                         socialLinks: { ...(prev?.socialLinks || {}), twitter: e.target.value },
+                      }))
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold text-navy mb-1">YouTube Channel URL</label>
+                  <input
+                    type="url"
+                    className="field text-xs"
+                    placeholder="https://youtube.com/@..."
+                    value={form?.socialLinks?.youtube || ""}
+                    onChange={(e) =>
+                      setForm((prev: any) => ({
+                        ...prev,
+                        socialLinks: { ...(prev?.socialLinks || {}), youtube: e.target.value },
                       }))
                     }
                   />

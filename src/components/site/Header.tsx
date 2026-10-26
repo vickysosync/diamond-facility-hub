@@ -90,6 +90,24 @@ const fallbackServices = [
     icon: "gear",
     desc: "Routine & on-call structural upkeep across campuses",
   },
+  {
+    name: "Healthcare Facility Services",
+    slug: "healthcare-facility-services",
+    icon: "heart",
+    desc: "Hospital sanitization, sterile zones & biomedical waste",
+  },
+  {
+    name: "Educational Campus Services",
+    slug: "educational-campus-facility-services",
+    icon: "school",
+    desc: "Student safety guarding, school & campus grounds upkeep",
+  },
+  {
+    name: "IT & ITES Facility Solutions",
+    slug: "it-ites-facility-solutions",
+    icon: "building",
+    desc: "24/7 tech park shifts, server care & access control",
+  },
 ];
 
 const fallbackIndustries = [
@@ -494,6 +512,7 @@ export default function Header({ onQuote }: HeaderProps) {
             )}
           </div>
 
+
           {/* 3D Live Animated Call CTA Button */}
           <a
             href="tel:+919689515295"
@@ -690,6 +709,7 @@ export default function Header({ onQuote }: HeaderProps) {
               <Icon name="phone" className="relative z-10 h-4 w-4" />
               <span className="relative z-10 font-bold tracking-tight">+91 96895 15295</span>
             </a>
+
           </nav>
         </div>
       )}
