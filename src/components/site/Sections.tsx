@@ -126,7 +126,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
             {/* Specular live shimmer sweep */}
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none animate-[shimmer-sweep_3.5s_infinite]" />
             <span className="relative z-10">{service.cta}</span>
-            <Icon name="arrow" className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+            <Icon name="arrow" className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 group/btn:translate-x-1" />
           </button>
         </div>
       </div>
@@ -135,32 +135,82 @@ export function ServiceCard({ service }: ServiceCardProps) {
 }
 
 export function WhyChooseUs() {
+  const { openQuote } = useQuote();
+
   return (
     <section className="section-y bg-mist relative overflow-hidden">
       <div className="container-x">
         <SectionTitle
-          eyebrow="Why Diamond"
-          title="Why Businesses Choose Diamond"
-          subtitle="A single accountable partner for the services that keep your facility running seamlessly."
+          eyebrow="Diamond Integrated Facility Services LLP"
+          title="WHY WORK WITH US?"
+          subtitle="At Diamond Integrated Facility Services LLP, we believe that excellent facility management goes beyond providing services—it means building trust, ensuring safety, maintaining hygiene, and creating better workplaces."
           center
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div className="mx-auto mt-4 max-w-3xl text-center">
+          <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground font-normal">
+            We deliver integrated facility management solutions through professional manpower, systematic supervision, customer-focused service, and a commitment to quality. From security and housekeeping to patient care assistance and other facility support services, we strive to meet our clients&apos; operational requirements with efficiency, integrity, and responsibility.
+          </p>
+        </div>
+
+        <div className="mt-10 sm:mt-12 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-gold shadow-xs">
+            <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
+            <span>Why Choose Diamond?</span>
+          </div>
+        </div>
+
+        <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {whyChooseUs.map((w, idx) => (
-            <div key={w.title} className="card-border-beam group">
-              <div className="card-border-beam-inner p-6">
-                <div className="flex items-center justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-navy text-gold shadow-md border border-gold/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-navy group-hover:to-navy-800">
-                    <Icon name={w.icon} className="h-6 w-6" />
-                  </span>
-                  <span className="text-xs font-mono font-bold text-slate-300 group-hover:text-gold/60 transition-colors">
-                    0{idx + 1}
-                  </span>
+            <div key={w.title} className="card-border-beam group h-full">
+              <div className="card-border-beam-inner p-5 sm:p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="grid h-11 w-11 sm:h-12 sm:w-12 place-items-center rounded-xl bg-navy text-gold shadow-md border border-gold/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-navy group-hover:to-navy-800">
+                      <Icon name={w.icon} className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </span>
+                    <span className="text-xs font-mono font-bold text-slate-300 group-hover:text-gold/70 transition-colors">
+                      0{idx + 1}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 text-sm sm:text-base font-bold text-navy group-hover:text-navy-800 transition-colors">
+                    {w.title}
+                  </h3>
+                  <p className="mt-2 text-xs sm:text-[13px] leading-relaxed text-muted-foreground">
+                    {w.text}
+                  </p>
                 </div>
-                <h3 className="mt-5 text-base font-bold text-navy group-hover:text-navy-800 transition-colors">{w.title}</h3>
-                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">{w.text}</p>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Manager Highlight Motto Callout & Partner CTA */}
+        <div className="mx-auto mt-10 max-w-4xl rounded-2xl sm:rounded-3xl border border-gold/40 bg-navy p-6 sm:p-8 text-center text-white shadow-xl relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold before:to-transparent">
+          <h3 className="font-display text-base sm:text-xl lg:text-2xl font-black text-white tracking-tight">
+            &ldquo;Your Facility, Our Responsibility AND Your Satisfaction Our Priority&rdquo;
+          </h3>
+
+          <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
+            Partner with Diamond Integrated Facility Services LLP for dependable service solutions that help your business focus on what matters most.
+          </p>
+
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => openQuote()}
+              className="btn-base btn-live-gold px-6 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-xl shadow-lg"
+            >
+              <span>Partner With Us</span>
+              <Icon name="arrow" className="h-4 w-4" />
+            </button>
+            <Link
+              href="/contact"
+              className="btn-base btn-live-glass px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide rounded-xl shadow-md border border-white/20"
+            >
+              <span>Contact Our Team</span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

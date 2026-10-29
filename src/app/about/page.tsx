@@ -13,10 +13,10 @@ export default function AboutPage() {
     <SiteLayout>
       <PageHeader
         placement="page_about"
-        eyebrow="About Diamond Integrated Services"
-        title="Integrated Facility Services Built Around Your Needs"
-        highlightedTitle="Facility Services"
-        subtitle={company.businessDescription || "Integrated facility management and commercial property support services across PAN India, backed by trained & groomed personnel, statutory compliance and flexible service packages."}
+        eyebrow="Diamond Integrated Facility Services LLP"
+        title="Excellence in Every Service"
+        highlightedTitle="Every Service"
+        subtitle={company.businessDescription || "Diamond Integrated Facility Services LLP is a professional facility management company committed to delivering reliable, efficient, and high-quality integrated facility solutions to Businesses, Commercial Establishments, Residential Communities, Industrial Facilities, Healthcare and Educational Institutes."}
         image="/images/headers/about-header.webp"
         imageAlt="Diamond Integrated Facility Services Leadership and Field Operations"
         ctaText="Request Service Proposal"
@@ -29,24 +29,48 @@ export default function AboutPage() {
         <div className="container-x grid items-start gap-8 sm:gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-16">
           {/* Left Column: Mission & Core Value Propositions */}
           <InView direction="up">
-            <div>
-              <SectionTitle eyebrow="Who We Are" title="One Partner. Every Facility Service." />
-              <p className="mt-4 sm:mt-5 text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
-                {company.about || "Diamond Integrated Facility Services LLP provides full-spectrum facility management including 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning, CCTV and Technical Civil Maintenance across PAN India."}
+            <div className="space-y-4 sm:space-y-5">
+              <SectionTitle eyebrow="About Us" title="Excellence in Every Service." />
+              
+              <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
+                <strong className="text-navy font-semibold">Diamond Integrated Facility Services LLP</strong> is a professional facility management company committed to delivering reliable, efficient, and high-quality integrated facility solutions to Businesses, Commercial Establishments, Residential Communities, Industrial Facilities, Healthcare and Educational Institutes.
               </p>
-              <p className="mt-3 sm:mt-4 text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
-                Working with a single integrated partner removes the coordination burden of managing multiple contractors. Scope, scheduling, supervision and reporting stay with one dedicated team, ensuring total operational accountability and single-invoice simplicity.
+              
+              <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
+                We provide a comprehensive range of services, including <strong>Security Services, Housekeeping Services, Patient Support Services, Facility Management, Tank Cleaning, Deep Cleaning, Pest Control, Painting, Crack Filling and Waterproofing, Manpower Supply, Gardening and Landscaping</strong> and other workplace support services, tailored to meet the diverse needs of our clients.
               </p>
 
+              <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
+                At Diamond Integrated Facility Services LLP, we believe that every workplace deserves a safe, clean, hygienic, and well-managed environment. Our approach combines trained manpower, professional supervision, systematic operations, and a strong commitment to service quality to ensure smooth and efficient day-to-day operations.
+              </p>
+
+              <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
+                We focus on understanding our clients&apos; requirements and delivering customized solutions that support operational efficiency, workplace safety, cleanliness, and customer satisfaction. Through ethical business practices, transparent communication, disciplined service delivery, and continuous improvement, we aim to build long-term relationships based on trust and reliability.
+              </p>
+
+              <p className="text-xs sm:text-base leading-relaxed text-muted-foreground font-normal">
+                Our commitment extends beyond providing services. We strive to become a dependable partner in managing facilities, protecting assets, maintaining hygiene standards, and creating better working environments.
+              </p>
+
+              {/* Highlight Motto Callout Card */}
+              <div className="rounded-2xl border-l-4 border-gold bg-gradient-to-r from-gold/15 via-amber-500/5 to-transparent p-4 sm:p-5 shadow-xs">
+                <p className="font-display text-sm sm:text-base font-extrabold text-navy">
+                  &ldquo;At Diamond Integrated Facility Services LLP, your facility is our responsibility, and your satisfaction is our priority.&rdquo;
+                </p>
+                <p className="mt-2 text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+                  We are dedicated to delivering service excellence through integrity, professionalism, teamwork, accountability, and customer-focused solutions.
+                </p>
+              </div>
+
               {/* 6 Responsive Interactive Feature Micro-Cards */}
-              <div className="mt-6 sm:mt-8 grid gap-2.5 sm:gap-3.5 sm:grid-cols-2">
+              <div className="pt-2 grid gap-2.5 sm:gap-3.5 sm:grid-cols-2">
                 {[
-                  ["Professional Service Approach", "briefcase"],
-                  ["Trained & Groomed Workforce", "users"],
-                  ["Safety-Focused Operations", "shield"],
-                  ["Flexible Contract Packages", "sliders"],
-                  ["B2B Institutional Solutions", "layers"],
-                  ["24/7 Rapid Response Support", "headset"],
+                  ["Professional & Trained Manpower", "users"],
+                  ["Systematic Operations & Supervision", "briefcase"],
+                  ["Safety, Cleanliness & Hygiene", "shield"],
+                  ["Customized Client Solutions", "sliders"],
+                  ["Transparent & Ethical Business", "award"],
+                  ["Dependable Long-Term Partner", "layers"],
                 ].map(([label, icon]) => (
                   <div
                     key={label}

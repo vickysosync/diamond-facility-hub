@@ -342,36 +342,34 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Copyright Bar with 3D Status Badge */}
+      {/* Bottom Copyright Bar with Centered Developed-by and 3D ISO Badge */}
       <div className="border-t border-white/10 bg-navy-800/90 backdrop-blur-md">
-        <div className="container-x flex flex-col gap-2.5 py-4 text-[11px] text-slate-200 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-1">
-            <p className="text-slate-200 font-medium tracking-wide">
-              Copyright © 2026 DIAMOND INTEGRATED FACILITY SERVICES LLP | All Rights Reserved.
-            </p>
-            <div className="flex flex-wrap items-center gap-1.5 text-slate-400 text-[10.5px]">
-              <span>Designed &amp; developed by</span>
-              <a
-                href="https://www.sosyncaitech.in/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="SOSync AI Tech - Artificial Intelligence & Technology Solutions"
-                className="group inline-flex items-center gap-1.5 transition-all duration-200"
-              >
-                <span className="inline-flex items-center justify-center rounded-sm bg-white/95 px-1 py-0.5 shadow-xs ring-1 ring-white/20 transition-all duration-200 group-hover:scale-105 group-hover:bg-white group-hover:shadow-amber-500/20">
-                  <img
-                    src="/images/sosync-logo.webp"
-                    alt="SOSync AI Tech Logo"
-                    className="h-3.5 w-auto object-contain"
-                  />
-                </span>
-                <span className="font-semibold text-amber-300 transition-colors duration-200 group-hover:text-amber-200 group-hover:underline underline-offset-2">
-                  SOSync AI Tech
-                </span>
-              </a>
-            </div>
+        <div className="container-x flex flex-col gap-3 py-4 text-[11px] text-slate-200 lg:flex-row lg:items-center lg:justify-between">
+          <p className="text-slate-200 font-medium tracking-wide text-center lg:text-left">
+            Copyright © 2026 DIAMOND INTEGRATED FACILITY SERVICES LLP | All Rights Reserved.
+          </p>
+          <div className="flex items-center justify-center gap-1.5 text-slate-400 text-[10.5px]">
+            <span>Designed &amp; developed by</span>
+            <a
+              href="https://www.sosyncaitech.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="SOSync AI Tech - Artificial Intelligence & Technology Solutions"
+              className="group inline-flex items-center gap-1.5 transition-all duration-200"
+            >
+              <span className="inline-flex items-center justify-center rounded-sm bg-white/95 px-1 py-0.5 shadow-xs ring-1 ring-white/20 transition-all duration-200 group-hover:scale-105 group-hover:bg-white group-hover:shadow-amber-500/20">
+                <img
+                  src="/images/sosync-logo.webp"
+                  alt="SOSync AI Tech Logo"
+                  className="h-3.5 w-auto object-contain"
+                />
+              </span>
+              <span className="font-semibold text-amber-300 transition-colors duration-200 group-hover:text-amber-200 group-hover:underline underline-offset-2">
+                SOSync AI Tech
+              </span>
+            </a>
           </div>
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center justify-center lg:justify-end">
             <div className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-navy px-3 py-0.5 text-[11px] font-semibold text-amber-300 shadow-xs">
               <img
                 src="/images/iso-9001-2015.svg"
@@ -380,17 +378,9 @@ export default function Footer() {
               />
               <span>ISO 9001:2015 Certified</span>
             </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-navy px-3 py-0.5 text-[11px] font-semibold text-emerald-300 shadow-xs">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-              </span>
-              <span>Registered Facility Partner • Pan-India Coverage</span>
-            </div>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

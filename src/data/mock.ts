@@ -23,16 +23,16 @@ export interface CompanyInfo {
 export const companyInfo: CompanyInfo = {
   name: "Diamond Integrated Facility Services LLP",
   shortName: "DIAMOND",
-  tagline: "Integrated Facility Services LLP",
+  tagline: "Excellence in Every Service.",
   address:
     "Office No-A2, Sai Pritam Nagari, Chhatrapati Chowk, Rahatani-Kalewadi Link Road, Rahatani, Pune, Maharashtra, India - 411017",
   phone: "+91 9689515295",
   email: "info@diamondifs.com",
   city: "Pune, Maharashtra",
   about:
-    "Diamond Integrated Facility Services LLP provides full-spectrum facility management including 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Bouncer Security, Manpower Supply, Tank Cleaning & Gardening, CCTV Installation & Maintenance, Plumbing, Electrical, Painting, Waterproofing, and Repair & Maintenance Services.",
+    "Diamond Integrated Facility Services LLP is a professional facility management company committed to delivering reliable, efficient, and high-quality integrated facility solutions to Businesses, Commercial Establishments, Residential Communities, Industrial Facilities, Healthcare and Educational Institutes.",
   businessDescription:
-    "Integrated facility management and commercial property support services across PAN India, headed by Director Umesh Patil, backed by trained & groomed personnel, statutory compliance and flexible service packages.",
+    "Delivering reliable, efficient, and high-quality integrated facility solutions across India, guided by our commitment: Your Facility, Our Responsibility & Your Satisfaction, Our Priority.",
   businessHours: [
     { day: "Monday – Saturday", hours: "9:00 AM – 6:00 PM" },
     { day: "Sunday", hours: "Emergency Support Only" },
@@ -508,12 +508,14 @@ export const contactMessages: ContactMessageItem[] = [
 ];
 
 export const whyChooseUs = [
-  { title: "Reliable Workforce", text: "Professional personnel for recurring and one-time facility requirements.", icon: "users" },
-  { title: "Integrated Services", text: "Multiple facility services managed through one service partner.", icon: "layers" },
-  { title: "Flexible Packages", text: "Solutions can be customized according to facility size and requirements.", icon: "sliders" },
-  { title: "Safety First", text: "Operations designed around safety, hygiene and responsible service practices.", icon: "shield" },
-  { title: "Responsive Support", text: "Clear communication and service coordination.", icon: "headset" },
-  { title: "B2B Focus", text: "Solutions designed for commercial and institutional requirements.", icon: "briefcase" },
+  { title: "Professional & Trained Manpower", text: "Screened, verified and regularly trained personnel for all facility and security operations.", icon: "users" },
+  { title: "Integrated Security & Facility Solutions", text: "Unified management covering security, housekeeping, patient support, and technical services.", icon: "layers" },
+  { title: "Quality-Driven Service Delivery", text: "ISO 9001:2015 certified processes ensuring consistent standards and customer satisfaction.", icon: "award" },
+  { title: "Cost-Effective & Flexible Packages", text: "Service models tailored to premises size, operational shifts, and client requirements.", icon: "sliders" },
+  { title: "Responsible Supervision & Monitoring", text: "Disciplined on-ground supervision, periodic inspection audits, and performance tracking.", icon: "briefcase" },
+  { title: "Commitment to Safety, Hygiene & Compliance", text: "Strict adherence to hygiene norms, statutory compliance, and safety standards.", icon: "shield" },
+  { title: "Responsive Customer Support", text: "Transparent communication, rapid query resolution, and dedicated coordination.", icon: "headset" },
+  { title: "Long-Term Partnership & Continuous Improvement", text: "Building reliable relationships through ethical business practices and ongoing service enhancements.", icon: "sparkles" },
 ];
 
 export const processSteps = [

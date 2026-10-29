@@ -43,7 +43,7 @@ const CompanySettingsSchema = new Schema<ICompanySettings>(
     },
     tagline: {
       type: String,
-      default: "Integrated Facility Services LLP",
+      default: "Excellence in Every Service.",
       trim: true,
     },
     director: {
@@ -98,13 +98,13 @@ const CompanySettingsSchema = new Schema<ICompanySettings>(
     about: {
       type: String,
       default:
-        "Diamond Integrated Facility Services LLP delivers security, housekeeping, property management, pest control, bouncer security, manpower supply, tank cleaning, gardening & landscaping, facility management, CCTV installation & maintenance, plumbing, electrical, painting, waterproofing, and repair & maintenance services for residential, commercial, industrial and institutional facilities through a single accountable service partner.",
+        "Diamond Integrated Facility Services LLP is a professional facility management company committed to delivering reliable, efficient, and high-quality integrated facility solutions to Businesses, Commercial Establishments, Residential Communities, Industrial Facilities, Healthcare and Educational Institutes.",
       trim: true,
     },
     businessDescription: {
       type: String,
       default:
-        "Integrated facility management and property support services for B2B clients across PAN India, backed by trained & groomed personnel, safety-first operations and flexible service packages.",
+        "Delivering reliable, efficient, and high-quality integrated facility solutions across India, guided by our commitment: Your Facility, Our Responsibility & Your Satisfaction, Our Priority.",
       trim: true,
     },
     businessHours: {

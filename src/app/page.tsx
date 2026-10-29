@@ -33,25 +33,25 @@ function AboutBlock() {
             </div>
 
             <h2 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl font-black text-navy tracking-tight leading-tight">
-              Comprehensive Facility Management{" "}
+              Excellence in Every Service &mdash;{" "}
               <span className="font-black bg-gradient-to-r from-gold via-brand-accent to-gold-dark bg-clip-text text-transparent">
-                Built Around Your Operations
+                Integrated Facility Solutions
               </span>
             </h2>
 
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground font-normal">
-              Headed by Director Umesh Patil, Diamond Integrated Facility Services LLP provides full-spectrum facility management including 24/7 Security Guarding, Housekeeping, Property Management, Pest Control, Manpower Supply, Tank Cleaning, CCTV and Technical Civil Maintenance across PAN India.
+              Diamond Integrated Facility Services LLP is a professional facility management company committed to delivering reliable, efficient, and high-quality integrated facility solutions to Businesses, Commercial Establishments, Residential Communities, Industrial Facilities, Healthcare and Educational Institutes.
             </p>
 
             {/* 6 Interactive 3D Frosted Micro-Cards */}
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {[
-                "Specialized Service Divisions",
-                "Trained & Groomed Workforce",
-                "100% Statutory ESIC & PF Compliance",
-                "Flexible Service Contract Packages",
-                "Dedicated Operations Site Supervisors",
-                "24/7 Control Room & Rapid Response",
+                "Professional & Trained Manpower",
+                "Systematic Operations & Supervision",
+                "Safety, Cleanliness & Hygiene",
+                "Customized Client Solutions",
+                "Transparent & Disciplined Delivery",
+                "Dependable Long-Term Partner",
               ].map((item, idx) => (
                 <div
                   key={item}
@@ -66,6 +66,13 @@ function AboutBlock() {
                   </span>
                 </div>
               ))}
+            </div>
+
+            {/* Manager Motto Callout */}
+            <div className="mt-6 rounded-xl border-l-4 border-gold bg-gold/10 p-3 sm:p-3.5">
+              <p className="text-xs sm:text-sm font-bold text-navy italic">
+                &ldquo;Your Facility, Our Responsibility AND Your Satisfaction Our Priority&rdquo;
+              </p>
             </div>
 
             {/* 3D Live Animated CTA Button */}
