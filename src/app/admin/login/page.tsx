@@ -144,17 +144,9 @@ export default function AdminLoginPage() {
             )}
           </button>
 
-          <div className="mt-6 rounded-2xl bg-mist/90 p-3.5 text-xs text-muted-foreground border border-border/80">
-            <p className="font-bold text-navy text-[11px] uppercase tracking-wider">Default Credentials</p>
-            <div className="mt-1 font-mono text-[11px] space-y-0.5">
-              <p>Email: <span className="text-navy font-semibold">admin@diamondifs.com</span></p>
-              <p>Password: <span className="text-navy font-semibold">admin123</span></p>
-            </div>
-          </div>
-
-          <Link href="/" className="mt-5 block text-center text-xs font-semibold text-gold-dark hover:text-gold hover:underline">
-            ← Back to live website
-          </Link>
+            <Link href="/" className="mt-6 block text-center text-xs font-semibold text-gold-dark hover:text-gold hover:underline">
+              ← Back to live website
+            </Link>
         </form>
       </div>
     </div>
