@@ -25,7 +25,7 @@ export const heroSlides: HeroSlideData[] = [
     title: "Complete Facility Services.",
     highlightedTitle: "One Trusted Partner.",
     description:
-      "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across PAN India.",
+      "At Diamond Integrated Facility Services LLP, We provide comprehensive Housekeeping, Security, Healthcare Support and infrastructure Solutions tailored to the needs of Corporate Offices, Industries, Hospitals, Residential Societies, Commercial complexes, Educational Institutes and other establishments.",
     image: "/images/hero/slide-security.webp",
     serviceCategory: "Security Guard Services",
     primaryCtaText: "Get Free Instant Quote",

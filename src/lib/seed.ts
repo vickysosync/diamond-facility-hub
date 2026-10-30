@@ -868,7 +868,7 @@ export async function seedDatabase() {
       badge: "24/7 Manned Security • Trained & Groomed Workforce • 100% Compliant",
       subtitle: "One Trusted Partner.",
       description:
-        "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across PAN India.",
+        "At Diamond Integrated Facility Services LLP, We provide comprehensive Housekeeping, Security, Healthcare Support and infrastructure Solutions tailored to the needs of Corporate Offices, Industries, Hospitals, Residential Societies, Commercial complexes, Educational Institutes and other establishments.",
       image: "/images/hero/slide-security.webp",
       placement: "home_hero",
       serviceCategory: "Security Guard Services",
@@ -1258,7 +1258,7 @@ export async function seedDatabase() {
       highlightedTitle: "One Trusted Partner.",
       badge: "24/7 Manned Security • Trained & Groomed Workforce • 100% Compliant",
       description:
-        "Official provider of Security Guarding, Housekeeping, Property Management, Pest Eradication, Tank Sanitization, Manpower, CCTV and Technical Civil Upkeep across PAN India.",
+        "At Diamond Integrated Facility Services LLP, We provide comprehensive Housekeeping, Security, Healthcare Support and infrastructure Solutions tailored to the needs of Corporate Offices, Industries, Hospitals, Residential Societies, Commercial complexes, Educational Institutes and other establishments.",
       image: "/images/hero/slide-security.webp",
       placement: "home_hero",
       serviceCategory: "Security Guard Services",
