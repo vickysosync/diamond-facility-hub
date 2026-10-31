@@ -71,7 +71,13 @@ export async function DELETE(
 
     const { id } = await params;
     await connectToDatabase();
-    const industry = await Industry.findByIdAndDelete(id);
+    let industry = null;
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      industry = await Industry.findByIdAndDelete(id);
+    }
+    if (!industry) {
+      industry = await Industry.findOneAndDelete({ slug: id });
+    }
 
     if (!industry) {
       return NextResponse.json({ error: "Industry not found" }, { status: 404 });

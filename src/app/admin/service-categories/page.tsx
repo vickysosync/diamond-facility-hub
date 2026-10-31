@@ -172,11 +172,18 @@ export default function AdminServiceCategoriesPage() {
   };
 
   const handleDelete = async (id: string, name: string) => {
-    if (!confirm(`Are you sure you want to delete category "${name}"?`)) return;
+    if (!confirm(`Are you sure you want to permanently delete category "${name}"?`)) return;
     try {
       const res = await fetch(`/api/service-categories/${id}`, { method: "DELETE" });
-      if (!res.ok) throw new Error("Delete failed");
-      showToast("Category deleted.");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Delete failed");
+      }
+      showToast("Category deleted successfully!");
+      setCategories((prev) => prev.filter((c) => c._id !== id && c.slug !== id));
+      if (viewing && (viewing._id === id || viewing.slug === id)) {
+        setViewing(null);
+      }
       loadCategories();
     } catch (err: any) {
       showToast(err?.message || "Failed to delete.");
@@ -282,7 +289,7 @@ export default function AdminServiceCategoriesPage() {
                           className="p-1.5 rounded-lg border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-semibold inline-flex items-center transition-all shadow-xs"
                           title="Delete Category"
                         >
-                          <Icon name="x" className="w-3.5 h-3.5" />
+                          <Icon name="trash" className="w-3.5 h-3.5" />
                         </button>
                       </div>
                     </td>
@@ -370,7 +377,15 @@ export default function AdminServiceCategoriesPage() {
                 >
                   <Icon name="file" className="w-3.5 h-3.5 text-gold" /> View on Live Website ↗
                 </a>
-                <div className="flex gap-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(viewing._id, viewing.name)}
+                    className="bg-rose-50 border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-semibold py-2 px-3 rounded-xl transition-all inline-flex items-center gap-1.5"
+                    title="Delete Category"
+                  >
+                    <Icon name="trash" className="w-3.5 h-3.5" /> Delete
+                  </button>
                   <button
                     onClick={() => {
                       const cat = viewing;

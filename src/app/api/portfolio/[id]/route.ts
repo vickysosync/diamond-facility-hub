@@ -71,7 +71,13 @@ export async function DELETE(
 
     const { id } = await params;
     await connectToDatabase();
-    const project = await PortfolioProject.findByIdAndDelete(id);
+    let project = null;
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      project = await PortfolioProject.findByIdAndDelete(id);
+    }
+    if (!project) {
+      project = await PortfolioProject.findOneAndDelete({ slug: id });
+    }
 
     if (!project) {
       return NextResponse.json({ error: "Project not found" }, { status: 404 });

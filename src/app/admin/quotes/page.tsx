@@ -57,6 +57,23 @@ export default function AdminQuotesPage() {
     }
   };
 
+  const deleteQuote = async (id: string, quoteIdOrName: string) => {
+    if (!confirm(`Are you sure you want to permanently delete quote request "${quoteIdOrName}"?`)) {
+      return;
+    }
+    try {
+      const res = await fetch(`/api/quotes/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete quote request");
+      showToast("Quote request deleted successfully!");
+      setQuotes((prev) => prev.filter((q) => q._id !== id && q.quoteId !== id));
+      if (detail && (detail._id === id || detail.quoteId === id)) {
+        setDetail(null);
+      }
+    } catch (err: any) {
+      showToast(err?.message || "Failed to delete quote request");
+    }
+  };
+
   const openDetail = (q: any) => {
     setDetail(q);
     setAdminNotes(q.adminNotes || "");
@@ -216,13 +233,23 @@ export default function AdminQuotesPage() {
                         ))}
                       </select>
                     </td>
-                    <td className="p-3.5 text-right">
-                      <button
-                        onClick={() => openDetail(q)}
-                        className="bg-white border border-border shadow-2xs hover:bg-navy hover:text-white text-navy text-xs font-semibold py-1.5 px-3 rounded-lg inline-flex items-center gap-1.5 transition-all"
-                      >
-                        <Icon name="eye" className="w-3.5 h-3.5 text-gold" /> View
-                      </button>
+                    <td className="p-3.5 text-right whitespace-nowrap">
+                      <div className="inline-flex items-center justify-end gap-1.5">
+                        <button
+                          onClick={() => openDetail(q)}
+                          className="bg-white border border-border shadow-2xs hover:bg-navy hover:text-white text-navy text-xs font-semibold py-1.5 px-2.5 rounded-lg inline-flex items-center gap-1 transition-all"
+                          title="View Quote Details"
+                        >
+                          <Icon name="eye" className="w-3.5 h-3.5 text-gold" /> View
+                        </button>
+                        <button
+                          onClick={() => deleteQuote(q._id || q.quoteId, q.quoteId || q.name || "Request")}
+                          className="bg-rose-50 border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-semibold py-1.5 px-2.5 rounded-lg inline-flex items-center gap-1 transition-all shadow-2xs"
+                          title="Delete Quote Request"
+                        >
+                          <Icon name="trash" className="w-3.5 h-3.5" /> Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -340,6 +367,14 @@ export default function AdminQuotesPage() {
                 </select>
               </div>
               <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => deleteQuote(detail._id || detail.quoteId, detail.quoteId || detail.name || "Request")}
+                  className="bg-rose-50 border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-bold py-2 px-3.5 rounded-xl transition-all inline-flex items-center gap-1.5"
+                  title="Delete this quote request"
+                >
+                  <Icon name="trash" className="w-3.5 h-3.5" /> Delete
+                </button>
                 <a
                   href={`tel:${detail.phone}`}
                   className="btn-base btn-accent text-xs py-2 px-4 flex items-center gap-1.5"

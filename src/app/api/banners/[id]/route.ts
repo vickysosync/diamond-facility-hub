@@ -64,7 +64,13 @@ export async function DELETE(
 
     const { id } = await params;
     await connectToDatabase();
-    const banner = await Banner.findByIdAndDelete(id);
+    let banner = null;
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      banner = await Banner.findByIdAndDelete(id);
+    }
+    if (!banner) {
+      banner = await Banner.findOneAndDelete({ _id: id });
+    }
 
     if (!banner) {
       return NextResponse.json({ error: "Banner not found" }, { status: 404 });

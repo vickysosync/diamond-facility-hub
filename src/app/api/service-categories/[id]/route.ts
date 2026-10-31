@@ -63,7 +63,13 @@ export async function DELETE(
 
     const { id } = await params;
     await connectToDatabase();
-    const category = await ServiceCategory.findByIdAndDelete(id);
+    let category = null;
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      category = await ServiceCategory.findByIdAndDelete(id);
+    }
+    if (!category) {
+      category = await ServiceCategory.findOneAndDelete({ slug: id });
+    }
 
     if (!category) {
       return NextResponse.json({ error: "Category not found" }, { status: 404 });

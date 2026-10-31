@@ -254,7 +254,7 @@ export default function AdminTestimonialsPage() {
               </div>
 
               <div className="mt-4 pt-3 border-t border-border/80 flex flex-wrap items-center justify-between gap-2">
-                {/* View, Edit, Delete Buttons */}
+                {/* View, Delete, Approve, Reject Buttons */}
                 <div className="flex items-center gap-1.5">
                   <button
                     className="bg-white border border-border shadow-2xs hover:bg-navy hover:text-white text-navy text-xs font-semibold py-1.5 px-2.5 rounded-lg inline-flex items-center gap-1 transition-all"
@@ -264,40 +264,39 @@ export default function AdminTestimonialsPage() {
                     <Icon name="eye" className="w-3.5 h-3.5" /> View
                   </button>
                   <button
-                    className="bg-gold/10 hover:bg-gold hover:text-white text-gold border border-gold/30 text-xs font-semibold py-1.5 px-2.5 rounded-lg inline-flex items-center gap-1 transition-all"
-                    onClick={() => openEdit(t)}
-                    title="Edit Testimonial"
-                  >
-                    <Icon name="sliders" className="w-3.5 h-3.5" /> Edit
-                  </button>
-                  <button
-                    className="border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-semibold p-1.5 rounded-lg inline-flex items-center transition-all shadow-2xs"
+                    className="bg-rose-50 border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-semibold py-1.5 px-2.5 rounded-lg inline-flex items-center gap-1 transition-all shadow-2xs"
                     onClick={() => handleDelete(t._id, t.name)}
                     title="Delete Testimonial"
                   >
-                    <Icon name="x" className="w-3.5 h-3.5" />
+                    <Icon name="trash" className="w-3.5 h-3.5" /> Delete
                   </button>
                 </div>
 
-                <div className="flex items-center gap-1">
-                  {t.status !== "Approved" && (
-                    <button
-                      onClick={() => updateStatus(t._id, "Approved")}
-                      className="px-2 py-1 rounded-md bg-emerald-50 text-emerald-700 hover:bg-emerald-100 text-[11px] font-bold transition-colors border border-emerald-200"
-                      title="Approve Testimonial"
-                    >
-                      ✓ Approve
-                    </button>
-                  )}
-                  {t.status !== "Rejected" && (
-                    <button
-                      onClick={() => updateStatus(t._id, "Rejected")}
-                      className="px-2 py-1 rounded-md bg-rose-50 text-rose-700 hover:bg-rose-100 text-[11px] font-bold transition-colors border border-rose-200"
-                      title="Reject Testimonial"
-                    >
-                      ✕ Reject
-                    </button>
-                  )}
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => updateStatus(t._id, "Approved")}
+                    disabled={t.status === "Approved"}
+                    className={`px-2.5 py-1.5 rounded-lg text-[11px] font-bold transition-all border inline-flex items-center gap-1 ${
+                      t.status === "Approved"
+                        ? "bg-emerald-600 text-white border-emerald-600 shadow-2xs opacity-90 cursor-default"
+                        : "bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border-emerald-200"
+                    }`}
+                    title={t.status === "Approved" ? "Already Approved" : "Approve Testimonial"}
+                  >
+                    ✓ Approve
+                  </button>
+                  <button
+                    onClick={() => updateStatus(t._id, "Rejected")}
+                    disabled={t.status === "Rejected"}
+                    className={`px-2.5 py-1.5 rounded-lg text-[11px] font-bold transition-all border inline-flex items-center gap-1 ${
+                      t.status === "Rejected"
+                        ? "bg-rose-600 text-white border-rose-600 shadow-2xs opacity-90 cursor-default"
+                        : "bg-rose-50 text-rose-700 hover:bg-rose-600 hover:text-white border-rose-200"
+                    }`}
+                    title={t.status === "Rejected" ? "Already Rejected" : "Reject Testimonial"}
+                  >
+                    ✕ Reject
+                  </button>
                 </div>
               </div>
             </article>
@@ -371,39 +370,41 @@ export default function AdminTestimonialsPage() {
                 </blockquote>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-border">
-                <div className="flex items-center gap-2">
-                  {viewing.status !== "Approved" && (
-                    <button
-                      onClick={() => updateStatus(viewing._id, "Approved")}
-                      className="px-3 py-1.5 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 text-xs font-bold transition-colors"
-                    >
-                      ✓ Approve
-                    </button>
-                  )}
-                  {viewing.status !== "Rejected" && (
-                    <button
-                      onClick={() => updateStatus(viewing._id, "Rejected")}
-                      className="px-3 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 text-xs font-bold transition-colors"
-                    >
-                      ✕ Reject
-                    </button>
-                  )}
-                </div>
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-4 border-t border-border">
                 <div className="flex items-center gap-2">
                   <button
-                    onClick={() => {
-                      const item = viewing;
-                      setViewing(null);
-                      openEdit(item);
-                    }}
-                    className="btn-base btn-secondary py-1.5 px-3 text-xs flex items-center gap-1"
+                    onClick={() => updateStatus(viewing._id, "Approved")}
+                    disabled={viewing.status === "Approved"}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border ${
+                      viewing.status === "Approved"
+                        ? "bg-emerald-600 text-white border-emerald-600 opacity-90"
+                        : "bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border-emerald-200"
+                    }`}
                   >
-                    <Icon name="sliders" className="w-3.5 h-3.5" /> Edit
+                    ✓ Approve
                   </button>
                   <button
+                    onClick={() => updateStatus(viewing._id, "Rejected")}
+                    disabled={viewing.status === "Rejected"}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border ${
+                      viewing.status === "Rejected"
+                        ? "bg-rose-600 text-white border-rose-600 opacity-90"
+                        : "bg-rose-50 text-rose-700 hover:bg-rose-600 hover:text-white border-rose-200"
+                    }`}
+                  >
+                    ✕ Reject
+                  </button>
+                  <button
+                    onClick={() => handleDelete(viewing._id, viewing.name)}
+                    className="px-3 py-1.5 rounded-lg bg-rose-50 border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-bold transition-colors inline-flex items-center gap-1"
+                  >
+                    <Icon name="trash" className="w-3.5 h-3.5" /> Delete
+                  </button>
+                </div>
+                <div>
+                  <button
                     onClick={() => setViewing(null)}
-                    className="btn-base btn-primary py-1.5 px-4 text-xs"
+                    className="btn-base btn-primary py-1.5 px-4 text-xs font-bold"
                   >
                     Close
                   </button>

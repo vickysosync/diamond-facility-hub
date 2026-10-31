@@ -40,7 +40,7 @@ export default function AdminDashboardPage() {
 
   const cards = [
     { label: "Service Categories", value: counts.serviceCategories, icon: "layers", href: "/admin/service-categories" },
-    { label: "Individual Services", value: counts.services, icon: "briefcase", href: "/admin/services" },
+    { label: "Client Testimonials", value: counts.testimonials, icon: "quote", href: "/admin/testimonials" },
     { label: "Quote Requests", value: counts.quoteRequests, icon: "inbox", href: "/admin/quotes" },
     { label: "Contact Enquiries", value: counts.enquiries, icon: "mail", href: "/admin/enquiries" },
     { label: "Portfolio Projects", value: counts.portfolioProjects, icon: "file", href: "/admin/portfolio" },

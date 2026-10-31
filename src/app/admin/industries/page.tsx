@@ -175,11 +175,18 @@ export default function AdminIndustriesPage() {
   };
 
   const handleDelete = async (id: string, name: string) => {
-    if (!confirm(`Are you sure you want to delete industry "${name}"?`)) return;
+    if (!confirm(`Are you sure you want to permanently delete industry "${name}"?`)) return;
     try {
       const res = await fetch(`/api/industries/${id}`, { method: "DELETE" });
-      if (!res.ok) throw new Error("Delete failed");
-      showToast("Industry deleted.");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Delete failed");
+      }
+      showToast("Industry deleted successfully!");
+      setIndustries((prev) => prev.filter((ind) => ind._id !== id && ind.slug !== id));
+      if (viewing && (viewing._id === id || viewing.slug === id)) {
+        setViewing(null);
+      }
       loadData();
     } catch (err: any) {
       showToast(err?.message || "Failed to delete.");
@@ -308,7 +315,7 @@ export default function AdminIndustriesPage() {
                   onClick={() => handleDelete(ind._id, ind.name)}
                   title="Delete Industry"
                 >
-                  <Icon name="x" className="w-3.5 h-3.5" />
+                  <Icon name="trash" className="w-3.5 h-3.5" />
                 </button>
               </div>
             </article>
@@ -398,7 +405,15 @@ export default function AdminIndustriesPage() {
                 >
                   <Icon name="file" className="w-3.5 h-3.5 text-gold" /> View on Live Website ↗
                 </a>
-                <div className="flex gap-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(viewing._id, viewing.name)}
+                    className="bg-rose-50 border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-semibold py-2 px-3 rounded-xl transition-all inline-flex items-center gap-1.5"
+                    title="Delete Industry"
+                  >
+                    <Icon name="trash" className="w-3.5 h-3.5" /> Delete
+                  </button>
                   <button
                     onClick={() => {
                       const ind = viewing;

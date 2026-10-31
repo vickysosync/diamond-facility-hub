@@ -204,11 +204,18 @@ export default function AdminPortfolioPage() {
   };
 
   const handleDelete = async (id: string, title: string) => {
-    if (!confirm(`Are you sure you want to delete project "${title}"?`)) return;
+    if (!confirm(`Are you sure you want to permanently delete project "${title}"?`)) return;
     try {
       const res = await fetch(`/api/portfolio/${id}`, { method: "DELETE" });
-      if (!res.ok) throw new Error("Delete failed");
-      showToast("Project deleted.");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Delete failed");
+      }
+      showToast("Project deleted successfully!");
+      setProjects((prev) => prev.filter((p) => p._id !== id && p.slug !== id));
+      if (viewing && (viewing._id === id || viewing.slug === id)) {
+        setViewing(null);
+      }
       loadData();
     } catch (err: any) {
       showToast(err?.message || "Failed to delete.");
@@ -346,7 +353,7 @@ export default function AdminPortfolioPage() {
                   onClick={() => handleDelete(p._id, p.title)}
                   title="Delete Project"
                 >
-                  <Icon name="x" className="w-3.5 h-3.5" />
+                  <Icon name="trash" className="w-3.5 h-3.5" />
                 </button>
               </div>
             </article>
@@ -435,7 +442,15 @@ export default function AdminPortfolioPage() {
                 >
                   <Icon name="file" className="w-3.5 h-3.5 text-gold" /> View on Live Portfolio ↗
                 </a>
-                <div className="flex gap-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(viewing._id, viewing.title)}
+                    className="bg-rose-50 border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-semibold py-2 px-3 rounded-xl transition-all inline-flex items-center gap-1.5"
+                    title="Delete Project"
+                  >
+                    <Icon name="trash" className="w-3.5 h-3.5" /> Delete
+                  </button>
                   <button
                     onClick={() => {
                       const p = viewing;

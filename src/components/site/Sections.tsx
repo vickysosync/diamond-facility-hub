@@ -6,6 +6,7 @@ import Icon from "@/components/ui/Icon";
 import { useApp } from "@/store/AppStore";
 import { processSteps, whyChooseUs } from "@/data/mock";
 import { useQuote } from "./SiteLayout";
+import FeedbackModal from "./FeedbackModal";
 
 export interface SectionTitleProps {
   eyebrow?: string;
@@ -143,7 +144,7 @@ export function WhyChooseUs() {
         <SectionTitle
           eyebrow="Diamond Integrated Facility Services LLP"
           title="WHY WORK WITH US?"
-          subtitle="At Diamond Integrated Facility Services LLP, we believe that excellent facility management goes beyond providing services—it means building trust, ensuring safety, maintaining hygiene, and creating better workplaces."
+          subtitle="At Diamond Integrated Facility Services LLP, we believe that excellent facility management goes beyond providing servicesâ€”it means building trust, ensuring safety, maintaining hygiene, and creating better workplaces."
           center
         />
 
@@ -251,6 +252,7 @@ export function HowItWorks() {
 export function Testimonials() {
   const [list, setList] = useState<any[]>([]);
   const [i, setI] = useState(0);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
 
   useEffect(() => {
     async function loadTestimonials() {
@@ -271,7 +273,31 @@ export function Testimonials() {
     return () => clearInterval(id);
   }, [list.length]);
 
-  if (list.length === 0) return null;
+  if (list.length === 0) {
+    return (
+      <section className="section-y bg-navy text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20 [background:radial-gradient(circle_at_50%_10%,#d99b38,transparent_60%)] pointer-events-none" />
+        <div className="container-x relative z-10 text-center">
+          <SectionTitle eyebrow="Verified Client Reviews" title="What Our Facility Clients Say" light center />
+          <p className="mt-4 text-xs sm:text-sm text-slate-300">
+            Have you worked with Diamond Integrated Facility Services? We would love to hear your experience!
+          </p>
+          <div className="mt-6 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setFeedbackOpen(true)}
+              className="btn-base btn-live-gold px-6 py-3 rounded-full text-xs font-bold shadow-md inline-flex items-center gap-2"
+            >
+              <Icon name="star" className="h-4 w-4" />
+              <span>Submit Your Feedback / Review</span>
+            </button>
+          </div>
+          <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
+        </div>
+      </section>
+    );
+  }
+
   const t = list[i % list.length];
   const avatarUrl = t.avatar || t.image;
 
@@ -317,23 +343,38 @@ export function Testimonials() {
           </figcaption>
         </figure>
 
-        <div className="mt-8 flex justify-center gap-2">
+        <div className="mt-7 flex justify-center gap-2">
           {list.map((item, k) => (
             <button
               key={item._id || item.id || k}
               onClick={() => setI(k)}
               aria-label={`Show testimonial ${k + 1}`}
-              className={`h-2.5 rounded-full transition-all ${
+              className={`h-2.5 rounded-full transition-all cursor-pointer ${
                 k === i % list.length ? "w-8 bg-gold shadow-[0_0_8px_rgba(217,155,56,0.8)]" : "w-2.5 bg-white/40 hover:bg-white/70"
               }`}
             />
           ))}
         </div>
+
+        {/* Submit Feedback Action Button */}
+        <div className="mt-8 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setFeedbackOpen(true)}
+            className="group inline-flex items-center gap-2.5 rounded-full border border-gold/50 bg-gradient-to-r from-gold/20 via-gold/10 to-gold/20 hover:from-gold hover:to-gold-dark px-6 py-3 text-xs sm:text-sm font-bold text-gold hover:text-navy transition-all duration-300 shadow-[0_4px_20px_rgba(217,155,56,0.2)] hover:shadow-[0_6px_25px_rgba(217,155,56,0.45)] hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md"
+          >
+            <span className="grid h-6 w-6 place-items-center rounded-full bg-gold/25 group-hover:bg-navy/20 text-gold group-hover:text-navy transition-colors">
+              <Icon name="star" className="h-3.5 w-3.5" />
+            </span>
+            <span>Submit Your Feedback / Review</span>
+          </button>
+        </div>
       </div>
+
+      <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
     </section>
   );
 }
-
 export function CTABanner() {
   const { openQuote } = useQuote();
   return (
@@ -417,7 +458,7 @@ export function IndustriesGrid({ limit }: IndustriesGridProps = {}) {
     return (
       <div className="py-12 text-center text-xs text-muted-foreground">
         <span className="h-5 w-5 animate-spin rounded-full border-2 border-gold border-t-transparent inline-block" />
-        <p className="mt-2">Loading target sectors…</p>
+        <p className="mt-2">Loading target sectorsâ€¦</p>
       </div>
     );
   }
@@ -565,8 +606,8 @@ export function ContactDetails() {
         </h3>
         <ul className="mt-4 space-y-2 text-xs">
           <li className="flex justify-between gap-4 border-b border-border pb-2">
-            <span className="text-muted-foreground">Office Operations (Mon – Sat)</span>
-            <span className="font-semibold text-navy">9:00 AM – 7:00 PM</span>
+            <span className="text-muted-foreground">Office Operations (Mon â€“ Sat)</span>
+            <span className="font-semibold text-navy">9:00 AM â€“ 7:00 PM</span>
           </li>
           <li className="flex justify-between items-center gap-4">
             <span className="text-muted-foreground">Security & Emergency Hotline</span>
@@ -756,7 +797,7 @@ export function ContactForm() {
         {sending ? (
           <>
             <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white border-t-transparent relative z-10" />
-            <span className="relative z-10">Sending Message…</span>
+            <span className="relative z-10">Sending Messageâ€¦</span>
           </>
         ) : (
           <>

@@ -166,11 +166,15 @@ export default function AdminBannersPage() {
   };
 
   const handleDelete = async (id: string, title: string) => {
-    if (!confirm(`Are you sure you want to delete banner "${title}"?`)) return;
+    if (!confirm(`Are you sure you want to permanently delete banner "${title}"?`)) return;
     try {
       const res = await fetch(`/api/banners/${id}`, { method: "DELETE" });
-      if (!res.ok) throw new Error("Delete failed");
-      showToast("Banner deleted.");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Delete failed");
+      }
+      showToast("Banner deleted successfully!");
+      setBanners((prev) => prev.filter((b) => b._id !== id));
       if (viewing && viewing._id === id) setViewing(null);
       loadBanners();
     } catch (err: any) {
@@ -336,7 +340,7 @@ export default function AdminBannersPage() {
                       onClick={() => handleDelete(b._id, b.title)}
                       title="Delete Banner"
                     >
-                      <Icon name="x" className="w-3.5 h-3.5" />
+                      <Icon name="trash" className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
@@ -417,6 +421,14 @@ export default function AdminBannersPage() {
               </div>
 
               <div className="flex items-center justify-end gap-2 pt-4 border-t border-border">
+                <button
+                  type="button"
+                  onClick={() => handleDelete(viewing._id, viewing.title)}
+                  className="bg-rose-50 border border-destructive/30 text-destructive hover:bg-destructive hover:text-white text-xs font-semibold py-1.5 px-3 rounded-lg flex items-center gap-1 transition-all"
+                  title="Delete Banner"
+                >
+                  <Icon name="trash" className="w-3.5 h-3.5" /> Delete
+                </button>
                 <button
                   onClick={() => {
                     const item = viewing;

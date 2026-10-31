@@ -33,53 +33,6 @@ export default function AdminSettingsPage() {
       <Toast message={toastMessage} />
 
       <div className="grid gap-5 lg:grid-cols-2 text-xs">
-        {/* Production Integrations Status */}
-        <section className="rounded-2xl border border-border bg-card p-5 shadow-card">
-          <h2 className="font-display text-sm font-bold text-navy pb-2.5 border-b border-border flex items-center gap-2">
-            <Icon name="gear" className="w-4 h-4 text-gold" /> System Integrations Status
-          </h2>
-          <div className="mt-3.5 space-y-3">
-            <div className="p-3 rounded-xl bg-mist flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <div>
-                  <p className="font-bold text-navy">MongoDB Atlas Database</p>
-                  <p className="text-[11px] text-muted-foreground font-mono">Cluster0 / diamond_facility</p>
-                </div>
-              </div>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">
-                Connected
-              </span>
-            </div>
-
-            <div className="p-3 rounded-xl bg-mist flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <div>
-                  <p className="font-bold text-navy">Cloudinary Asset Storage</p>
-                  <p className="text-[11px] text-muted-foreground font-mono">cloud_name: dyt12jebk</p>
-                </div>
-              </div>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">
-                Active
-              </span>
-            </div>
-
-            <div className="p-3 rounded-xl bg-mist flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <div>
-                  <p className="font-bold text-navy">Nodemailer SMTP Pipeline</p>
-                  <p className="text-[11px] text-muted-foreground font-mono">Quotes: DIF-2026-XXXXX | Enquiries: ENQ-2026-XXXXX</p>
-                </div>
-              </div>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">
-                Configured
-              </span>
-            </div>
-          </div>
-        </section>
-
         {/* Security & Access Session */}
         <section className="rounded-2xl border border-border bg-card p-5 shadow-card">
           <h2 className="font-display text-sm font-bold text-navy pb-2.5 border-b border-border flex items-center gap-2">
@@ -98,7 +51,7 @@ export default function AdminSettingsPage() {
         </section>
 
         {/* Database Re-seeder */}
-        <section className="rounded-2xl border border-border bg-card p-5 shadow-card lg:col-span-2">
+        <section className="rounded-2xl border border-border bg-card p-5 shadow-card">
           <h2 className="font-display text-sm font-bold text-navy pb-2.5 border-b border-border flex items-center gap-2">
             <Icon name="layers" className="w-4 h-4 text-gold" /> Database Synchronization & Default Master Seeding
           </h2>

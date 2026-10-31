@@ -9,7 +9,6 @@ import Logo from "@/components/ui/Logo";
 const nav = [
   { href: "/admin/dashboard", label: "Dashboard", icon: "chart" },
   { href: "/admin/service-categories", label: "Service Categories", icon: "layers" },
-  { href: "/admin/services", label: "Individual Services", icon: "briefcase" },
   { href: "/admin/portfolio", label: "Portfolio Projects", icon: "file" },
   { href: "/admin/gallery", label: "Photo Gallery", icon: "photo" },
   { href: "/admin/industries", label: "Target Industries", icon: "building" },

@@ -282,16 +282,24 @@ export default function Header({ onQuote }: HeaderProps) {
         {/* Diamond Logo with 3D Hover Scale */}
         <Link
           href="/"
-          className="group relative flex min-w-0 items-center gap-3 py-1 transition-transform duration-300 hover:scale-[1.025]"
+          className="group relative flex min-w-0 items-center gap-2 sm:gap-2.5 py-1 transition-transform duration-300 hover:scale-[1.025]"
           onClick={() => {
             setOpen(false);
             setOpenDropdown(null);
           }}
         >
+          {/* Triangular Icon: Height and Width Increased */}
           <img
-            src="/images/logo.png"
-            alt="Diamond Security Services & Integrated Facility Solutions"
-            className="h-11 sm:h-12 w-auto max-w-[230px] sm:max-w-[290px] object-contain drop-shadow-xs group-hover:brightness-105 transition-all duration-300"
+            src="/images/logo-icon.png"
+            alt="Diamond Facility Icon"
+            className="h-[56px] w-auto sm:h-[68px] object-contain shrink-0 drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+          />
+
+          {/* Text: Kept at Exact Original Size */}
+          <img
+            src="/images/logo-text.png"
+            alt="Diamond Integrated Facility Services LLP"
+            className="h-[38px] sm:h-[42px] w-auto max-w-[200px] sm:max-w-[250px] object-contain drop-shadow-xs"
           />
         </Link>
 

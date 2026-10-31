@@ -5,6 +5,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import QuoteModal from "./QuoteModal";
 import WhatsAppButton from "./WhatsAppButton";
+import CallButton from "./CallButton";
 import BrochureButton from "./BrochureButton";
 
 interface QuoteContextType {
@@ -35,6 +36,7 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
         <Header onQuote={() => openQuote()} />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CallButton />
         <WhatsAppButton />
         <BrochureButton />
       </div>
