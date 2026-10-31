@@ -18,7 +18,6 @@ const nav = [
   { href: "/admin/quotes", label: "Quote Requests", icon: "inbox" },
   { href: "/admin/enquiries", label: "Contact Enquiries", icon: "mail" },
   { href: "/admin/banners", label: "Hero & Banners", icon: "layers" },
-  { href: "/admin/content", label: "CMS Website Content", icon: "file" },
   { href: "/admin/company", label: "Company Information", icon: "phone" },
   { href: "/admin/settings", label: "Settings & Access", icon: "gear" },
 ];

@@ -8,6 +8,5 @@ export * from "./Testimonial";
 export * from "./Enquiry";
 export * from "./QuoteRequest";
 export * from "./Banner";
-export * from "./WebsiteContent";
 export * from "./CompanySettings";
 export * from "./Gallery";

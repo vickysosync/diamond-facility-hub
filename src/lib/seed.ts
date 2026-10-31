@@ -8,7 +8,6 @@ import {
   Pricing,
   Testimonial,
   Banner,
-  WebsiteContent,
   CompanySettings,
   Gallery,
 } from "@/models";
@@ -1065,65 +1064,7 @@ export async function seedDatabase() {
     }
   }
 
-  // 8. Seed Website Content
-  const existingContent = await WebsiteContent.findOne();
-  if (!existingContent) {
-    await WebsiteContent.create({
-      heroHeading: "Complete Facility Services.",
-      heroHighlightedWord: "One Trusted Partner.",
-      heroSubtitle:
-        "Reliable security, housekeeping, property management, pest control, manpower, tank cleaning, gardening & landscaping, CCTV, and technical maintenance solutions across PAN India.",
-      heroBadge: "Professional • Reliable • Responsive",
-      aboutHeading: "Integrated Facility Services Built Around Your Needs",
-      aboutDescription:
-        "Diamond Integrated Facility Services LLP delivers comprehensive security, housekeeping, pest control, water tank cleaning, CCTV, gardening, electrical, plumbing, painting, and maintenance services for residential, commercial, industrial and institutional facilities through a single accountable service partner.",
-      aboutHighlights: [
-        { value: "11", label: "Core Services" },
-        { value: "10+", label: "Industries Served" },
-        { value: "PAN India", label: "Operations & Service Reach" },
-      ],
-      whyChooseUs: [
-        {
-          title: "Reliable Workforce",
-          text: "Screened, verified, and trained personnel for recurring and on-demand facility requirements.",
-          icon: "users",
-        },
-        {
-          title: "11 Integrated Services",
-          text: "Security, cleaning, technical upkeep, and property operations managed through one partner.",
-          icon: "layers",
-        },
-        {
-          title: "Flexible B2B Packages",
-          text: "Customized service contracts tailored to facility size, operational shifts, and specific scope.",
-          icon: "sliders",
-        },
-        {
-          title: "Safety & Quality First",
-          text: "Operations designed around workplace safety, hygiene standards, and responsible practices.",
-          icon: "shield",
-        },
-        {
-          title: "Responsive Management",
-          text: "Direct coordinator oversight, daily activity logs, and rapid incident resolution.",
-          icon: "headset",
-        },
-        {
-          title: "B2B & Institutional Focus",
-          text: "Specialized service delivery for corporate campuses, housing societies, factories, and institutions.",
-          icon: "briefcase",
-        },
-      ],
-      ctaHeading: "Looking for a Reliable Facility Services Partner?",
-      ctaText:
-        "Tell us about your facility requirements and get a customized service estimate within minutes.",
-      footerText:
-        "Integrated facility management and property support services for B2B clients across PAN India, backed by trained & groomed personnel, safety-first operations and flexible service packages.",
-    });
-    console.log("Seeded website content");
-  }
-
-  // 9. Seed Official Company Settings
+  // 8. Seed Official Company Settings
   const existingCompany = await CompanySettings.findOne();
   const officialCompanyData = {
     name: "Diamond Integrated Facility Services LLP",
